@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+header {
+  background-color: rgb(85, 135, 178);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+span {
+  color: white;
+  cursor: pointer;
+}
+
+span:hover {
+  background-color: rgb(96, 149, 195);
+}
+
+.lista-spesa {
+  padding: 5px 0;
+  list-style-type: none;
+}
+
+.lista-spesa__item {
+  font-weight: bold;
+  margin-bottom: 10px;
+  background-color: rgb(85, 135, 178);
+
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.lista-spesa__item:hover {
+  background-color: rgb(96, 149, 195);
+}
