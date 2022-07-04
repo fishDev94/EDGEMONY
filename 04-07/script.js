@@ -36,25 +36,42 @@ const stringTenCharacters = array.filter((letters) => {
 // shop.products = [{id: 1, name: 'TV', price: 40}, {id: 2, name: 'PC', price: 30}]
 // // -> deve mettere dentro il body: <li>TV - 40€</li><li>PC - 30€</li>
 
+
 const shop = {
   _products: [{id: 1, name: 'TV', price: 40}, {id: 2, name: 'PC', price: 30}],
   get products() { 
     return this._products
 },
 
+  set newProducts(val) {
+    const [name = "", price = 0] = val.split(' '); 
+    let id = this._products.length + 1;
+    // this._products[i].id = id+1;
+    // this._products.name = name;
+    // this._products.price = parseInt(price);
+   const ogg = Object.create(this._products[0]);
+   ogg.id = id;
+   ogg.name = name;
+   ogg.price = parseInt(price);
+  this._products.push(ogg);
+  },
+
   set products(val) {
-    let [name = 'TV', price = 80, id = 0] = val.split(' '); 
-        this._products[id].id = id+1;
-    this._products[id].name = name;
-      this._products[id].price = parseInt(price);
+    const [name = "", price = 0] = val.split(' ');
+    this._products[0].name = name;
+    this._products[0].price = parseInt(price);
+
   }
 };
 
-shop.products = 'SamsungS8 500';
+shop.products = 'HuaweiP30 300';
+shop.newProducts = 'SamsungS8 500';
+shop.newProducts = 'Iphone8 900';
 
-shop.products = 'Iphone 800';
 
-console.log(shop.products);
+// shop.products = 'Iphone 800';
+
+console.log(shop.products[2]);
 
 
 
@@ -70,6 +87,18 @@ document.body.innerHTML = `
 <li>Id: ${shop.products[1].id}</li>
 <li>Name: ${shop.products[1].name}</li>
 <li>Price: ${shop.products[1].price}€</li>
+</ul>
+
+<ul class="product-list">
+<li>Id: ${shop.products[2].id}</li>
+<li>Name: ${shop.products[2].name}</li>
+<li>Price: ${shop.products[2].price}€</li>
+</ul>
+
+<ul class="product-list">
+<li>Id: ${shop.products[3].id}</li>
+<li>Name: ${shop.products[3].name}</li>
+<li>Price: ${shop.products[3].price}€</li>
 </ul>
 `
 
