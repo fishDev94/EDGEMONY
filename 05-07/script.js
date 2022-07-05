@@ -71,13 +71,15 @@ const getProductHTML = (product) => {
     },
   
     renderHTML() {
-
+        this._products.remove;
         const productsEl = document.querySelector('.products');
         const productsHTML = this.products.map(getProductHTML).join("");
         productsEl.innerHTML = `
             
             <ul>${productsHTML}</ul>
         `;
+        
+        
       /**
        * Aggiorniamo il DOM stampando i risultati a schermo.
        * Avendo ora anche la paginazione, sarebbe il caso di mettere il nostro shop dentro un div specifico div.shop
@@ -96,14 +98,21 @@ const button2 = document.querySelector('.second_page');
 const button3 = document.querySelector('.third_page');
 
 button1.addEventListener('click', () => {
-    shop.page = 1;   
+    
+    shop.page = 1;  
+    shop.renderHTML();
 })
 button2.addEventListener('click', () => {
-    shop.page = 2;   
+    
+    shop.page = 2;  
+    shop.renderHTML();
+
+
 })
 
 button3.addEventListener('click', () => {
     shop.page = 3;
+    shop.renderHTML();
 })
 
 
