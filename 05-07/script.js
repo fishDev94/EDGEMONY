@@ -71,7 +71,7 @@ const getProductHTML = (product) => {
     },
   
     renderHTML() {
-        this._products.remove;
+        
         const productsEl = document.querySelector('.products');
         const productsHTML = this.products.map(getProductHTML).join("");
         productsEl.innerHTML = `
@@ -93,27 +93,39 @@ const getProductHTML = (product) => {
     }
   };
 
-const button1 = document.querySelector('.first_page');
-const button2 = document.querySelector('.second_page');
-const button3 = document.querySelector('.third_page');
+// const button1 = document.querySelector('.first_page');
+// const button2 = document.querySelector('.second_page');
+// const button3 = document.querySelector('.third_page');
 
-button1.addEventListener('click', () => {
+let button = document.querySelectorAll('button');
+
+button.forEach((button) => {
+    button.addEventListener('click', () => {
     
-    shop.page = 1;  
-    shop.renderHTML();
+        shop.page = button.getAttribute('id');  
+        shop.renderHTML();
+    })
 })
-button2.addEventListener('click', () => {
+
+
+
+// button1.addEventListener('click', () => {
     
-    shop.page = 2;  
-    shop.renderHTML();
+//     shop.page = button1.getAttribute('id');  
+//     shop.renderHTML();
+// })
+// button2.addEventListener('click', () => {
+    
+//     shop.page = button2.getAttribute('id');  
+//     shop.renderHTML();
 
 
-})
+// })
 
-button3.addEventListener('click', () => {
-    shop.page = 3;
-    shop.renderHTML();
-})
+// button3.addEventListener('click', () => {
+//     shop.page = button3.getAttribute('id');
+//     shop.renderHTML();
+// })
 
 
 // button.addEventListener('click', () => shop.page);
