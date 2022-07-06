@@ -34,6 +34,7 @@ const getProductHTML = (product) => {
     _products: [],
     _page: 1, // pagina corrente
     _per_page: 6, // numero di risultati per pagina
+    _id: 0,
   
     get products() {
       /**
@@ -56,8 +57,14 @@ const getProductHTML = (product) => {
     },
   
     get getPrice() {
-      return this._product.price[id]
+      
+      alert(`Super prezzo di oggi: ${this._products[this._id].price}€, Occhio! ne sono rimasti solamente ${this._products[this._id].stock}`)
     }, 
+
+    set idValue(id) {
+      this._id = id;
+      
+    },
 
     set products(newProducts) {
       /**
@@ -128,8 +135,9 @@ const $productsContainer = document.querySelector('.products');
 
 $productsContainer.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
-    const $idButton = event.target.id;
-    alert(`Super prezzo di oggi: ${shop.products[$idButton].price}€, Occhio! ne sono rimasti solamente ${shop.products[$idButton].stock}`);
+    shop.idValue = event.target.id;
+    shop.getPrice
+    // alert(`Super prezzo di oggi: ${shop.getPrice[$idButton].price}€, Occhio! ne sono rimasti solamente ${shop.getPrice[$idButton].stock}`);
   }
 });
 
