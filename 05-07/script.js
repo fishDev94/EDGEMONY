@@ -25,7 +25,7 @@ const getProductHTML = (product) => {
     
     return `<li><img src="${img}"><p class="title_product">${name}</p>
     <p class="price_product">${price}€</p>
-    <button id="${id}" class="buy">Compra</button></li>`;
+    <button id="${id}" class="buy">Info!</button></li>`;
   };
   
 
@@ -37,22 +37,13 @@ const getProductHTML = (product) => {
     _id: 0,
   
     get products() {
-      /**
-       * Qui dentro dovremmo riuscire a paginare i prodotti.
-       * Possiamo procurarci un indice iniziale ed uno finale lavorando con this._page e this._per_page
-       * */
-           //                   _page: 2   _per_page: 6  = 12 
-       const indexOfLastPost = (this._page * this._per_page); // = 6 (alla pagina this._page =2)
-       const indexOfFirstPost = indexOfLastPost - this._per_page; // 12-6 = 6 (alla prima pagina this._page = 2)
+     
+       const indexOfLastPost = (this._page * this._per_page); 
+       const indexOfFirstPost = indexOfLastPost - this._per_page; 
        console.log(indexOfFirstPost, indexOfLastPost);
 
       console.log("Stai leggendo i prodotti di ", this.name);
-    //   const startIndex = 0; // ...
-    //   const endIndex = this._products.length/this._per_page; // ...  
-                                                                                         //              0 1 2 3 4 :index
-      const paginatedProducts = this._products.slice(indexOfFirstPost, indexOfLastPost); //const pippo = [1,2,3,4,5] :values
-                                                                                        // pippo.splice(2,4) = [3,4,5]
-      
+      const paginatedProducts = this._products.slice(indexOfFirstPost, indexOfLastPost);
       return paginatedProducts;
     },
   
@@ -67,61 +58,30 @@ const getProductHTML = (product) => {
     },
 
     set products(newProducts) {
-      /**
-       * Il consiglio è quello di spostare la parte di renderHTML dentro una funzione indipendente,
-       * così da rendere il metodo più snello
-       * **/
-  
       this._products = newProducts;
-        this.renderHTML();
-      
+      this.renderHTML();  
     },
   
     /**
      * @param {string | null} newPage
      */
     set page(newPage) {
-      
      this._page = newPage;
       console.log(this._page);
-     this.renderHTML();
-      
-     
+     this.renderHTML();   
     },
   
-    renderHTML() {
-        
+    renderHTML() {   
         const productsEl = document.querySelector('.products');
         const productsHTML = this.products.map(getProductHTML).join('');
-       
+ 
         productsEl.innerHTML = `
             <p>Pagina: ${this._page}</p>
-            <ul>${productsHTML}</ul>
-        `;
-        
-        
-      /**
-       * Aggiorniamo il DOM stampando i risultati a schermo.
-       * Avendo ora anche la paginazione, sarebbe il caso di mettere il nostro shop dentro un div specifico div.shop
-       * con una struttura del genere 
-       * <body>
-       *  div.shop -> aggiornato ad ogni chiamata della funzione
-       *  div.pagination -> questo non si tocca mai
-       * </body
-       * e gestire la paginazione in modo separato, inserendo gli event listener una sola volta
-       * **/
+            <ul>${productsHTML}</ul>`;
     }
   };
 
-// const button1 = document.querySelector('.first_page');
-// const button2 = document.querySelector('.second_page');
-// const button3 = document.querySelector('.third_page');
-
 const $buttonPages = document.querySelector('.buttons');
-
-// button.forEach((button) => {
-//     button.addEventListener('click', () => shop.page = Number(button.getAttribute('id')))
-// });
 
 $buttonPages.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
@@ -137,28 +97,8 @@ $productsContainer.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
     shop.idValue = event.target.id;
     shop.getPrice
-    // alert(`Super prezzo di oggi: ${shop.getPrice[$idButton].price}€, Occhio! ne sono rimasti solamente ${shop.getPrice[$idButton].stock}`);
   }
 });
-
-// button1.addEventListener('click', () => {
-//     shop.page = button1.getAttribute('id');
-//     shop.renderHTML();
-// })
-
-// button2.addEventListener('click', () => {
-    
-//     shop.page = button2.getAttribute('id');  
-//     shop.renderHTML();
-// })
-
-// button3.addEventListener('click', () => {
-//     shop.page = button3.getAttribute('id');
-//     shop.renderHTML();
-// })
-
-
-// button.addEventListener('click', () => shop.page);
 
 shop.products = [
     {
