@@ -29,8 +29,14 @@ this.renderHTML();
 },
 
 set removeProduct(id) {
-    this._taskList.splice(this._taskList.indexOf(id), 1);
+    // this.products.splice(this.products.indexOf(id), 1);
+   
+   
+    console.log(id)
+    this._taskList.splice(id, 1);
+    console.log(this._taskList);
     this.renderHTML();
+
 },
 
 renderHTML() {
@@ -44,20 +50,22 @@ renderHTML() {
 
 };
 
+
+
 const $inputText = document.querySelector('.forminput');
 
 $inputText.addEventListener('submit', (event) => {
-    let d = new Date();
-    let h = d.getHours();
-    let m = d.getMinutes();
-    let s = d.getSeconds();
-    let time = h + ":" + m + ":" + s;
+    const d = new Date();
+let h = d.getHours();
+let m = d.getMinutes();
+let s = d.getSeconds();
+let time = h + ":" + m + ":" + s;
     const $input = document.querySelector('input');
 shopList.products = `${$input.value} - ${time}`;
 
 event.preventDefault();
 $input.value = '';
-// console.log(shopList.products);
+console.log(shopList.products);
 
 
 
@@ -71,7 +79,7 @@ $deleteBtn.addEventListener('click', (event) => {
 
     if (event.target.className === 'delete')
     shopList.removeProduct = Number(event.target.id);
-    console.log(shopList.products);
+    console.log(event.target.id);
 });
 
 
