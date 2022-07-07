@@ -4,9 +4,10 @@ const getProductHTML = (product) => {
     
     return `
     <li >
+    <input type="checkbox">
         <div class="element">
-            <input type="checkbox">
-            <span class="text-articles">${product}</span>
+            
+            ${product}
         </div>
         
         <div id="${shopList.products.indexOf(product)}" class="delete">x</div>
@@ -15,14 +16,18 @@ const getProductHTML = (product) => {
 
 const shopList = {
         _taskList: [],
-
+        
         get products() {
             return this._taskList;
         },
 
+
         set products(products) {
+           
         this._taskList.push(products)
+        
         this.renderHTML();
+        
         },
 
         set reLoadList(el) {
@@ -56,7 +61,7 @@ let m = d.getMinutes();
 let s = d.getSeconds();
 let time = h + ":" + m + ":" + s;
     const $input = document.querySelector('input');
-shopList.products = `${$input.value} - ${time}`;
+shopList.products = `<span class="text-articles">${$input.value}</span><span class="data-time">${time}</span>`;
 localStorage.setItem("storedList", JSON.stringify(shopList.products));
 event.preventDefault();
 $input.value = '';
@@ -78,7 +83,7 @@ $deleteBtn.addEventListener('click', (event) => {
 });
 
 if (JSON.parse(localStorage.getItem("storedList") === null)) {
-    localStorage.setItem("storedList", JSON.stringify([]));
+    localStorage.setItem("storedList", JSON.stringify(shopList.products));
   };
 
 const reloadedList = JSON.parse(localStorage.getItem("storedList"));

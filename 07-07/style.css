@@ -104,9 +104,25 @@ li {
     margin-right: 1rem;
 }
 
-.task-list li input[type="checkbox"]:checked + span {
+.task-list li input[type="checkbox"]:checked + div span {
     text-decoration: line-through;
   }
+
+.element {
+    padding: 0 5px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.data-time {
+    
+    color: rgba(63, 106, 87, 0.52);
+    font-size: 0.7rem;
+    align-self: center;
+
+}
 
 .delete {
     display: flex;
@@ -127,3 +143,4 @@ li {
     background-color: rgba(191, 103, 110, 0.408);
     cursor: pointer;
 }
+
