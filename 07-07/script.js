@@ -28,6 +28,10 @@ this._taskList.push(products)
 this.renderHTML();
 },
 
+set reLoadList(el) {
+    this._taskList = el
+},
+
 set removeProduct(id) {
     // this.products.splice(this.products.indexOf(id), 1);
    
@@ -62,7 +66,7 @@ let s = d.getSeconds();
 let time = h + ":" + m + ":" + s;
     const $input = document.querySelector('input');
 shopList.products = `${$input.value} - ${time}`;
-
+localStorage.setItem("storedList", JSON.stringify(shopList.products));
 event.preventDefault();
 $input.value = '';
 console.log(shopList.products);
@@ -79,7 +83,16 @@ $deleteBtn.addEventListener('click', (event) => {
 
     if (event.target.className === 'delete')
     shopList.removeProduct = Number(event.target.id);
+    localStorage.setItem("storedList", JSON.stringify(shopList.products));
     console.log(event.target.id);
 });
 
+if (JSON.parse(localStorage.getItem("storedList") === null)) {
+    localStorage.setItem("storedList", JSON.stringify([]));
+  };
 
+  const reloadedList = JSON.parse(localStorage.getItem("storedList"));
+shopList.reLoadList = reloadedList;
+shopList.renderHTML();
+
+console.log(shopList.products);
