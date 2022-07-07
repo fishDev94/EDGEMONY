@@ -47,7 +47,7 @@ const getProductHTML = (product) => {
       return paginatedProducts;
     },
   
-    get getPrice() {
+    getPrice() {
       
       alert(`Super prezzo di oggi: ${this._products[this._id].price}€, Occhio! ne sono rimasti solamente ${this._products[this._id].stock}`)
     }, 
@@ -96,7 +96,7 @@ const $productsContainer = document.querySelector('.products');
 $productsContainer.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
     shop.idValue = event.target.id;
-    shop.getPrice
+    shop.getPrice();
   }
 });
 
@@ -212,7 +212,8 @@ stock: 25,
     id: 15,
     name: "Nintendo Switch Lite",
     price: 199,
-    img: "https://mynintendostore.nintendo.it/media/catalog/product/cache/b4cb1f58b4f6fb6dd00a79cd43d6b8db/1/0/10002291-1-nswitchlitehwcoral-h2x1.jpg"
+    img: "https://mynintendostore.nintendo.it/media/catalog/product/cache/b4cb1f58b4f6fb6dd00a79cd43d6b8db/1/0/10002291-1-nswitchlitehwcoral-h2x1.jpg",
+    stock: 12,
     },
     {
     id: 16,
