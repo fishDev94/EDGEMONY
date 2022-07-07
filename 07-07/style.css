@@ -12,9 +12,13 @@ body {
         justify-content: center;
         align-items: center;
     height: 100vh;
+    background-image: url('./img/supermarket.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .task {
+    background-color: rgba(255, 255, 255, 0.785);
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -30,7 +34,7 @@ body {
     padding: 5px;
     border-radius: 0;
     border: none;
-    background: rgb(230, 230, 230);
+    background: rgb(217, 217, 217);
 }
 
 .input-text:focus::placeholder {
@@ -46,6 +50,15 @@ body {
     color: white;
     border: 0;
     padding: 5px;
+}
+
+.send-task:hover {
+    background-color: rgb(127, 170, 151);
+}
+
+.send-task:active {
+    background-color: rgb(84, 151, 121);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.215);
 }
 
 ul {
@@ -79,4 +92,24 @@ li {
 
 .task-list li input[type="checkbox"]:checked + span {
     text-decoration: line-through;
+  }
+
+  .delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: rgb(191, 103, 110);
+    color: white;
+    padding: 2px;
+    /* border-radius: 100%; */
+  }
+
+  .delete:hover {
+    background-color: rgba(191, 103, 110, 0.408);
+    cursor: pointer;
   }
