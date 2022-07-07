@@ -16,6 +16,14 @@ body {
     padding: 0;
 }
 
+h2 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -122,5 +130,11 @@ button:active {
 
 .title_product {
     font-weight: bold;
+}
+
+.products {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
