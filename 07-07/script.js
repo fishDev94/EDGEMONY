@@ -2,8 +2,6 @@
 
 const getProductHTML = (product) => {
     
-
-    
     return `
     <li >
         <div class="element">
@@ -16,47 +14,40 @@ const getProductHTML = (product) => {
   };
 
 const shopList = {
+        _taskList: [],
 
-_taskList: [],
+        get products() {
+            return this._taskList;
+        },
 
-get products() {
-    return this._taskList;
-},
+        set products(products) {
+        this._taskList.push(products)
+        this.renderHTML();
+        },
 
-set products(products) {
-this._taskList.push(products)
-this.renderHTML();
-},
+        set reLoadList(el) {
+            this._taskList = el
+        },
 
-set reLoadList(el) {
-    this._taskList = el
-},
+        set removeProduct(id) {
+            console.log(id)
+            this._taskList.splice(id, 1);
+            console.log(this._taskList);
+            this.renderHTML();
+        },
 
-set removeProduct(id) {
-    // this.products.splice(this.products.indexOf(id), 1);
-   
-   
-    console.log(id)
-    this._taskList.splice(id, 1);
-    console.log(this._taskList);
-    this.renderHTML();
-
-},
-
-renderHTML() {
-    
-    const $taskList = document.querySelector('.task-list');
-   const prodotti = this.products.map(getProductHTML).join('');
-   $taskList.innerHTML = `${prodotti}`
-},
-
-
+        renderHTML() {
+            const $taskList = document.querySelector('.task-list');
+            const prodotti = this.products.map(getProductHTML).join('');
+            $taskList.innerHTML = `${prodotti}`
+        },
 
 };
 
 
 
 const $inputText = document.querySelector('.forminput');
+const $deleteBtn = document.querySelector('.task-list');
 
 $inputText.addEventListener('submit', (event) => {
     const d = new Date();
@@ -77,7 +68,6 @@ console.log(shopList.products);
 
 });
 
-const $deleteBtn = document.querySelector('.task-list');
 
 $deleteBtn.addEventListener('click', (event) => {
 
@@ -91,7 +81,7 @@ if (JSON.parse(localStorage.getItem("storedList") === null)) {
     localStorage.setItem("storedList", JSON.stringify([]));
   };
 
-  const reloadedList = JSON.parse(localStorage.getItem("storedList"));
+const reloadedList = JSON.parse(localStorage.getItem("storedList"));
 shopList.reLoadList = reloadedList;
 shopList.renderHTML();
 
