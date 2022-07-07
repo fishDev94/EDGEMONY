@@ -1,12 +1,8 @@
-const d = new Date();
-let h = d.getHours();
-let m = d.getMinutes();
-let s = d.getSeconds();
-let time = h + ":" + m + ":" + s;
+
 
 const getProductHTML = (product) => {
     
-    
+
     
     return `
     <li >
@@ -14,7 +10,7 @@ const getProductHTML = (product) => {
             <input type="checkbox">
             <span class="text-articles">${product}</span>
         </div>
-        <p>${time}</p>
+        
         <div id="${shopList.products.indexOf(product)}" class="delete">x</div>
     </li>`;
   };
@@ -38,6 +34,7 @@ set removeProduct(id) {
 },
 
 renderHTML() {
+    
     const $taskList = document.querySelector('.task-list');
    const prodotti = this.products.map(getProductHTML).join('');
    $taskList.innerHTML = `${prodotti}`
@@ -50,17 +47,21 @@ renderHTML() {
 const $inputText = document.querySelector('.forminput');
 
 $inputText.addEventListener('submit', (event) => {
+    let d = new Date();
+    let h = d.getHours();
+    let m = d.getMinutes();
+    let s = d.getSeconds();
+    let time = h + ":" + m + ":" + s;
     const $input = document.querySelector('input');
-shopList.products = $input.value;
+shopList.products = `${$input.value} - ${time}`;
 
 event.preventDefault();
 $input.value = '';
 // console.log(shopList.products);
 
-if (event.target.tagName === 'BUTTON') {
-    shopList.removeProduct = Number(event.target.id);
 
-}
+
+
 
 });
 
