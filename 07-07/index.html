@@ -8,37 +8,43 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <section class="task">
-        <form class="forminput">
-            <input type="text" class="input-text"  placeholder="Scrivi qui l'articolo">
-            <button class="send-task" type="submit">Aggiungi</button>
-        </form>
-
-        <ul class="task-list">
-            <li>
-                <div class="element">
-                    <input type="checkbox"><span class="text-articles">Articolo 1</span>
-                </div>
-                <div class="delete">x</div>
-            </li>
-            <li>
-                <div class="element">
-                    <input type="checkbox"><span class="text-articles">Articolo 2</span>
-                </div>
-                <div class="delete">x</div>
-            </li>
-            <li>
-                <div class="element">
-                    <input type="checkbox"><span class="text-articles">Articolo 3</span>
-                </div><div class="delete">x</div>
-            </li>
-            <li>
-                <div class="element">
-                    <input type="checkbox"><span class="text-articles">Articolo 4</span>
-                </div><div class="delete">x</div>
-            </li>
-        </ul>
+    <section class="header">
+        <h1>Lista della Spesa!</h1>
     </section>
+    <div class="main-div">
+            <section class="task">
+                <form class="forminput">
+                    <input type="text" class="input-text"  placeholder="Scrivi qui l'articolo">
+                    <button class="send-task" type="submit">Aggiungi</button>
+                </form>
+
+                <ul class="task-list">
+                    <li>
+                        <div class="element">
+                            <input type="checkbox"><span class="text-articles">Articolo 1</span>
+                        </div>
+                        <div class="delete">x</div>
+                    </li>
+                    <li>
+                        <div class="element">
+                            <input type="checkbox"><span class="text-articles">Articolo 2</span>
+                        </div>
+                        <div class="delete">x</div>
+                    </li>
+                    <li>
+                        <div class="element">
+                            <input type="checkbox"><span class="text-articles">Articolo 3</span>
+                        </div><div class="delete">x</div>
+                    </li>
+                    <li>
+                        <div class="element">
+                            <input type="checkbox"><span class="text-articles">Articolo 4</span>
+                        </div><div class="delete">x</div>
+                    </li>
+                </ul>
+            </section>
+    </div>
+
     <script src="./script.js" type="module"></script>
 </body>
 </html>

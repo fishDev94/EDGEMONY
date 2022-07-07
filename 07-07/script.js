@@ -1,3 +1,9 @@
+const d = new Date();
+let h = d.getHours();
+let m = d.getMinutes();
+let s = d.getSeconds();
+let time = h + ":" + m + ":" + s;
+
 const getProductHTML = (product) => {
     
     
@@ -8,6 +14,7 @@ const getProductHTML = (product) => {
             <input type="checkbox">
             <span class="text-articles">${product}</span>
         </div>
+        <p>${time}</p>
         <div id="${shopList.products.indexOf(product)}" class="delete">x</div>
     </li>`;
   };
