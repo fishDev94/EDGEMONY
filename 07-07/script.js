@@ -14,6 +14,10 @@ const getProductHTML = (product) => {
     </li>`;
   };
 
+  if(JSON.parse(localStorage.getItem("storedList")) && JSON.parse(localStorage.getItem("storedList")).length === 0) {
+    localStorage.removeItem('storedList');
+  }
+
 const shopList = {
         _taskList: [],
         
@@ -58,8 +62,7 @@ $inputText.addEventListener('submit', (event) => {
     const d = new Date();
 let h = d.getHours();
 let m = d.getMinutes();
-let s = d.getSeconds();
-let time = h + ":" + m + ":" + s;
+let time = h + ":" + m;
     const $input = document.querySelector('input');
 shopList.products = `<span class="text-articles">${$input.value}</span><span class="data-time">${time}</span>`;
 localStorage.setItem("storedList", JSON.stringify(shopList.products));
@@ -79,15 +82,17 @@ $deleteBtn.addEventListener('click', (event) => {
     if (event.target.className === 'delete')
     shopList.removeProduct = Number(event.target.id);
     localStorage.setItem("storedList", JSON.stringify(shopList.products));
-    console.log(event.target.id);
+    
 });
 
-if (JSON.parse(localStorage.getItem("storedList") === null)) {
-    localStorage.setItem("storedList", JSON.stringify(shopList.products));
-  };
+if (JSON.parse(localStorage.getItem("storedList"))) {
+    const reloadedList = JSON.parse(localStorage.getItem("storedList"));
+    shopList.reLoadList = reloadedList;
+    shopList.renderHTML();
+};
 
-const reloadedList = JSON.parse(localStorage.getItem("storedList"));
-shopList.reLoadList = reloadedList;
-shopList.renderHTML();
+  
+
+
 
 console.log(shopList.products);

@@ -104,7 +104,7 @@ li {
     margin-right: 1rem;
 }
 
-.task-list li input[type="checkbox"]:checked + div span {
+.task-list li input[type="checkbox"]:checked + div {
     text-decoration: line-through;
   }
 
