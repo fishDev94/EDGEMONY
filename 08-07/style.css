@@ -19,7 +19,12 @@ button {
     color: white;
     font-size: 0.8rem;
     font-weight: bold;
-    padding: 8px
+    padding: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(135, 135, 135);
 }
 
 input {
@@ -43,14 +48,14 @@ input:focus::placeholder {
 }
 
 li {
+    display: flex;
+    justify-content: space-between;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-li:hover {
-    background-color: rgb(189, 189, 189);
-}
+
 
 .main-section {
     padding: 20px;
@@ -76,4 +81,55 @@ li:hover {
     padding: 20px;
     color: rgb(42, 42, 42);
     
+}
+
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.285);
+}
+
+.modal-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: white;
+    gap: 10px;
+    height: 600px;
+    width: 90vw;
+    overflow: auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+}
+
+.nav-modal {
+    width: 100%;
+    text-align: right;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+}
+
+.modal-content {
+    height: 100%;
+    width: 100%;
+    border: none;
 }
