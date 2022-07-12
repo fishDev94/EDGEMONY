@@ -187,9 +187,9 @@ ul {
     transition: all 0.35s;
 }
 
-.btn_pages:hover {
-    background-color: rgba(0, 0, 0, 0.089);
-}
+/* .btn_pages:active { */
+    /* background-color: rgba(0, 0, 0, 0.089);
+} */
 
 .title_product {
     font-weight: bold;
