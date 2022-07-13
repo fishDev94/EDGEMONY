@@ -322,18 +322,42 @@ width: 10px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.171);
     min-height: 50%;
     width: 100%;
+    padding-top: 8px;
+}
+
+.total {
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.num-tot {
+    font-weight: normal;
+}
+
+.iva {
+    padding: 0;
+    margin: 0;
+    font-size: 0.6rem;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.64);
 }
 
 .subtotal {
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    align-items: end;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-top: 15px;
-    gap: 5px;
+    gap: 2px;
 }
 
 .subtotal h4 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     margin: 0;
 }
 
@@ -365,7 +389,7 @@ width: 10px;
 .payment-form {
     height: 100%;
     width: 100%;
-background-color: red;
+background-color: rgb(98, 113, 151);
 }
 
 .main-section {

@@ -1,4 +1,3 @@
-
 const $buttonPages = document.querySelector('.buttons');
 const $productsContainer = document.querySelector('.products');
 const $cart = document.querySelector('.cart-list');
@@ -37,7 +36,7 @@ const getProductHTML = (product) => {
     <button id="${id}" class="buy">Add to Cart</button></li>`;
   };
   
-  const getProductCartHTML = (product) => {
+const getProductCartHTML = (product) => {
     
     const {title, price, image} = product;
     function ivaCalc(price) {
@@ -48,9 +47,9 @@ const getProductHTML = (product) => {
     return `<li class="product-cart"><img src="${image}"><div class="textcard-cart"><p class="title_product">${title}</p>
     <p class="price_product">${(price+ivaCalc(price)).toFixed(2)}€</p></div>
     <button id="${shop._cart.indexOf(product)}" class="remove">x</button></li>`;
-  };
+};
 
-  const shop = {
+const shop = {
     name: "Edgemonics",
     _products: [],
     _page: 1,
@@ -129,22 +128,45 @@ const getProductHTML = (product) => {
         $checkOutBtn.remove();
       }
 
-      function totalPrice (a) {
-        let sumPrice = 0;
-        
-        a.forEach((value, index, array) => {
-          function ivaCalc(price) {
-            const res = (price/100) * 22
-            return res;
-          }
+       function totalPrice(a) {
+          let sumPriceIva = 0;
+          a.forEach((value) => {
+            function ivaCalc(price) {
+              const res = (price/100) * 22
+              return res;
+            }
+            sumPriceIva += value.price + ivaCalc(value.price);
+          })
+          return sumPriceIva.toFixed(2)
+        };
 
-          sumPrice += value.price + ivaCalc(value.price);
-        })
+       function ivaPrice(a) {
+          let sumIva = 0;
+          a.forEach((value) => {
+            function ivaCalc(price) {
+              const res = (price/100) * 22
+              return res;
+            }
+            sumIva += ivaCalc(value.price);
+          })
+          return sumIva.toFixed(2)
+        };
 
-        return sumPrice.toFixed(2)
-      }
+       function subTotal(a) {
+          let sumPrice = 0;
+          a.forEach((value) => { 
+            sumPrice += value.price;
+          })
+          return sumPrice.toFixed(2)
+        };
 
-        $subTotalPrice.innerHTML = `<h4>Subtotal (IVA incl.):</h4> <div class="price"><div class="euro">€</div>${totalPrice(this.cart)}</div>`;
+        $subTotalPrice.innerHTML = `<p class="total">Total: <span class="num-tot">${subTotal(this.cart)}</span></p>
+        <p class="iva">IVA 22%: ${ivaPrice(this.cart)}</p>
+        <h4>Subtotal (IVA incl.): 
+        <div class="price">
+          <div class="euro">€</div>${totalPrice(this.cart)}
+        </div>
+        </h4>`;
         $productsCartList.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
         $paymentProdList.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
 
@@ -158,7 +180,9 @@ const getProductHTML = (product) => {
        btnArray.push(elBtn);
        $paging.innerHTML = `${btnArray.join('')}`;
      }}
-  };
+};
+
+shop.products = JSON.parse(localStorage.getItem('products'));
 
 $cartIcon.addEventListener("click", (event) => {
   $cart.classList.toggle('active');
@@ -262,6 +286,6 @@ fetch('https://fakestoreapi.com/products/categories')
             $categoriesList.innerHTML = `${category}`
           })
 
-          shop.products = JSON.parse(localStorage.getItem('products'));
+
 
               
