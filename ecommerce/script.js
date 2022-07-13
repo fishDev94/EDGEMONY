@@ -144,7 +144,7 @@ const getProductHTML = (product) => {
         return sumPrice.toFixed(2)
       }
 
-        $subTotalPrice.innerHTML = `<h4>Subtotal (IVA incl.): <span class="euro">€</span>${totalPrice(this.cart)}</h4>`;
+        $subTotalPrice.innerHTML = `<h4>Subtotal (IVA incl.):</h4> <div class="price"><div class="euro">€</div>${totalPrice(this.cart)}</div>`;
         $productsCartList.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
         $paymentProdList.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
 
