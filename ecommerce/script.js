@@ -5,12 +5,26 @@ const $cart = document.querySelector('.cart-list');
 const $cartIcon = document.querySelector('.cart');
 const $totalItems = document.querySelector('.items');
 const $category = document.querySelector('.sidebar');
+const $productsCartList = document.querySelector('.products-list');
+const $paymentSection = document.querySelector('.payment-section');
+const $paymentProdList = document.querySelector('.payment-list');
+const $subTotalPrice = document.querySelector('.subtotal');
+
+const $placeholderCart = document.createElement('div');
 const $clearFilter = document.createElement('div');
+const $checkOutBtn = document.createElement('button');
 
 $clearFilter.classList.add('clear-filter');
+$checkOutBtn.classList.add('checkout');
+$placeholderCart.classList.add('placeholder-cart');
 
+$checkOutBtn.innerText = 'Checkout';
+$placeholderCart.innerHTML = '<h2 class="placeholder-text">Empty Cart</h2>';
+
+if (JSON.parse(localStorage.getItem('cart')) == null) {
 localStorage.setItem('cart', JSON.stringify([]));
 localStorage.setItem('products', JSON.stringify([]));
+};
 
 const getProductHTML = (product) => {
     const {title, price, image, id} = product;
@@ -29,7 +43,8 @@ const getProductHTML = (product) => {
     function ivaCalc(price) {
       const res = (price/100) * 22
       return res;
-    }
+    };
+
     return `<li class="product-cart"><img src="${image}"><div class="textcard-cart"><p class="title_product">${title}</p>
     <p class="price_product">${(price+ivaCalc(price)).toFixed(2)}€</p></div>
     <button id="${shop._cart.indexOf(product)}" class="remove">x</button></li>`;
@@ -67,7 +82,6 @@ const getProductHTML = (product) => {
     set cartProduct(id) {
       this._cart.push(this._products[id]);
       console.log(id);
-      console.log(this._products);
       this._cart.map((product, index) => {
         product.id = index; 
         
@@ -104,9 +118,36 @@ const getProductHTML = (product) => {
     },
 
     renderCartHTML() {
-      const $cart = document.querySelector('.cart-list');
+      
+      // const $cart = document.querySelector('.products-list');
       const productsHTML = this.cart.map(getProductCartHTML).join('');
-      $cart.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`
+
+      if (this.cart.length > 0) {
+        $cart.appendChild($checkOutBtn);
+      }
+      if (this.cart.length <= 0) {
+        $checkOutBtn.remove();
+      }
+
+      function totalPrice (a) {
+        let sumPrice = 0;
+        
+        a.forEach((value, index, array) => {
+          function ivaCalc(price) {
+            const res = (price/100) * 22
+            return res;
+          }
+
+          sumPrice += value.price + ivaCalc(value.price);
+        })
+
+        return sumPrice.toFixed(2)
+      }
+
+        $subTotalPrice.innerHTML = `<h4>Subtotal (IVA incl.): <span class="euro">€</span>${totalPrice(this.cart)}</h4>`;
+        $productsCartList.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
+        $paymentProdList.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
+
     },
 
     renderPagesButton() {
@@ -134,6 +175,9 @@ $buttonPages.addEventListener("click", (event) => {
 $productsContainer.addEventListener("click", (event) => {
   if (event.target.tagName === "BUTTON") {
     shop.cartProduct = event.target.id;
+    if (shop.cart.length > 0) {
+      $placeholderCart.remove();
+    }
     shop.renderCartHTML();
   }
 });
@@ -145,11 +189,41 @@ document.body.querySelector('.main-body').addEventListener("click", (event) => {
 });
 
 $cart.addEventListener("click", (event) => {
-  if (event.target.tagName === "BUTTON") {
+  if (event.target.className === "remove") {
+    shop.removeItemCart = event.target.id;
+    shop.renderCartHTML();
+  }
+
+  if (shop.cart.length === 0) {
+    $cart.classList.remove('active');
+    
+    $cart.append($placeholderCart);
+  }
+
+  
+  if (event.target.className === "checkout") {
+    $paymentSection.classList.add('active');
+    $cart.classList.remove('active');
+    console.log('Hai Cliccato pagamento');
+  }
+});
+
+$paymentProdList.addEventListener("click", (event) => {
+  if (event.target.className === "remove") {
     shop.removeItemCart = event.target.id;
     shop.renderCartHTML();
   }
 });
+
+$paymentSection.addEventListener('click', (event) => {
+  if (event.target.className === "back-btn") {
+    $paymentSection.classList.remove('active');
+}
+if (event.target.className === "back-btn-img") {
+  $paymentSection.classList.remove('active');
+}
+}
+)
 
 fetch('https://fakestoreapi.com/products')
   .then(res=>res.json())
@@ -189,3 +263,5 @@ fetch('https://fakestoreapi.com/products/categories')
           })
 
           shop.products = JSON.parse(localStorage.getItem('products'));
+
+              
