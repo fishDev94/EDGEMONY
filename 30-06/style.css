@@ -1,0 +1,385 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+   color: rgb(58, 58, 58);
+    
+}
+
+html, body {
+    
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    }
+  
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+  button {
+    border: 0;
+    padding: 10px 20px;
+    color: white;
+    background-color: #c66868;
+  }
+
+  button:hover {
+    background-color: rgb(229, 188, 188);
+  }
+  
+  button:active {
+    background-color: #c66868;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.298);
+  }
+
+  input {
+    margin: 0;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  input:focus::placeholder {
+    color: transparent;
+  }
+
+  textarea {
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    }
+  
+  textarea:focus::placeholder {
+    color: transparent;
+  }  
+
+    a {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+
+  p {
+    margin: 0;
+  }  
+
+  .navbar {
+    position: sticky;
+    top: 0px;
+    
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+    padding: 0 15px;
+    height: 40px;
+    background-color: white;
+  }
+
+  .logo_bar {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap:2px;
+  }
+  .logo_bar p {
+    color: rgb(102, 102, 102);
+    
+  }
+
+  .navbar .logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo:hover {
+    opacity: 60%;
+  }
+
+
+
+  .navbar input {
+    margin: 0;
+    border: none;
+    background-color:#f0f2f5;
+    padding: 5px;
+    
+  }
+
+  .navbar input:focus {
+    outline: none;
+  }
+
+  .toggle {
+    margin-right: -20px;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.216);
+    border-radius: 10px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    transform: scale(0.45);
+}
+
+.toggle span{
+    position: absolute;
+    width: 40px;
+    height: 6px;
+    background-color: #c56967;
+    border-radius: 4px;
+    transition: all 0.35s;
+}
+
+.toggle span:nth-child(1){
+    transform: translateY(-15px);
+    width: 25px;
+    left: 15px;
+}
+
+.toggle span:nth-child(2){
+    transform: translateY(15px);
+    width: 15px;
+    left: 15px;
+}
+
+.toggle.active span:nth-child(3){
+    transform: translateX(60px);
+}
+
+.toggle.active span:nth-child(1){
+    width: 40px;
+    transform: translateY(0px) rotate(45deg);
+    transition-delay: 0.125s;
+}
+
+.toggle.active span:nth-child(2){
+    width: 40px;
+    transform: translateY(0px) rotate(315deg);
+    transition-delay: 0.25s;
+}
+
+  .main_body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f2f5;
+    
+  }
+  
+  .friends {
+    position: fixed;
+    right: -100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    /* width: 100%; */
+    padding: 20px;
+    background: white;
+    transition: all 0.5s;
+    overflow: auto;
+  }
+
+  .friends.active {
+    right: 0;
+  }
+  
+  .friends img {
+    width: 50px;
+    padding: 10px;
+    background: white;
+    border-radius: 100%;
+  }
+  
+  .friendCard {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 250px;
+    height: 40px;
+    padding: 20px 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+    font-weight: bold;
+    background: white;
+  
+  }
+  
+  .messages {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;  
+  }
+  
+  .add-new-message {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px;
+  }
+  
+  .filter-input {
+    margin: 0 20px;
+  }
+  
+  .messageCard {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.228);
+    padding: 10px 20px;
+  }
+
+  .wrappertext {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 80%;   
+     
+  }
+
+  .delete-button {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.254);
+  }
+
+  .wrapper-delete .delete-button:hover {
+    cursor: pointer;
+    color: #af0000;
+    opacity: 40%;
+    
+  }
+
+  .sendertext {
+    font-weight: bold;
+    color: #b06b6b7f;
+  }
+
+  .datap {
+    font-size: 0.6rem;
+    color: rgba(0, 0, 0, 0.21);
+  }
+  
+  .messages-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(0, 0, 0, 0.089);
+    padding: 20px;
+    /* flex-grow: 1; */
+    height: 100%;
+    /* overflow-y: auto; */
+    gap: 20px;
+    
+  }
+  
+  .empty {
+    width: 100%;
+    
+  }
+  
+  @media only screen and (min-width: 767px) {
+    *::-webkit-scrollbar {
+        
+        width: 6px;
+      }
+    
+
+   body {
+    overflow: hidden;
+   }
+
+   .toggle {
+    display: none;
+   }
+
+    .main_body {
+      display: flex;
+      flex-direction: row;
+    }
+    
+    .friends {
+      position: relative;
+      right: auto;
+      background: none;
+      padding: 20px 0;
+      width: 25%;
+      gap: 15px;
+      height: 90vh;
+      overflow-y: auto;
+    }
+
+    .friendCard{
+      width: 90%;
+    }
+    
+    .friendCard:hover {
+      background-color: #c6686842;
+    }
+
+    .messages {
+      width: 33%;
+      flex-grow: 1;
+    }
+    
+    .messageCard {
+        flex-wrap: wrap;
+    transition: 0.35s;
+    }
+
+
+
+    .messages-list {
+    
+    
+    height: 60vh;
+    
+    
+    overflow-y: auto;
+    /* white-space: nowrap; */
+    }
+
+    .empty {
+      width: 25%;
+    }
+
+    /* ===== Scrollbar CSS ===== */
+ 
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff1b;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgba(210, 98, 98, 0.499);
+    background: radial-gradient(circle, rgba(210, 98, 98, 0.687) 14%, rgba(255, 208, 208, 0.258) 95%);
+    border-radius: 6px;
+    border: 1px solid #ffffff7c;
+  }
+  }
+
+ 
+
+ 
+ 
+ 

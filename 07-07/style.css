@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    color:rgb(110, 110, 110);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    
+        align-items: center;
+    height: 100vh;
+    background-image: url('./img/supermarket.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.312);
+
+}
+
+ul {
+    
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+li {
+    
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.task {
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.785);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap:10px;  
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.134);
+    
+}
+
+.input-text {
+    padding: 5px;
+    border-radius: 0;
+    border: none;
+    background: rgb(217, 217, 217);
+}
+
+.input-text:focus::placeholder {
+    color: transparent; 
+}
+
+.input-text:focus {
+    outline: none;
+}
+
+.send-task {
+    background-color: rgb(84, 151, 121);
+    color: white;
+    border: 0;
+    padding: 5px;
+}
+
+.send-task:hover {
+    background-color: rgb(127, 170, 151);
+}
+
+.send-task:active {
+    background-color: rgb(84, 151, 121);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.215);
+}
+
+.text-articles {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.task-list li input[type="checkbox"]:checked {
+   
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.task-list li input[type="checkbox"]:checked + div {
+    text-decoration: line-through;
+  }
+
+.element {
+    padding: 0 5px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.data-time {
+    
+    color: rgba(63, 106, 87, 0.52);
+    font-size: 0.7rem;
+    align-self: center;
+
+}
+
+.delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: rgb(191, 103, 110);
+    color: white;
+    padding: 2px;
+    /* border-radius: 100%; */
+}
+
+.delete:hover {
+    background-color: rgba(191, 103, 110, 0.408);
+    cursor: pointer;
+}
+

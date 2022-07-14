@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <section class="header">
+        <h1>Lista della Spesa!</h1>
+    </section>
+    <div class="main-div">
+            <section class="task">
+                <form class="forminput">
+                    <input type="text" class="input-text"  placeholder="Scrivi qui l'articolo">
+                    <button class="send-task" type="submit">Aggiungi</button>
+                </form>
+
+                <ul class="task-list">
+                    <li><input type="checkbox">
+                        <div class="element">
+                            <span class="text-articles">Sample 1</span><span class="data-time">12:00</span>
+                        </div>
+                        <div class="delete">x</div>
+                    </li>
+                    <li>
+                        <input type="checkbox">
+                        <div class="element">
+                            <span class="text-articles">Sample 2</span><span class="data-time">12:00</span>
+                        </div>
+                        <div class="delete">x</div>
+                    </li>
+                    <li>
+                        <input type="checkbox">
+                        <div class="element">
+                            <span class="text-articles">Sample 3</span><span class="data-time">12:00</span>
+                        </div>
+                        <div class="delete">x</div>
+                    </li>
+                    <li>
+                        <input type="checkbox">
+                        <div class="element">
+                            <span class="text-articles">Sample 4</span><span class="data-time">12:00</span>
+                        </div>
+                        <div class="delete">x</div>
+                    </li>
+                </ul>
+            </section>
+    </div>
+
+    <script src="./script.js" type="module"></script>
+</body>
+</html>

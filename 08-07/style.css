@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.5sec;
+}
+
+button {
+    border: none;
+    background-color: rgb(60, 60, 60);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: rgb(135, 135, 135);
+}
+
+input {
+    border: none;
+    background-color: rgb(224, 224, 224);
+    padding: 8px;
+    color: rgb(99, 99, 99);
+    transition: all 0.2sec;
+}
+
+input::placeholder {
+    color: rgb(161, 161, 161);
+}
+
+input:focus {
+    outline: none;
+    
+}
+
+input:focus::placeholder {
+    opacity: 0%;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.main-section {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.results-list {
+    height: 80vh;
+    width: 100%;
+    overflow: scroll;
+    margin: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.262);
+}
+
+.results-ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 20px;
+    color: rgb(42, 42, 42);
+    
+}
+
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.285);
+}
+
+.modal-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: white;
+    gap: 10px;
+    height: 600px;
+    width: 90vw;
+    overflow: auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+}
+
+.nav-modal {
+    width: 100%;
+    text-align: right;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+}
+
+.modal-content {
+    height: 100%;
+    width: 100%;
+    border: none;
+}

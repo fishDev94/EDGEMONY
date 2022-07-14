@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap");
+
+html {
+  font-size: 0.9rem;
+}
+
+body {
+  margin: 0;
+
+  font-family: "Nunito", sans-serif;
+}
+
+button {
+  border: 0;
+
+  background: rgb(255, 122, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 122, 0, 1) 0%,
+    rgba(255, 202, 169, 1) 100%
+  );
+  color: white;
+  padding: 8px 12px;
+  border-radius: 28px;
+  font-weight: bold;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.288);
+}
+
+.main-header {
+  padding: 20px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-image: url("./images/bg.webp");
+  background-size: cover;
+  background-position-y: bottom;
+}
+
+.main-header ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style-type: none;
+  font-weight: bold;
+  padding: 0;
+}
+
+.main-navbar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main-section {
+  background: white;
+  border-radius: 28px;
+  margin: 18px;
+  padding: 20px 28px;
+  text-align: left;
+  color: rgb(65, 116, 154);
+}
+
+.main-section h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.main-section h1:nth-of-type(2) {
+  color: rgb(245, 165, 183);
+}
+
+.main-section p {
+  font-size: 0.9rem;
+  color: rgb(21 21 21);
+}
+
+.main-section button {
+  margin-right: 20px;
+  padding: 14px 22px;
+}
+
+.main-section a {
+  color: rgb(47, 85, 135);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* MAIN - Section - Class[main-content] */
+
+.main-content {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content .card {
+  margin: 18px;
+  padding: 18px;
+  color: rgb(21, 21, 21);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.058);
+  border-radius: 28px;
+}
+
+.main-content .card img {
+  background-color: rgb(252, 188, 105);
+  border-radius: 100%;
+  width: 40px;
+  padding: 10px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 18px;
+  padding: 18px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.058);
+  border-radius: 28px;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.gallery h4 {
+  margin: 0;
+}
+
+.gallery img {
+  width: 300px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.154);
+  transition: transform 0.35s;
+}
+
+.main-footer {
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-footer ul {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px 0 10px 0;
+  margin: 0;
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.socials h4 {
+  margin: 10px;
+}
+
+.img-social {
+  display: flex;
+  gap: 20px;
+}
+
+.img-social .face,
+.img-social .ig {
+  width: 20px;
+  margin-bottom: 20px;
+  border-radius: 100%;
+}
+
+.main-footer ul li {
+  list-style: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .main-header {
+    height: 500px;
+    justify-content: start;
+    background-position-y: center;
+  }
+
+  .main-header ul {
+    flex-direction: row;
+    gap: 50px;
+    font-weight: 400;
+  }
+
+  .main-navbar {
+    width: calc(100% - 160px);
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .main-section {
+    margin: 80px;
+    width: 350px;
+    align-self: start;
+  }
+
+  .main-content {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .main-content .card {
+    width: 350px;
+  }
+
+  .img-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.2);
+  }
+
+  .gallery .img-card_2,
+  .gallery .img-card_4 {
+    align-self: flex-end;
+  }
+
+  .gallery .img-card_6,
+  .gallery .img-card_8 {
+    align-self: baseline;
+  }
+
+  .main-footer ul {
+    flex-direction: row;
+    gap: 0 80px;
+  }
+
+  .img-social .face:hover,
+  .img-social .ig:hover {
+    opacity: 40%;
+  }
+}
