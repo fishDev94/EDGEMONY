@@ -329,8 +329,8 @@ fetch('https://fakestoreapi.com/products/categories')
             .then(res=>res.json())
             .then((json) => {
               const $categoriesList = document.querySelector('.categories-ul');
-              const category = json.map((e) => {
-              return `<button class="li-cat" id="${e}">${e}</button>`;
+              const category = json.map((element) => {
+              return `<button class="li-cat" id="${element}">${element}</button>`;
             }).join('');
             $categoriesList.innerHTML = `${category}`
           });

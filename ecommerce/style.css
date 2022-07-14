@@ -756,6 +756,10 @@ width: 10px;
             width: 75%;
     }
 
+    .buyproducts {
+        width: 40vw;
+    }
+
     .main-section {
         height: calc(100vh - 20px);
         display: flex;
