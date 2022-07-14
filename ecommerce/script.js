@@ -44,9 +44,9 @@ const getProductHTML = (product) => {
       const res = (price/100) * 22
       return res;
     }
-    return `<li class="product-card"><img src="${image}"><p class="title_product">${title}</p>
+    return `<li class="product-card"><img src="${image}"><div class="description"><p class="title_product">${title}</p>
     <p class="price_product">${(price+ivaCalc(price)).toFixed(2)}€</p>
-    <button id="${id}" class="buy">Add to Cart</button></li>`;
+    <button id="${id}" class="buy">Add to Cart</button></li></div>`;
   };
   
 const getProductCartHTML = (product) => {
