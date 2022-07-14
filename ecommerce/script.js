@@ -296,7 +296,11 @@ $modalWindow.addEventListener('click', (event) => {
     
     location.reload();
   }
-})
+});
+
+document.addEventListener('touchmove', function (event) {
+  if (event.scale !== 1) { event.preventDefault(); }
+}, { passive: false });
 
 fetch('https://fakestoreapi.com/products')
   .then(res=>res.json())
