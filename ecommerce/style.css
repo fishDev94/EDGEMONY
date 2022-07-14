@@ -469,17 +469,33 @@ width: 10px;
     border-radius: 0px;   
 }
 
-.btn-pay:hover {
+.back {
+    background-color: rgba(0, 0, 0, 0.84);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.108);
+    height: 40px;
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.35s;
+    width: 100px;
+    border-radius: 0px;   
+}
+
+.btn-pay:hover,
+.back:hover {
     background-color: rgba(0, 0, 0, 0.627);
     transform: scale(1.05);
 }
 
-.btn-pay:active {
+.btn-pay:active,
+.back:active {
     
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.458);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.762);
 }
 
 .thankyou-page {
+    
     position: fixed;
     z-index: 3;
     display: flex;
@@ -495,18 +511,51 @@ width: 10px;
 }
 
 .thankyou-page.active {
+    
     opacity: 1;
     pointer-events: all;
 }
 
 .modal-window {
+    transform: scale(0.01);
     background-color: white;
     border-radius: 5px;
     height: 80vh;
     width: 80vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+    transition: all 0.6s;
+    padding: 10px;
+}
+
+.modal-window.active {
+    transform: scale(1);
+}
+
+.modal-window .remove {
+    display: none;
+}
+
+.modal-window h1 {
+    margin: 0;
+    color: rgb(149, 95, 95);
+}
+
+.modal-window h4,
+.modal-window p {
+    margin: 0;
+}
+
+.modal-window .list-cart {
+    max-height: 80%;
+    overflow: auto;
+}
+
+.modal-window .list-cart li {
+    box-shadow: none;
+    transform: scale(0.8);
 }
 
 /* input[type=tel]::-webkit-inner-spin-button {

@@ -1,3 +1,4 @@
+const $mainBody = document.body.querySelector('.main-body');
 const $buttonPages = document.querySelector('.buttons');
 const $productsContainer = document.querySelector('.products');
 const $cart = document.querySelector('.cart-list');
@@ -10,6 +11,9 @@ const $paymentProdList = document.querySelector('.payment-list');
 const $subTotalPrice = document.querySelector('.subtotal');
 const $submitPayment = document.querySelector('.pay-form');
 const $thankPage = document.querySelector('.thankyou-page');
+const $modalWindow = document.querySelector('.modal-window');
+const $backToShop = document.querySelector('.back');
+const $checkOutProducts = document.querySelector('.buyproducts');
 
 const $inputEmail = document.getElementById('email');
 const $inputCard = document.getElementById('cardnumber');
@@ -98,6 +102,10 @@ const shop = {
       $totalItems.innerText = `${this._cart.length} Items`
     },
 
+    clearCart() {
+      this._cart = [];
+    },
+
     set products(newProducts) {
       this._products = newProducts;
       this.renderHTML(); 
@@ -178,6 +186,7 @@ const shop = {
         </h4>`;
         $productsCartList.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
         $paymentProdList.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
+        $checkOutProducts.innerHTML = `<ul class="list-cart">${productsHTML}</ul>`;
 
     },
 
@@ -215,7 +224,7 @@ $productsContainer.addEventListener("click", (event) => {
   }
 });
 
-document.body.querySelector('.main-body').addEventListener("click", (event) => {
+$mainBody.addEventListener("click", (event) => {
   if (event.target.className !== '.cart-list' || event.target.classList === '.nav-bar') {
     $cart.classList.remove('active');
   }
@@ -234,7 +243,9 @@ $cart.addEventListener("click", (event) => {
   }
 
   
+
   if (event.target.className === "checkout") {
+    
     $paymentSection.classList.add('active');
     $cart.classList.remove('active');
     console.log('Hai Cliccato pagamento');
@@ -251,23 +262,23 @@ $paymentProdList.addEventListener("click", (event) => {
 $paymentSection.addEventListener('click', (event) => {
   if (event.target.className === "back-btn") {
     $paymentSection.classList.remove('active');
+    
 }
 if (event.target.className === "back-btn-img") {
   $paymentSection.classList.remove('active');
+  
 }
 }
 )
 
 $submitPayment.addEventListener('submit',(event) => {
-  
-    // $('input').value = '';
-  const formData = new FormData($paymentForm)
-    // $paymentForm.reset();
-    
-  
     if ($inputEmail.value.length > 0 && $inputCard.value.length > 0 && $inputMonth.value.length > 0 && $inputCvc.value.length > 0 && $inputName.value.length > 0) {
     $paymentSection.classList.remove('active');
+    $modalWindow.classList.add('active');
     $thankPage.classList.add('active');
+   }
+   else {
+    alert('non hai compilato tutto minchione');
    }
 
   event.preventDefault();
@@ -276,6 +287,17 @@ $submitPayment.addEventListener('submit',(event) => {
     
   // }
 });
+
+$modalWindow.addEventListener('click', (event) => {
+  if (event.target.className === 'back') {
+    console.log('hai cliccato back to shop');
+    
+    
+    shop.clearCart();
+    localStorage.setItem('cart', JSON.stringify([]));
+    location.reload();
+  }
+})
 
 fetch('https://fakestoreapi.com/products')
   .then(res=>res.json())
