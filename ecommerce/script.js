@@ -70,6 +70,7 @@ const shop = {
     _id: 0,
     _totalPages: 0,
     _cart: [],
+    
   
     get cart() {
       $totalItems.innerText = `${this._cart.length} Items`
@@ -276,9 +277,8 @@ $submitPayment.addEventListener('submit',(event) => {
     $paymentSection.classList.remove('active');
     $modalWindow.classList.add('active');
     $thankPage.classList.add('active');
-   }
-   else {
-    alert('non hai compilato tutto minchione');
+    shop.clearCart();
+    localStorage.setItem('cart', JSON.stringify([]));
    }
 
   event.preventDefault();
@@ -293,8 +293,7 @@ $modalWindow.addEventListener('click', (event) => {
     console.log('hai cliccato back to shop');
     
     
-    shop.clearCart();
-    localStorage.setItem('cart', JSON.stringify([]));
+    
     location.reload();
   }
 })
