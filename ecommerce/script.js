@@ -40,7 +40,7 @@ localStorage.setItem('products', JSON.stringify([]));
 };
 
 if(JSON.parse(localStorage.getItem('products')).length > 0) {
-  $loader.classList.add('disable');
+  $loader.classList.add('disable')
 }
 
 const getProductHTML = (product) => {
