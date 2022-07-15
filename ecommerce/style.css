@@ -65,6 +65,22 @@ ul {
     font-size: 0.8rem;
 }
 
+.loader {
+    background-color: white;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader.disable {
+display: none;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -88,6 +104,13 @@ ul {
     opacity: 60%;
     cursor: pointer;
     transition: all 0.35s;
+}
+
+.placeholder-text {
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.355);
+    font-weight: normal;
+    font-style: italic;
 }
 
 .cart:hover {

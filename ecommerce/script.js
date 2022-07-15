@@ -1,4 +1,5 @@
 const $mainBody = document.body.querySelector('.main-body');
+const $loader = document.body.querySelector('.loader');
 const $buttonPages = document.querySelector('.buttons');
 const $productsContainer = document.querySelector('.products');
 const $cart = document.querySelector('.cart-list');
@@ -38,6 +39,10 @@ localStorage.setItem('cart', JSON.stringify([]));
 localStorage.setItem('products', JSON.stringify([]));
 };
 
+if(JSON.parse(localStorage.getItem('products')).length > 0) {
+  $loader.classList.add('disable');
+}
+
 const getProductHTML = (product) => {
     const {title, price, image, id} = product;
     function ivaCalc(price) {
@@ -70,8 +75,7 @@ const shop = {
     _id: 0,
     _totalPages: 0,
     _cart: [],
-    
-  
+     
     get cart() {
       $totalItems.innerText = `${this._cart.length} Items`
       localStorage.setItem('cart', JSON.stringify(this._cart));
@@ -113,7 +117,6 @@ const shop = {
       this.renderPagesButton(); 
       this.renderCartHTML();
     },
-  
     /**
      * @param {string | null} newPage
      */
@@ -235,22 +238,20 @@ $cart.addEventListener("click", (event) => {
   if (event.target.className === "remove") {
     shop.removeItemCart = event.target.id;
     shop.renderCartHTML();
-  }
+  };
 
   if (shop.cart.length === 0) {
     $cart.classList.remove('active');
     
     $cart.append($placeholderCart);
-  }
-
-  
+  };
 
   if (event.target.className === "checkout") {
     
     $paymentSection.classList.add('active');
     $cart.classList.remove('active');
     console.log('Hai Cliccato pagamento');
-  }
+  };
 });
 
 $paymentProdList.addEventListener("click", (event) => {
@@ -291,16 +292,9 @@ $submitPayment.addEventListener('submit',(event) => {
 $modalWindow.addEventListener('click', (event) => {
   if (event.target.className === 'back') {
     console.log('hai cliccato back to shop');
-    
-    
-    
     location.reload();
   }
 });
-
-document.addEventListener('touchmove', function (event) {
-  if (event.scale !== 1) { event.preventDefault(); }
-}, { passive: false });
 
 fetch('https://fakestoreapi.com/products')
   .then(res=>res.json())
@@ -312,13 +306,13 @@ fetch('https://fakestoreapi.com/products')
       $category.append($clearFilter);
       shop.page = 1;
       shop.renderPagesButton();
-      }
+      };
     
       if (event.target.className === "clear-filter") {
         event.target.remove();
         shop.products = json;
         shop.renderPagesButton();
-      }
+      };
     }
   );
             
@@ -327,7 +321,10 @@ fetch('https://fakestoreapi.com/products')
       }
 
   localStorage.setItem('products', JSON.stringify(json));
-});
+})
+.finally(() => {
+  $loader.classList.add('disable');
+})
             
 fetch('https://fakestoreapi.com/products/categories')
             .then(res=>res.json())
