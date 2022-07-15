@@ -34,7 +34,7 @@ $placeholderCart.classList.add('placeholder-cart');
 $checkOutBtn.innerText = 'Checkout';
 $placeholderCart.innerHTML = '<h2 class="placeholder-text">Empty Cart</h2>';
 
-if (JSON.parse(localStorage.getItem('cart')) == null) {
+if (JSON.parse(localStorage.getItem('cart')) == null || JSON.parse(localStorage.getItem('products')) == null) {
 localStorage.setItem('cart', JSON.stringify([]));
 localStorage.setItem('products', JSON.stringify([]));
 };
