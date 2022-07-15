@@ -298,10 +298,6 @@ $modalWindow.addEventListener('click', (event) => {
   }
 });
 
-document.addEventListener('touchmove', function (event) {
-  if (event.scale !== 1) { event.preventDefault(); }
-}, { passive: false });
-
 fetch('https://fakestoreapi.com/products')
   .then(res=>res.json())
   .then(json => {
