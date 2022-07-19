@@ -1,0 +1,27 @@
+
+.MainSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    background-color:#0a192f;
+    height: 100vh;
+    width: 100vw;    
+    padding: 40px;
+    gap: 10px;
+}
+
+.content {
+    width: 50%;
+}
+
+.myname {
+    letter-spacing: 4px;
+}
+
+.TitleName {
+    font-size: 4.0rem;
+    padding: 0;
+    margin: 0;
+    
+}

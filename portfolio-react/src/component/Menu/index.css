@@ -1,0 +1,11 @@
+body {
+    color: #ccd6f5;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap:40px;
+    font-size: 0.8rem;
+};
+
