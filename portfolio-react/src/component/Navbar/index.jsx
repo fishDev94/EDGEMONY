@@ -6,7 +6,8 @@ import Menu from '../Menu';
 function Navbar() {
   return (
     <div className="navbar">
-        <img className="img-logo" src={logo}></img><Menu />
+        <img className="img-logo" src={logo}></img>
+        <Menu />
     </div>
   );
 }

@@ -1,11 +1,39 @@
-body {
-    color: #ccd6f5;
-}
 
-ul {
+
+.menu {
+    
     display: flex;
     list-style: none;
     gap:40px;
     font-size: 0.8rem;
+    
+    
 };
 
+.menu li {
+  
+  transition: all 0.35s;
+  }
+  
+  .menu li::before {
+    content: "▹";
+    margin-right: 15px;
+    color: #65ffdb7b;
+    font-size: var(--fz-sm);
+    line-height: 12px;
+  }
+  
+  .menu li:hover {
+    cursor: pointer;
+    color: #65ffda;
+    
+  }
+  
+  .linkdesc {
+    color: #65ffda;
+    cursor: pointer;
+  }
+  
+  .linkdesc:hover {
+  text-decoration: underline;
+  }; 
