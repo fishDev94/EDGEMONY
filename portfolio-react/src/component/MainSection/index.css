@@ -58,3 +58,13 @@
     outline: none;
     border: none;
 }
+
+.form-test {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.form-test input {
+    border-radius: 5px;
+}
