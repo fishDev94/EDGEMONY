@@ -1,5 +1,4 @@
 import './index.css';
-import '../../assets/imgurl';
 
 const Gallery = ({arrayImg, url}) => {
 
