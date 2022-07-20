@@ -1,12 +1,13 @@
 
 .hero {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: calc(100vh - 80px);
+    height: calc(100% );
     gap:60px;
     padding: 80px;
-    box-sizing: border-box;
+    width: 100vw;
 }
 
 .MainSection {

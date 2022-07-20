@@ -13,6 +13,7 @@
 }
 
 .btn:active {
+    background-color: #65ffdb31;
     box-shadow: inset 4px 4px 8px #00000063;
     transform: translateY(2px) translateX(0.5px);
 }

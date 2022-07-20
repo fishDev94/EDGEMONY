@@ -1,0 +1,14 @@
+.MainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: calc(100vh - 180px);
+  margin: 0 80px;
+  padding: 40px;
+  color: lightslategray;
+}
+
+.MainContent__secondHeader {
+  color: rgb(40, 40, 40);
+}
+
