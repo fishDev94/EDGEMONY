@@ -1,0 +1,31 @@
+
+.ModalWindow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.641);
+   
+    
+}
+
+.ModalWindow img {
+    height: 60vw;
+}
+
+@media (min-width: 768px) {
+    
+.ModalWindow {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.ModalWindow:hover {
+    opacity: 1;
+}
+}
+

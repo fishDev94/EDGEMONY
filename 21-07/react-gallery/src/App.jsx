@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Navbar from './components/Navbar'
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
-import Button from './components/Button';
 import './App.css';
 
 function App() {
@@ -18,8 +17,6 @@ function App() {
       <Navbar setBtn={setGalleryVisibility} toggle={isGalleryVisibile}/>
       <Hero />
       <Gallery visibility={isGalleryVisibile}/>
-      <hr />
-      
       
     </div>
   );
