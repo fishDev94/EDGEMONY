@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  background-color: rgb(197, 106, 106);
+  color: white;
+}
