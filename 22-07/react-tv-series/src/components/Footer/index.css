@@ -1,5 +1,5 @@
 .Footer {
-    position:static;
+    position: sticky;
     bottom: 0;
     left: 0;
     /* width: 98.49272042vw; */

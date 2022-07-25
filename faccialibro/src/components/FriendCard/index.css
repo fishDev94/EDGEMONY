@@ -1,0 +1,14 @@
+.FriendCard {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    align-items: center;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.252);
+    border-radius: 6px;
+    width: 200px;
+    
+}
+
+.avatar {
+    width: 40px;
+}
