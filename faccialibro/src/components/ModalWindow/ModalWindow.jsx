@@ -15,7 +15,7 @@ const ModalWindow = ({mainModalText, setCondition, setVisibile, deleteFn}) => {
                         setVisibile(false)}} color='lightcoral' textContent='Annulla'/>
                     <Button onClick={() => {
                         setCondition(true);
-                        setVisibile(false)
+                        // setVisibile(false)
                         deleteFn();
                     }} color='lightseagreen' textContent='Si'/>
                     
