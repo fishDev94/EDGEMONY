@@ -3,12 +3,25 @@ import MessageCard from '../MessageCard';
 import { GET } from '../../utils/api';
 import './index.css';
 
-const MessageCardList = ({ isRenderedList, setRenderedList, deleteCondition }) => {
+const MessageCardList = ({ isRenderedList, setRenderedList, deleteCondition, filterValue }) => {
   const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
-      GET('messages').then((data) => setMessageList(data));
-  }, [isRenderedList]);
+      GET('messages')
+      .then((data) => {
+
+        if (filterValue) {
+          
+          setMessageList(data.filter((message) => message.sender.toLowerCase().includes(filterValue)).sort((a, b) => dateSort(a,b)));
+        }
+
+        else {
+          setMessageList(data.sort((a, b) => dateSort(a,b)))
+        }
+
+       })
+      
+  }, [isRenderedList, filterValue]);
 
   const dateSort = (a, b) => a.date < b.date ? 1 : -1;
 
@@ -16,7 +29,7 @@ const MessageCardList = ({ isRenderedList, setRenderedList, deleteCondition }) =
     <div className="MessageCardList">
       {
         messageList.length
-          ? messageList.sort((a, b) => dateSort(a,b)).map(message => <MessageCard deleteCondition={deleteCondition} isRenderedList={isRenderedList} onDeleteBtn={setRenderedList} textContent={ message } key={ message.id }/>)
+          ? messageList.map(message => <MessageCard deleteCondition={deleteCondition} isRenderedList={isRenderedList} onDeleteBtn={setRenderedList} textContent={ message } key={ message.id }/>)
           : <p>Loading...</p>
       }
     </div>

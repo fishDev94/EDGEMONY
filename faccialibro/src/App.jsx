@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
   const [isRenderedList, setRenderedList] = useState(false);
- 
+ const [searchValue, setSearchValue] = useState();
   
 
   return (
@@ -19,8 +19,8 @@ function App() {
       </div>
       <div className="App_messages">
         <AddMessage isRenderedList={ isRenderedList } onAddButton={ setRenderedList }/>
-        
-        <MessageCardList isRenderedList={ isRenderedList } setRenderedList={setRenderedList}/>
+        <input onChange={(e) => setSearchValue(e.target.value)} type="text" className="search_msg" placeholder="Search"></input>
+        <MessageCardList filterValue={searchValue} isRenderedList={ isRenderedList } setRenderedList={setRenderedList}/>
       </div>
       
     </div>
