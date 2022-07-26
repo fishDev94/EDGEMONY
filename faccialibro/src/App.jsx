@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <div className="App__friends">
         <h3>Lista degli amici</h3>
-        <FriendCardList />
+        <FriendCardList filterMsgFriends={setSearchValue} searchValue={searchValue} />
         
       </div>
       <div className="App_messages">

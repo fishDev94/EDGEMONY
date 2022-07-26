@@ -1,10 +1,10 @@
 import './index.css';
 
-const FriendCard = ({ friendData}) => {
+const FriendCard = ({ friendData, onHandleClick }) => {
   const { photo, name } = friendData;
 
   return (
-    <div className="FriendCard" key={friendData.id}>
+    <div onClick={onHandleClick} className="FriendCard">
       <img className="FriendCard__photo" src={ photo } alt={ name } />
       <p className="FriendCard__name">{ name }</p>
     </div>

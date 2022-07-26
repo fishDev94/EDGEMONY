@@ -12,7 +12,7 @@ const MessageCardList = ({ isRenderedList, setRenderedList, deleteCondition, fil
 
         if (filterValue) {
           
-          setMessageList(data.filter((message) => message.sender.toLowerCase().includes(filterValue)).sort((a, b) => dateSort(a,b)));
+          setMessageList(data.filter((message) => message.sender.toLowerCase().includes(filterValue.toLowerCase())).sort((a, b) => dateSort(a,b)));
         }
 
         else {
