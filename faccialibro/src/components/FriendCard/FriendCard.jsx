@@ -1,14 +1,14 @@
 import './index.css';
 
-const FriendCard = ({profile}) => {
+const FriendCard = ({ friendData}) => {
+  const { photo, name } = friendData;
 
-    return (
-        <div className="FriendCard">
-            <img className="avatar" src={profile.photo} alt="" />
-            <h4>{profile.name}</h4>
-        </div>
-
-    )
+  return (
+    <div className="FriendCard" key={friendData.id}>
+      <img className="FriendCard__photo" src={ photo } alt={ name } />
+      <p className="FriendCard__name">{ name }</p>
+    </div>
+  )
 }
 
-export default FriendCard
+export default FriendCard;

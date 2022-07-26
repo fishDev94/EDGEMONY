@@ -1,8 +1,8 @@
 import './index.css';
 
-const Button = ({textContent, color, type}) => {
+const Button = ({textContent, color, type, onClick}) => {
   return (
-    <button type={ type } className="Button" style={{ backgroundColor: color }}>{ textContent }</button>
+    <button type={ type } onClick={onClick} className="Button" style={{ backgroundColor: color }}>{ textContent }</button>
   )
 }
 

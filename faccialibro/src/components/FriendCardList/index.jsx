@@ -1,3 +1,3 @@
-import FriendCardList from "./FriendCardList";
+import FriendCardList from './FriendCardList';
 
 export default FriendCardList;

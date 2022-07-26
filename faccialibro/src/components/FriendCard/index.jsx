@@ -1,3 +1,3 @@
-import FriendCard from './FriendCard'
+import FriendCard from './FriendCard';
 
 export default FriendCard;

@@ -1,25 +1,24 @@
+import { useState, useEffect } from 'react'; 
+import FriendCard from '../FriendCard';
+import { GET } from '../../utils/api';
 import './index.css';
-import { useState, useEffect } from 'react';
-import {GET} from '../../utils/api'
-
-import FriendCard from '../FriendCard'
 
 const FriendCardList = () => {
+  const [friendList, setFriendList] = useState([]);
 
-    const [profile, setProfile] = useState([]);
-    
-    useEffect(() => {
-        GET('friends')
-        .then(data => setProfile(data))
-    },[])
+  useEffect(() => {
+    GET('friends').then(data => setFriendList(data));
+  }, []);
 
-
-    return (
-        <div className="FriendCardList">
-            {profile.map(profile => <FriendCard profile={profile} key={profile.id}/>) }
-        </div>
-
-    )
-};
+  return (
+    <div className="FriendCardList">
+      {
+        friendList.length
+          ? friendList.map(friend => <FriendCard friendData={friend}/>)
+          : <p>Loading...</p>
+      }
+    </div>
+  )
+}
 
 export default FriendCardList;

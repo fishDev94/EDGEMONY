@@ -1,14 +1,8 @@
 .MessageCard {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
   padding: 6px 20px;
   border-radius: 6px;
   box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
-
-}
-
-.MainContent__card {
-  width: 100%;
 }
 
 .MessageCard__text{
@@ -23,23 +17,24 @@
   color: rgb(174, 174, 174);
 }
 
-.DeleteBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+.MessageCard__delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: 0;
+  color: lightcoral;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.2rem;
   font-weight: bold;
-  background-color: lightcoral;
-  height: 20px;
-  width: 20px;
-  cursor:pointer;
+  cursor: pointer;
+  transition: all 1.35s;
 }
 
-.DeleteBtn:hover {
-  filter: brightness(1.1);
-
+.MessageCard__delete:hover {
+  transform: scale(1.4) rotate(359deg);
 }
 
-.DeleteBtn:active {
-  filter: brightness(0.8);
+.MessageCard__delete:active {
+  color: lightseagreen;
 }
