@@ -1,12 +1,20 @@
 import './index.css';
+import { DELETE } from '../../utils/api';
 
-const FriendCard = ({ friendData, onHandleClick }) => {
-  const { photo, name } = friendData;
+const FriendCard = ({ friendData, onHandleClick, onDeleteBtn, isRenderedList }) => {
+  const { photo, name, id } = friendData;
+
+const deleteFn = () => {
+  DELETE('friends', id)
+  .then(() => onDeleteBtn(!isRenderedList))
+  
+}
 
   return (
-    <div onClick={onHandleClick} className="FriendCard">
+    <div  className="FriendCard">
       <img className="FriendCard__photo" src={ photo } alt={ name } />
-      <p className="FriendCard__name">{ name }</p>
+      <p onClick={onHandleClick} className="FriendCard__name">{ name }</p>
+      <div onClick={deleteFn} className="FriendCard__dltbtn">X</div>
     </div>
   )
 }

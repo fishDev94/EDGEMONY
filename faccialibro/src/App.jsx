@@ -18,7 +18,7 @@ function App() {
       <div className="MainContent">
         <div className="App__friends">
           <h3>Lista degli amici</h3>
-          <FriendCardList isRenderedList={ isRenderedList} filterMsgFriends={setSearchValue} searchValue={searchValue} />
+          <FriendCardList isRenderedList={ isRenderedList} filterMsgFriends={setSearchValue} searchValue={searchValue} setRenderedList={setRenderedList} />
           <AddFriend isRenderedList={ isRenderedList} setRenderedList={setRenderedList}/>
         </div>
         <div className="App_messages">

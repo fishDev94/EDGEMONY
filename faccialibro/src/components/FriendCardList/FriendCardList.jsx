@@ -4,7 +4,7 @@ import Button from '../Button';
 import { GET } from '../../utils/api';
 import './index.css';
 
-const FriendCardList = ({filterMsgFriends, isRenderedList}) => {
+const FriendCardList = ({filterMsgFriends, isRenderedList, setRenderedList}) => {
   const [friendList, setFriendList] = useState([]);
   const [filterBtnVisible, setFilterBtnVisible] = useState(false);
 
@@ -24,7 +24,7 @@ const FriendCardList = ({filterMsgFriends, isRenderedList}) => {
       }
       {
         friendList.length
-          ? friendList.map(friend => <FriendCard key={friend.id} onHandleClick={() => {
+          ? friendList.map(friend => <FriendCard onDeleteBtn={setRenderedList} isRenderedList={isRenderedList} key={friend.id} onHandleClick={() => {
             filterMsgFriends(friend.name)
             setFilterBtnVisible(true)
            }} friendData={friend}/>)
