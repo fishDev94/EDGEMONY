@@ -1,0 +1,38 @@
+.Navbar {
+    position: sticky;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    background-color: lightseagreen;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.457);
+    z-index: 1;
+}
+
+#logo-38 {
+    width: 60px;
+}
+
+.Navbar__list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.Navbar__list li {
+    cursor: pointer;
+}
+
+.Navbar__list li:hover {
+    opacity: 60%;
+    transform: scale(1.08);
+}
+
+.log_out {
+    color: lightcoral;
+    text-shadow: 0 0 4px ghostwhite;
+}

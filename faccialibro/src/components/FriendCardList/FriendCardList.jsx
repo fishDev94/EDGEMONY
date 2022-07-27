@@ -4,13 +4,13 @@ import Button from '../Button';
 import { GET } from '../../utils/api';
 import './index.css';
 
-const FriendCardList = ({filterMsgFriends}) => {
+const FriendCardList = ({filterMsgFriends, isRenderedList}) => {
   const [friendList, setFriendList] = useState([]);
   const [filterBtnVisible, setFilterBtnVisible] = useState(false);
 
   useEffect(() => {
     GET('friends').then(data => setFriendList(data));
-  }, []);
+  }, [isRenderedList]);
 
   
  
