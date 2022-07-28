@@ -14,7 +14,10 @@ const deleteFn = () => {
     <div  className="FriendCard">
       <img className="FriendCard__photo" src={ photo } alt={ name } />
       <p onClick={onHandleClick} className="FriendCard__name">{ name }</p>
-      <div onClick={deleteFn} className="FriendCard__dltbtn">X</div>
+      
+      {
+        Number(localStorage.getItem('username.id')) !== id &&
+        <div onClick={deleteFn} className="FriendCard__dltbtn">X</div>}
     </div>
   )
 }
