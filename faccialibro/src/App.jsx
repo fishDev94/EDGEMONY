@@ -6,6 +6,7 @@ import MessageCardList from './components/MessageCardList';
 import './App.css';
 import ModalWindow from './components/ModalWindow';
 import { useEffect } from 'react';
+import logo from './assets/logoipsum.svg'
 
 
 function App() {
@@ -26,7 +27,7 @@ setIsLoginWindowVisible(false);
       <Navbar />
       {
         isLoginWindowVisible &&
-        <ModalWindow type='login' setRenderedList={setRenderedList} setIsLoginWindowVisible={setIsLoginWindowVisible} isRenderedList={ isRenderedList } onAddButton={ setRenderedList }/>} 
+        <ModalWindow logo={logo} type='login' setRenderedList={setRenderedList} setIsLoginWindowVisible={setIsLoginWindowVisible} isRenderedList={ isRenderedList } onAddButton={ setRenderedList }/>} 
       <div className="MainContent">
         <div className="App__friends">
           <h3>Lista degli amici</h3>
