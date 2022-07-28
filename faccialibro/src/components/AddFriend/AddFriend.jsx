@@ -23,6 +23,7 @@ const AddFriend = ({setRenderedList, isRenderedList, setIsLoginWindowVisible}) =
             setIsLoginWindowVisible(false);
             localStorage.setItem('username', name);
             localStorage.setItem('username.id', res.id);
+            localStorage.setItem('imgUrl', photoUrl);
           })
         }
       }

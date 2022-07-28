@@ -13,14 +13,22 @@
     z-index: 1;
 }
 
+.Navbar p {
+    margin: 0;
+    padding: 0;
+}
+
 #logo-38 {
     width: 60px;
 }
 
 .Navbar__list {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     list-style: none;
+    margin: 5px;
 }
 
 .Navbar__list li {
@@ -30,6 +38,11 @@
 .Navbar__list li:hover {
     opacity: 60%;
     transform: scale(1.08);
+}
+
+.Navbar__username-img {
+    border-radius: 100%;
+    width: 30px;
 }
 
 .log_out {
