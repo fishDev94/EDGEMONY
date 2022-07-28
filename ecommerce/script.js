@@ -46,8 +46,7 @@ if (JSON.parse(localStorage.getItem("products")).length > 0) {
   $loader.classList.add("disable");
 }
 
-const getProductHTML = (product) => {
-  const { title, price, image, id } = product;
+const getProductHTML = ({ title, price, image, id }) => {
   function ivaCalc(price) {
     const res = (price / 100) * 22;
     return res;
@@ -57,8 +56,8 @@ const getProductHTML = (product) => {
     <button id="${id}" class="buy">Add to Cart</button></li></div>`;
 };
 
-const getProductCartHTML = (product) => {
-  const { title, price, image } = product;
+const getProductCartHTML = ({ title, price, image }) => {
+  
   function ivaCalc(price) {
     const res = (price / 100) * 22;
     return res;
@@ -66,7 +65,7 @@ const getProductCartHTML = (product) => {
 
   return `<li class="product-cart"><img src="${image}"><div class="textcard-cart"><p class="title_product">${title}</p>
     <p class="price_product">${(price + ivaCalc(price)).toFixed(2)}€</p></div>
-    <button id="${shop._cart.indexOf(product)}" class="remove">x</button></li>`;
+    <button id="${shop._cart.indexOf({ title, price, image })}" class="remove">x</button></li>`;
 };
 
 const shop = {

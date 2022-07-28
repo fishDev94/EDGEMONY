@@ -1,6 +1,15 @@
 import './index.css'
+import { DELETE } from '../../utils/api'
 
 const Navbar = () => {
+
+    const deleteFn = (id) => {
+        DELETE('friends', id)
+        .then(() => localStorage.clear('username.id'))
+        .then(() => window.location.reload())
+        
+        
+      }
 
     return (
         <div className="Navbar">
@@ -10,7 +19,12 @@ const Navbar = () => {
                 <li>Menu</li>
                 <li>Notifiche</li>
                 <li>Profilo</li>
-                <li className="log_out">Log Out</li>
+                <li onClick={() => {localStorage.clear('username');
+                deleteFn(localStorage.getItem('username.id'));
+                
+            
+            }} 
+            className="log_out">Log Out</li>
             </ul>
         </div>
     )
