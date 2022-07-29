@@ -7,65 +7,82 @@ const ModalWindow = ({mainModalText, setCondition, setVisibile, deleteFn, type,i
 
     const images = [
         {
-          original: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/d937cb17998561.5635a605a208c.png',
-          originalHeight: '40px',
+          
           thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/d937cb17998561.5635a605a208c.png',
+          thumbnailHeight: '80px',
+          thumbnailWidth: '40px',
         },
         {
-          original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-4.jpg',
-          originalHeight: '40px',
-          thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-4.jpg',
+          
+   
+          thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/29bd6417998561.5635a605ad357.png',
+          thumbnailHeight: '80px',
+          thumbnailWidth: '40px',
         },
         {
-          original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-5.jpg',
-          originalHeight: '40px',
-          thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-5.jpg',
+          
+   
+          thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/8dd7e817998561.5635a605b5684.png',
+          thumbnailHeight: '80px',
+          thumbnailWidth: '40px',
         },
         {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-6.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-6.jpg',
+            
+     
+            thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/29dd2a17998561.5635a605bf76c.png',
+            thumbnailHeight: '80px',
+            thumbnailWidth: '40px',
         },
         {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-7.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-7.jpg',
+            
+     
+            thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/4134a417998561.5635a605c6ed2.png',
+            thumbnailHeight: '80px',
+            thumbnailWidth: '40px',
         },
         {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-8.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-8.jpg',
+            
+     
+            thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/8f834817998561.5635a605c8d17.png',
+            thumbnailHeight: '80px',
+            thumbnailWidth: '40px',
         },
         {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-9.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-9.jpg',
+            
+     
+            thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/5508a017998561.5635a605cd904.png',
+            thumbnailHeight: '80px',
+            thumbnailWidth: '40px',
         },
         {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-10.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-10.jpg',
+            
+     
+            thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/57f58517998561.5635a605d2424.png',
+            thumbnailHeight: '80px',
+            thumbnailWidth: '40px',
         },
         {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-11.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-11.jpg',
+            
+     
+            thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/4af31517998561.5635a605daa24.png',
+            thumbnailHeight: '80px',
+            thumbnailWidth: '40px',
         },
         {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-12.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-12.jpg',
+            
+     
+            thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/7d244617998561.5635a605e3323.png',
+            thumbnailHeight: '80px',
+            thumbnailWidth: '40px',
         },
         {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-13.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-13.jpg',
+            
+     
+            thumbnail: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/e738ae17998561.5635a605e81c7.png',
+            thumbnailHeight: '80px',
+            thumbnailWidth: '40px',
         },
-        {
-            original: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-14.jpg',
-            originalHeight: '40px',
-            thumbnail: 'https://www.scifidesign.com/wp-content/uploads/2015/03/minimalist-star-wars-icons-14.jpg',
-        },
+        
       ];
 
     return (
@@ -102,7 +119,7 @@ const ModalWindow = ({mainModalText, setCondition, setVisibile, deleteFn, type,i
                     </>
                     : type === 'login' && 
                     <>
-                    {/* <ImageGallery items={images}/> */}
+                    <ImageGallery onThumbnailClick={(e) => localStorage.setItem('imgUrl', e.target.src)} items={images} additionalClass='avatars_gallery' showPlayButton={false} showFullscreenButton={false}/>
                     <AddFriend isRenderedList={ isRenderedList } onAddButton={ onAddButton } setIsLoginWindowVisible={setIsLoginWindowVisible} setRenderedList={setRenderedList} />
                     {/* <Button onClick={() => {
                         console.log('login');
