@@ -6,11 +6,16 @@
     justify-content: space-between;
     padding: 0 20px;
     align-items: center;
-    background-color: lightseagreen;
+    background-color: #77b2dc;
     color: white;
     font-weight: bold;
     text-shadow: 0 0 2px rgba(0, 0, 0, 0.457);
     z-index: 1;
+}
+
+.Navbar__logo {
+    width: 30px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.192);
 }
 
 .Navbar p {
@@ -43,9 +48,10 @@
 .Navbar__username-img {
     border-radius: 100%;
     width: 30px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.192);
 }
 
 .log_out {
     color: lightcoral;
-    text-shadow: 0 0 4px ghostwhite;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
 }

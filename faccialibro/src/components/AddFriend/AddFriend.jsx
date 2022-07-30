@@ -34,7 +34,7 @@ const AddFriend = ({setRenderedList, isRenderedList, setIsLoginWindowVisible}) =
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="AddFriend__name" placeholder='Insert your name' required />
                     {/* <input type="text" value={photoUrl} onChange={(e) => setPhotoUrl(e.target.value)} className="AddFriend__photoAddFriend__photourl" placeholder='Insert your photo url' required/> */}
                 </div>
-                <Button textContent='Login' color='white' type='submit' />
+                <Button style_type="Button_login" textContent='Login' color='white' type='submit' />
             </form>
         </div>
     )

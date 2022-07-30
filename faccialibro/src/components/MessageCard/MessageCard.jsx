@@ -24,7 +24,7 @@ const formatData = (date) => {
 
   return (
     <div className="MessageCard">
-      <button onClick={() => setVisibile(true)} className="MessageCard__delete">X</button>
+      <div onClick={() => setVisibile(true)} className="MessageCard__delete">X</div>
       <p className="MessageCard__text">
         { textContent.text }
       </p>

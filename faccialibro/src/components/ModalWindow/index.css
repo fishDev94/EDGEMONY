@@ -22,29 +22,40 @@
     border-radius: 10px;
 }
 
+.confirm__buttons {
+    display: flex;
+    justify-content: center;
+    gap:10px;
+}
+
 .ModalWindow__fullcontent {
     display: flex;
     flex-direction: row;
-    gap: 80px;
+    gap: 100px;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: lightseagreen;
+    background-color: ghostwhite;
 }
 
 .ModalWindow__fullcontent h1 {
-    color: ghostwhite;
+    color: rgb(43, 43, 43);
 }
 
 .ModalWindow__fullcontent h4 {
-    color: rgba(255, 255, 255, 0.76);
+    color: rgb(121, 121, 121);
+    text-align: center;
+}
+
+.ModalWindow__logo {
+    width: 100px;
 }
 
 .ModalWindow__login--line {
     height: 400px;
     width: 1px;
-    background-color: rgba(255, 255, 255, 0.323);
+    background-color: rgba(0, 0, 0, 0.128);
 }
 
 .ModalWindow__login--content {
@@ -52,7 +63,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap:10px;
+    gap:40px;
 }
 
 .ModalWindow__Buttons {
