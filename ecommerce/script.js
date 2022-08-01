@@ -46,6 +46,11 @@ if (JSON.parse(localStorage.getItem("products")).length > 0) {
   $loader.classList.add("disable");
 }
 
+function ivaCalc(price) {
+  const res = (price / 100) * 22;
+  return res;
+}
+
 const getProductHTML = ({ title, price, image, id }) => {
   function ivaCalc(price) {
     const res = (price / 100) * 22;
@@ -156,24 +161,20 @@ const shop = {
     }
 
     function totalPrice(a) {
-      let sumPriceIva = 0;
-      a.forEach((value) => {
-        function ivaCalc(price) {
-          const res = (price / 100) * 22;
-          return res;
-        }
-        sumPriceIva += value.price + ivaCalc(value.price);
-      });
+      
+      // a.forEach((value) => {
+       
+      //   sumPriceIva += value.price + ivaCalc(value.price);
+      // });
+      let sumPriceIva = a.reduce((acc, next) => acc + (next.price + ivaCalc(next.price)), 0);
+
       return sumPriceIva.toFixed(2);
     }
 
     function ivaPrice(a) {
       let sumIva = 0;
       a.forEach((value) => {
-        function ivaCalc(price) {
-          const res = (price / 100) * 22;
-          return res;
-        }
+       
         sumIva += ivaCalc(value.price);
       });
       return sumIva.toFixed(2);
