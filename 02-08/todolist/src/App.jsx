@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useReducer} from 'react';
 import Button from './components/Button';
 import './App.css';
 import Input from './components/Input';
@@ -11,13 +11,11 @@ const [task, setTask] = useState('');
 
 const onInputChange = (e) => {
   setTask(e.target.value);
-  console.log(e.target.value);
 
 }
 
 const onHandleClick = (e) => {
   e.preventDefault();
-  console.log(task)
   setList([...list, task]);
   setTask('');
 }
