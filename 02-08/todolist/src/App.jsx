@@ -5,7 +5,7 @@ import './App.css';
 import Input from './components/Input';
 import TodoList from './components/TodoList';
 
-let id = 0;
+
 const initData = {
   listTask: [],
   inputValue: '',
@@ -21,7 +21,7 @@ switch (type) {
     inputValue = '';
   }
   case ('delete') : {
-    listTask = listTask.filter((obj) => obj.id -1 !== payload)
+    listTask = listTask.filter((_, index) => index !== payload)
   }
 }
 
@@ -43,7 +43,7 @@ const onInputChange = (e) => {
 
 const onHandleClick = (e) => {
   e.preventDefault();
-  tryTask['id'] = ++id;
+  
   dispatch({
     type: 'insert', 
   })
@@ -63,7 +63,7 @@ const onDeleteBtn = (id) => {
         <Input value={state.inputValue} onChange={onInputChange} />
         <Button >Inserisci</Button>
       </form>
-      <TodoList data={state.listTask} dltBtn={() => onDeleteBtn}/>
+      <TodoList data={state.listTask} dltBtn={onDeleteBtn}/>
     </div>
   );
 }
