@@ -1,0 +1,11 @@
+.Todo_element {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.todo_text {
+    display: flex;
+    gap:10px;
+}
+

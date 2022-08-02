@@ -1,0 +1,14 @@
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.form_todo {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
+}
+
+
