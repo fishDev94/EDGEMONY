@@ -7,7 +7,7 @@ const TodoList = ({data, dltBtn}) => {
     return (
         <ul className="TodoList">
             {
-                data.map((element) => <TodoCard contentText={element.text} onClick={dltBtn(element.id)} id={element.id} key={element.id}/>)
+                data.map((element, index) => <TodoCard contentText={element.text} onClick={dltBtn(element.id)} id={index+1} key={index}/>)
             }
         </ul>
 

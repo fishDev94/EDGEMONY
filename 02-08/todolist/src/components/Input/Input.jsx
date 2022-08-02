@@ -1,11 +1,11 @@
 import './index.css'
 
-const Input = ({inputValue, onChange}) => {
+const Input = ({ onChange, value}) => {
 
 
 
     return (
-        <input className="input_todo" type="text" placeholder="Inserisci il testo" value={inputValue} onChange={onChange} />
+        <input className="input_todo" type="text" placeholder="Inserisci il testo" value={value} onChange={onChange} />
     )
 }
 

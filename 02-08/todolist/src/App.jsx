@@ -8,16 +8,20 @@ import TodoList from './components/TodoList';
 let id = 0;
 const initData = {
   listTask: [],
+  inputValue: '',
 };
 function reducer(state, action) {
-  let {listTask} = state
+  let {listTask, inputValue} = state
+  const {type, payload} = action 
 
-switch (action.type) {
+switch (type) {
   case ('insert') : { 
+    
     listTask = [...listTask, {...tryTask }]
+    inputValue = '';
   }
   case ('delete') : {
-    listTask = listTask.filter((obj) => obj.id -1 !== action.payload)
+    listTask = listTask.filter((obj) => obj.id -1 !== payload)
   }
 }
 
@@ -31,7 +35,10 @@ const App = () => {
 const [state, dispatch] = useReducer(reducer, initData);
 
 const onInputChange = (e) => {
-  tryTask.text = e.target.value
+  
+  tryTask.text = e.target.value;
+  dispatch(state.inputValue = e.target.value)
+  
   };
 
 const onHandleClick = (e) => {
@@ -40,6 +47,7 @@ const onHandleClick = (e) => {
   dispatch({
     type: 'insert', 
   })
+  state.inputValue = '';
 }
 
 const onDeleteBtn = (id) => {
@@ -47,11 +55,12 @@ const onDeleteBtn = (id) => {
     type: 'delete',
     payload: id,
   })
+  
 }
   return (
     <div className="App">
       <form onSubmit={onHandleClick} className="form_todo" >
-        <Input onChange={onInputChange} />
+        <Input value={state.inputValue} onChange={onInputChange} />
         <Button >Inserisci</Button>
       </form>
       <TodoList data={state.listTask} dltBtn={() => onDeleteBtn}/>
