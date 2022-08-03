@@ -7,7 +7,8 @@ import TodoList from './components/TodoList';
 
 let count = 0;
 const initData = {
-  listTask: [],  
+  listTask: [], 
+  inputValue: '', 
 };
 
 function reducer(state, action) {
