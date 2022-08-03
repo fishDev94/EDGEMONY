@@ -17,10 +17,14 @@ function reducer(state, action) {
 
 switch (type) {
   case 'insert' : 
-    listTask = [...listTask, { ...tryTask }] 
-  break;   
+  {
+    let idn = count;
+    ++count;
+    listTask = [...listTask, { ...tryTask, idn }] 
+  }
+    break;   
   case 'delete' : 
-    listTask = listTask.filter((element) =>  element.id !== payload) 
+    listTask = listTask.filter((element) =>  element.idn !== payload) 
   break;
 }
 return {...state, listTask}
@@ -37,7 +41,7 @@ const onInputChange = (e) => {
 
 const onHandleClick = (e) => {
   e.preventDefault();
-  tryTask.id = ++count;
+  // tryTask.id = ++count;
   dispatch({
     type: 'insert', 
   })
