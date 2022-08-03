@@ -6,23 +6,26 @@ import Input from './components/Input';
 import TodoList from './components/TodoList';
 
 
+let count = 0;
 const initData = {
   listTask: [],
-  inputValue: '',
+  
 };
 function reducer(state, action) {
-  let {listTask, inputValue} = state
+  let {listTask} = state
   const {type, payload} = action 
 
 switch (type) {
-  case ('insert') : { 
+  case 'insert' : 
     
-    listTask = [...listTask, {...tryTask }]
-    inputValue = '';
-  }
-  case ('delete') : {
-    listTask = listTask.filter((_, index) => index !== payload)
-  }
+    listTask = [...listTask, { ...tryTask }]
+    
+  break;  
+  
+  case 'delete' : 
+    listTask = listTask.filter((element) =>  element.id !== payload)
+    
+  break;
 }
 
 return {...state, listTask}
@@ -43,10 +46,11 @@ const onInputChange = (e) => {
 
 const onHandleClick = (e) => {
   e.preventDefault();
-  
+  tryTask.id = ++count;
   dispatch({
     type: 'insert', 
   })
+  console.log(tryTask);
   state.inputValue = '';
 }
 
@@ -59,6 +63,7 @@ const onDeleteBtn = (id) => {
 }
   return (
     <div className="App">
+      <h1>TODO List:</h1>
       <form onSubmit={onHandleClick} className="form_todo" >
         <Input value={state.inputValue} onChange={onInputChange} />
         <Button >Inserisci</Button>
