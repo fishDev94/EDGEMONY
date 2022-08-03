@@ -5,43 +5,33 @@ import './App.css';
 import Input from './components/Input';
 import TodoList from './components/TodoList';
 
-
 let count = 0;
 const initData = {
-  listTask: [],
-  
+  listTask: [],  
 };
+
 function reducer(state, action) {
   let {listTask} = state
   const {type, payload} = action 
 
 switch (type) {
   case 'insert' : 
-    
-    listTask = [...listTask, { ...tryTask }]
-    
-  break;  
-  
+    listTask = [...listTask, { ...tryTask }] 
+  break;   
   case 'delete' : 
-    listTask = listTask.filter((element) =>  element.id !== payload)
-    
+    listTask = listTask.filter((element) =>  element.id !== payload) 
   break;
 }
-
 return {...state, listTask}
 }
-
 const tryTask = {};
 
 const App = () => {
-
 const [state, dispatch] = useReducer(reducer, initData);
 
 const onInputChange = (e) => {
-  
-  tryTask.text = e.target.value;
+   tryTask.text = e.target.value;
   dispatch(state.inputValue = e.target.value)
-  
   };
 
 const onHandleClick = (e) => {
@@ -50,7 +40,6 @@ const onHandleClick = (e) => {
   dispatch({
     type: 'insert', 
   })
-  console.log(tryTask);
   state.inputValue = '';
 }
 
