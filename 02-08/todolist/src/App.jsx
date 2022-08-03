@@ -21,11 +21,13 @@ switch (type) {
     let idn = count;
     ++count;
     listTask = [...listTask, { ...tryTask, idn }] 
+    console.log(listTask);
   }
     break;   
   case 'delete' : 
     listTask = listTask.filter((element) =>  element.idn !== payload) 
   break;
+  default:
 }
 return {...state, listTask}
 }
