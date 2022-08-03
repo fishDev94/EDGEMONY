@@ -17,21 +17,26 @@ function reducer(state, action) {
   const {type, payload} = action 
 
 switch (type) {
-  case 'insert' : 
-  {
-    let id = count;
-    count++;
-    listTask = [...listTask, { ...tryTask, id }] 
-  }
-    break;   
-  case 'delete' : 
-    listTask = listTask.filter((element) =>  element.id !== payload) 
-  break;
-  case 'update' : 
-  inputValue = payload
-  break;
-  default:
-}
+      case 'insert' : 
+      {
+        let id = count;
+        count++;
+        listTask = [...listTask, { ...tryTask, id }] 
+      }
+        break;   
+      case 'delete' : 
+        {
+          listTask = listTask.filter((element) =>  element.id !== payload) 
+        }
+      break;
+      case 'update' : 
+       {
+        inputValue = payload
+      }
+      break;
+      default: 
+};
+
 return {...state, listTask, count, inputValue}
 }
 const tryTask = {};
