@@ -18,14 +18,14 @@ function reducer(state, action) {
 switch (type) {
   case 'insert' : 
   {
-    let idn = count;
+    let id = count;
     ++count;
-    listTask = [...listTask, { ...tryTask, idn }] 
+    listTask = [...listTask, { ...tryTask, id }] 
     console.log(listTask);
   }
     break;   
   case 'delete' : 
-    listTask = listTask.filter((element) =>  element.idn !== payload) 
+    listTask = listTask.filter((element) =>  element.id !== payload) 
   break;
   default:
 }

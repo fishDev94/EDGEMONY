@@ -1,12 +1,13 @@
 import './index.css';
 import TodoCard from '../TodoCard';
+import React from 'react';
 
 const TodoList = ({data, dltBtn}) => {
 
     return (
         <ul className="TodoList">
             {
-                data.map((element, index) => <TodoCard contentText={element.text} onClick={() => dltBtn(element.idn)} id={index + 1} key={index}/>)
+                data.map((element, index) => <TodoCard contentText={element.text} onClick={() => dltBtn(element.id)} id={index + 1} key={index}/>)
             }
         </ul>
     )

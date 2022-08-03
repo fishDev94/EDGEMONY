@@ -8,7 +8,7 @@ const TodoCard = ({id, contentText, onClick}) => {
         <p className="order-li">{id}:</p>
         <p>{contentText}</p>
         </div>
-        <Button onClick={() => onClick(id - 1)}>X</Button>
+        <Button onClick={onClick}>X</Button>
     </li>
     )
 }
