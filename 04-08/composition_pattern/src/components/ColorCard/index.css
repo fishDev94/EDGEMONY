@@ -1,0 +1,26 @@
+.ColorCard {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    background-color: white;
+    width: 200px;
+    height: 260px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.351);
+}
+
+.ColorCard__background {
+    width: 100%;
+    height: 80%;
+}
+
+.ColorCard__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+    width: 100%;
+    height: 20%;
+    
+}
