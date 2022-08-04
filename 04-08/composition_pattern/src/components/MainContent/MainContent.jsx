@@ -1,11 +1,13 @@
 import ColorList from '../ColorList';
 import './index.css'
 
-const MainContent = (props) => {
-console.log(props)
+const MainContent = ({children}) => {
+
     return (
         <div className="MainContent">
-            <ColorList {...props} />
+            
+            {children}
+            
         </div>
     )
 }

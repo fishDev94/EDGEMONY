@@ -1,14 +1,22 @@
 
 import './App.css';
 import MainContent from './components/MainContent';
+import ColorList from './components/ColorList';
+import ColorCard from './components/ColorCard';
 
 const colors = ['#B04A5A','#4298B5','#47D7AC' ]
 
 function App() {
   return (
     <div className="App">
-      <h1>My Colors:</h1>
-      <MainContent {...colors}/>
+      <MainContent>
+        <h1>My Colors:</h1>
+        <ColorList>
+          <ColorCard color={colors[0]} />
+          <ColorCard color={colors[1]} />
+          <ColorCard color={colors[2]} />
+        </ColorList>
+      </MainContent>
     </div>
   );
 }
