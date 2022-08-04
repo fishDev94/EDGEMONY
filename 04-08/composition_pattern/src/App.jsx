@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <h1>My Colors:</h1>
-      <MainContent color={colors}/>
+      <MainContent {...colors}/>
     </div>
   );
 }

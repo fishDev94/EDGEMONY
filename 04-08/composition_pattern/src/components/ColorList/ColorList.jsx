@@ -1,11 +1,14 @@
 import ColorCard from "../ColorCard"
 import './index.css'
 
-const ColorList = ({colors}) => {
+const ColorList = (props) => {
 
     return (
         <div className="ColorList">
-            { colors.map((col, id) => <ColorCard color={col} key={id}/>) }
+            { 
+        
+            Object.values(props).map((col, id) => <ColorCard color={col} key={id}/>)
+         }
            
         </div>
     )
