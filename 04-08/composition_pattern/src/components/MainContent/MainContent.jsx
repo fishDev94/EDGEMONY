@@ -1,13 +1,10 @@
-import ColorList from '../ColorList';
 import './index.css'
 
 const MainContent = ({children}) => {
 
     return (
         <div className="MainContent">
-            
             {children}
-            
         </div>
     )
 }

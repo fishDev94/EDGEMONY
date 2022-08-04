@@ -10,12 +10,12 @@ function App() {
   return (
     <div className="App">
       <MainContent>
+        
         <h1>My Colors:</h1>
         <ColorList>
-          <ColorCard color={colors[0]} />
-          <ColorCard color={colors[1]} />
-          <ColorCard color={colors[2]} />
+          { colors.map((color, i) => <ColorCard color={color} key={i}/>)}
         </ColorList>
+        
       </MainContent>
     </div>
   );

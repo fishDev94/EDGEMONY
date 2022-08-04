@@ -1,4 +1,3 @@
-import ColorCard from "../ColorCard"
 import './index.css'
 
 const ColorList = ({children}) => {
