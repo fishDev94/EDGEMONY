@@ -4,8 +4,8 @@ const AdviceCard = ({data, onBtnClick}) => {
 
     return (
         <div className="AdviceCard">
-            <p className="Advice_number">Advice #{data.slip ? data.slip.id : 'loading...'}</p>
-            <p className='MainText'>{data.slip ? data.slip.advice : 'loading...'}</p>
+            <p className="Advice_number">Advice #{data.slip?.id}</p>
+            <p className='MainText'>{data.slip?.advice}</p>
             <button onClick={onBtnClick} className='btn-change'></button>
         </div>
     )
