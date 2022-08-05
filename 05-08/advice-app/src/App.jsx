@@ -10,8 +10,7 @@ function App() {
   useEffect(() => {
     fetch('https://api.adviceslip.com/advice')
     .then((res) => res.json())
-    .then(data => setData(data))
-    
+    .then(data => setData(data)) 
   }, [value])
 
   const onBtnClick = () => {
