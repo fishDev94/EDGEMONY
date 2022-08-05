@@ -1,7 +1,7 @@
 import './index.css'
 import Button from '../Button';
 const TodoCard = ({id, contentText, onClick}) => {
-
+console.log('Todo card');
     return (
     <li className='Todo_element'>
         <div className='todo_text'>

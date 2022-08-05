@@ -3,7 +3,7 @@ import TodoCard from '../TodoCard';
 import React from 'react';
 
 const TodoList = ({data, dltBtn}) => {
-
+console.log('sono todo list')
     return (
         <ul className="TodoList">
             {
@@ -13,5 +13,5 @@ const TodoList = ({data, dltBtn}) => {
     )
 };
 
-export default TodoList;
+export default React.memo(TodoList);
 
