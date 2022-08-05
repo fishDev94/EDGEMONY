@@ -1,10 +1,11 @@
 import './index.css'
+import ColorCard from '../ColorCard';
 
-const ColorList = ({children}) => {
+const ColorList = ({colors}) => {
 
     return (
         <div className="ColorList">
-           {children}
+           { colors.map((color, i) => <ColorCard color={color} key={i}/>)}
         </div>
     )
 }
