@@ -8,7 +8,7 @@ function App() {
   const [value, setValue] = useState(true);
 
   useEffect(() => {
-    fetch('https://api.adviceslip.com/advice')
+    fetch('https://api.adviceslip.com/advice',{ cache: 'no-store' })
     .then((res) => res.json())
     .then(data => setData(data)) 
   }, [value])
@@ -16,7 +16,7 @@ function App() {
   const onBtnClick = () => {
     setValue(!value);
   }
-  
+
   return (
     <div className="App">
      <MainContent >
