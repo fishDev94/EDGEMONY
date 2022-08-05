@@ -1,12 +1,9 @@
 .MainContent {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #b6a6c8;
     padding: 40px;
 }
-
-/* card color #7C6992 */
-/* backgroun color  #A192B2 */
-/* btn color #5D4777 */

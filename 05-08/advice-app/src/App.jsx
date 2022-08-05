@@ -16,10 +16,10 @@ function App() {
   const onBtnClick = () => {
     setValue(!value);
   }
-
+  
   return (
     <div className="App">
-     <MainContent>
+     <MainContent >
       <AdviceCard data={data} onBtnClick={onBtnClick}/>
      </MainContent>
     </div>
