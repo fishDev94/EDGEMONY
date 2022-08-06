@@ -19,6 +19,7 @@ function App() {
 setIsLoginWindowVisible(false);
   }
 
+  
  }, [])
  
  const images = [
