@@ -1,0 +1,26 @@
+.InputTodo {
+    display: flex;
+    gap: 5px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.414);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.377);
+    color: white;
+}
+
+.InputTodo__input {
+    border: none;
+    padding: 10px;
+    width: 200px;
+}
+
+.InputTodo__button {
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.479);
+    border: none;
+    color: white;
+}
+
+.InputTodo__button:active {
+    background-color:  rgba(0, 0, 0, 0.832);
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.354);
+}
