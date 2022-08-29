@@ -1,12 +1,33 @@
-
+import {useState} from 'react';
 import './App.css';
 import InputTodo from './components/InputTodo';
+import ListTodo from './components/ListTodo/ListTodo';
+
 
 function App() {
+  const [items, setItems] = useState([]);
+  const [value, setValue] = useState("");
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    setItems([...items, value])
+    setValue("");
+  }
+
+  const handleCancelButton = (i) => {
+    
+    console.log(i)
+    setItems(items.filter((item, index) => item[index] !== item[i]))
+  }
+
   return (
     <div className="App">
       <div className="Background" />
-      <InputTodo />
+      <div className="Todo_container">
+        <h1>ToDo List:</h1>
+        <InputTodo method={handleOnSubmit} value={value} setValue={setValue}/>
+        <ListTodo items={items} onCancelClick={handleCancelButton}/>
+      </div>
     </div>
   );
 }
