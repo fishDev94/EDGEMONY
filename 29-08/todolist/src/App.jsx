@@ -15,7 +15,7 @@ function App() {
   }
 
   const handleCancelButton = (i) => {
-    setItems(items.filter((item, index, array) => item !== array[i]))
+    setItems(items.filter((item, index, array) => index !== i))
   }
 
   return (
