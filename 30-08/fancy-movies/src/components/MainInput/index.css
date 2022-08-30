@@ -1,0 +1,44 @@
+.MainInput {
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 40px;
+  left: calc(50% - 37px);
+  transition: all .35s;
+}
+
+.MainInput select {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  padding: 12px;
+  
+  border: 0;
+  outline: none;
+  font-weight: bold;
+  border-radius: 8px;
+  width: 0;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.MainInput button {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  border: 0;
+  width: 54px;
+  height: 100%;
+  font-weight: bold;
+  background-color: white;
+  border-left: 1px solid lightgrey;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.MainInput.active {
+  left: calc(50% - 170px);
+}
+
+.MainInput.active select {
+  opacity: 1;
+  width: 240px;
+  height: auto;
+}
