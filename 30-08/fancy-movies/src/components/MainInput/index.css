@@ -1,5 +1,6 @@
 .MainInput {
   height: 50px;
+  width: 0;
   display: flex;
   gap: 10px;
   position: absolute;
@@ -34,6 +35,7 @@
 }
 
 .MainInput.active {
+  width: auto;
   left: calc(50% - 170px);
 }
 
