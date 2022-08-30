@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './index.css';
 
-const MainInput = ({inputValue, setInputValue, onHandleSubmit, movieData}) => {
+const MainInput = ({onHandleSubmit}) => {
   const inputRef = useRef(null);
   const [isActive, setActive] = useState(false);
 
