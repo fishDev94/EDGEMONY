@@ -7,8 +7,14 @@
 }
 
 .MainSection_content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     height: 83.8%;
     width: 60%;
+    color: white;
+    padding: 20px 0;
+    box-sizing: border-box;
 }
 
 .MainSection_background {

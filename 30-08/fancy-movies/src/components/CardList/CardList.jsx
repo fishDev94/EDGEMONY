@@ -5,7 +5,7 @@ export default function CardList ({data, className}) {
     
     return (
         <div className="TopRatedList">
-            {data.map((item, index) => <MainCard data={item} className={className} key={index}/>)}
+            {data.map((item, index) => <MainCard data={item} className="MainCard_topRated" key={index}/>)}
         </div>
     )
 }

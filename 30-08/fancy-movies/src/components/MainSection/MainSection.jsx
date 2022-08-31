@@ -25,8 +25,10 @@ export default function MainSection(){
             <div className="MainSection_background" />
             {movieLists.popular && <MainCard data={movieLists.popular[0]} className="MainCard_popular" />}
             <div className="MainSection_content">
-              {movieLists.topRated && <CardList data={movieLists.topRated} className="MainCard_topRated"/>}
-              {movieLists.upcoming && <CardList data={movieLists.upcoming} className="MainCard_topRated"/>}
+            <h2>Top Rated:</h2>
+              {movieLists.topRated && <CardList data={movieLists.topRated} className="topRated"/>}
+              <h2>Upcoming:</h2>
+              {movieLists.upcoming && <CardList data={movieLists.upcoming} className="upcoming"/>}
             </div>
         </div>
     )
