@@ -43,11 +43,11 @@
 .MovieEntity__info--bottom--tagline {
   position: absolute;
   top: 0;
-  right: -30px;
+  right: -35px;
   writing-mode: vertical-rl;
   font-size: 1.5rem;
   font-weight: bold;
-  height: 300px;
+  height: 280px;
   transform: translateY(-120px);
 }
 

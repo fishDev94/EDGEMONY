@@ -2,7 +2,7 @@ import React from 'react'
 
 import './index.css';
 
-const MovieEntity = ({movieData }) => {
+const MovieEntity = ({movieData, myRef }) => {
  
   const {
     poster_path,
@@ -14,7 +14,7 @@ const MovieEntity = ({movieData }) => {
   } = movieData;
 
   return (
-    <div className="MovieEntity">
+    <div ref={myRef} className="MovieEntity">
       <div className="MovieEntity__info">
         <div className="MovieEntity__info--title">
           <p>title</p>
