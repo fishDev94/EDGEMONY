@@ -4,7 +4,7 @@ import MainCard from '../MainCard';
 import CardList from '../CardList/CardList';
 import './index.css';
 
-export default function MainSection(){
+export default function MainSection({ setMovieID, filmSection }){
     const [movieLists, setMovieLists] = useState({});
 
     useEffect(() => {
@@ -23,12 +23,12 @@ export default function MainSection(){
         <div className="MainSection">
           <div className="MainSection_background--overlay" />
             <div className="MainSection_background" />
-            {movieLists.popular && <MainCard data={movieLists.popular[0]} className="MainCard_popular" />}
+            {movieLists.popular && <MainCard data={movieLists.popular[0]} setMovieID={setMovieID} filmSection={filmSection} className="MainCard_popular" />}
             <div className="MainSection_content">
             <h2>Top Rated:</h2>
-              {movieLists.topRated && <CardList data={movieLists.topRated} className="topRated"/>}
+              {movieLists.topRated && <CardList data={movieLists.topRated} filmSection={filmSection} setMovieID={setMovieID} className="topRated"/>}
               <h2>Upcoming:</h2>
-              {movieLists.upcoming && <CardList data={movieLists.upcoming} className="upcoming"/>}
+              {movieLists.upcoming && <CardList data={movieLists.upcoming} filmSection={filmSection} setMovieID={setMovieID} className="upcoming"/>}
             </div>
         </div>
     )

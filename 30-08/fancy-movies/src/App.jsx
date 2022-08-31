@@ -49,7 +49,7 @@ function App() {
     <div className="App">
       {showScrollTopButton && <IoMdArrowDropupCircle onClick={handleArrowUpClick} className="arrow-icon"/>}
       <MainInput inputValue={inputValue} movieData={movieData} onHandleSubmit={onHandleSubmit} setInputValue={setInputValue}/>
-      <MainSection />
+      <MainSection setMovieID={setMovieID} filmSection={filmSection}/>
       <MovieEntity movieData={movieData} myRef={filmSection}/>
     </div>
   );
