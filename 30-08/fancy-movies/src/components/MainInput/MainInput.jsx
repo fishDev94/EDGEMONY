@@ -18,7 +18,7 @@ const MainInput = ({onHandleSubmit, filmSection}) => {
       mainInput.current.style.display = "none";
     }
     })
-  }, [])
+  }, [filmSection])
 
 
   return (

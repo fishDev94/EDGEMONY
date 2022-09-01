@@ -1,0 +1,67 @@
+.MainModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    color: white;
+    width: 100%;
+    height: 100vh;
+    background-color:rgb(50, 50, 50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   
+}
+
+
+
+.MainModal__container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 80%;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.684);
+    transition: all 0.45s;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.MainModal.open .MainModal__container {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.MainModal__info {
+    align-self: flex-start;
+    
+    padding: 40px;
+}
+
+.MainModal__info .release {
+    text-align: right;
+}
+
+.MainModal__info .release::before {
+    content: "Release Data:";
+    color: rgba(255, 255, 255, 0.533);
+}
+
+.close {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.511);
+    position: absolute;
+    top:15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: white;
+}

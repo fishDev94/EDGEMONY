@@ -4,7 +4,7 @@ import MainCard from '../MainCard';
 import CardList from '../CardList/CardList';
 import './index.css';
 
-export default function MainSection({ setMovieID, filmSection }){
+export default function MainSection({ setMovieID, filmSection, setModalVisibility }){
     const [movieLists, setMovieLists] = useState({
       topRated: [{}],
       popular: [{}],
@@ -35,9 +35,9 @@ export default function MainSection({ setMovieID, filmSection }){
             <MainCard data={movieLists.popular[0]} setMovieID={setMovieID} filmSection={filmSection} className="MainCard_popular" />
             <div className="MainSection_content">
             <h2>Top Rated:</h2>
-              <CardList data={filteredTopRated} filmSection={filmSection} setMovieID={setMovieID} className="topRated"/>
+              <CardList data={filteredTopRated} filmSection={filmSection} setMovieID={setMovieID} setModalVisibility={setModalVisibility} className="topRated"/>
               <h2>Upcoming:</h2>
-              <CardList data={movieLists.upcoming} filmSection={filmSection} setMovieID={setMovieID} className="upcoming"/>
+              <CardList data={movieLists.upcoming} filmSection={filmSection} setMovieID={setMovieID} setModalVisibility={setModalVisibility} className="upcoming"/>
             </div>
         </div>
     )

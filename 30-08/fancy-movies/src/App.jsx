@@ -6,11 +6,13 @@ import { IoMdArrowDropupCircle } from 'react-icons/io';
 import './App.css';
 import MainSection from './components/MainSection';
 import Navbar from './components/NavBar/NavBar';
+import MainModal from './components/MainModal/MainModal';
 
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [movieID, setMovieID] = useState("324668")
   const [movieData, setMovieData] = useState({});
+  const [isModalVisibile, setModalVisibility] = useState(false);
   const filmSection = useRef(null);
   const [showScrollTopButton, setShowScrollTopButton] = useState(false);
 
@@ -46,12 +48,26 @@ function App() {
     })
   }
 
+  useEffect(() => {
+
+    if (isModalVisibile) {
+    document.body.style.overflowY = "hidden";
+    window.scrollTo({
+      top: 0,
+    })
+    }
+    else {
+      document.body.style.overflowY = "visible";
+    }
+  }, [isModalVisibile])
+
   return (
-    <div className="App">
+    <div className="App" >
       {showScrollTopButton && <IoMdArrowDropupCircle onClick={handleArrowUpClick} className="arrow-icon"/>}
-      <Navbar filmSection={filmSection}/>
+      <Navbar filmSection={filmSection} setModalVisibility={setModalVisibility}/>
+      {isModalVisibile && <MainModal setModalVisibility={setModalVisibility} movieData={movieData}/>}
       <MainInput inputValue={inputValue} movieData={movieData} filmSection={filmSection} onHandleSubmit={onHandleSubmit} setInputValue={setInputValue}/>
-      <MainSection setMovieID={setMovieID} filmSection={filmSection}/>
+      <MainSection setMovieID={setMovieID} filmSection={filmSection} setModalVisibility={setModalVisibility}/>
       <MovieEntity movieData={movieData} myRef={filmSection}/>
     </div>
   );

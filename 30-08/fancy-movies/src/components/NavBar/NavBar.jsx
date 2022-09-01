@@ -1,13 +1,14 @@
 import './index.css';
 
-export default function Navbar({ filmSection }) {
+export default function Navbar({ filmSection, setModalVisibility }) {
 
     const handleOnClickLink = () => {
         window.scrollTo({
             top: filmSection.current.offsetTop,
             left: 0,
             behavior: "smooth"
-          })
+          });
+          setModalVisibility(false);
     }
 
     return (
