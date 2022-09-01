@@ -55,7 +55,7 @@
     z-index: -1;
     padding: 20px;
     height: 80%;
-    
+    cursor: pointer;
     color: rgba(255, 255, 255, 0);
     text-transform: uppercase;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.387);
@@ -71,6 +71,12 @@
     width: 100%;
     object-fit: cover;
     opacity: 0.8;    
+    transition: all 0.45s;
+}
+
+.MainCard_topRated:hover img {
+    opacity: 1;
+    transform: scale(1.025);
 }
 
 .MainCard_topRated span {
