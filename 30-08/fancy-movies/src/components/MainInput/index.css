@@ -4,10 +4,11 @@
   display: flex;
   gap: 10px;
   position: fixed;
-  z-index: 99;
+  z-index: 9998;
   top: 20px;
   left: calc(50% - 37px);
   transition: all .35s;
+  display: none;
 }
 
 .MainInput select {

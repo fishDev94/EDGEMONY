@@ -1,18 +1,28 @@
 import { useState, useEffect, useRef } from 'react';
 import './index.css';
 
-const MainInput = ({onHandleSubmit}) => {
+const MainInput = ({onHandleSubmit, filmSection}) => {
   const inputRef = useRef(null);
+  const mainInput = useRef(null);
   const [isActive, setActive] = useState(false);
 
   useEffect(() => {
     inputRef.current.focus()
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+    if (window.scrollY >= filmSection.current.offsetTop - 100) { 
+     mainInput.current.style.display = "flex";
+    } else {
+      mainInput.current.style.display = "none";
+    }
+    })
+  }, [])
 
 
   return (
-    <div className={`MainInput ${isActive && 'active'}`} >
+    <div ref={mainInput} className={`MainInput ${isActive && 'active'}`} >
       <select ref={inputRef} onChange={onHandleSubmit} type="text" >
       <option value="324668">Jason Bourne</option>
       <option value="1271" >300</option>

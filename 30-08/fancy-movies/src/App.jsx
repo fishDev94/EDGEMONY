@@ -5,6 +5,7 @@ import { GET } from './utils/api';
 import { IoMdArrowDropupCircle } from 'react-icons/io';
 import './App.css';
 import MainSection from './components/MainSection';
+import Navbar from './components/NavBar/NavBar';
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -13,14 +14,14 @@ function App() {
   const filmSection = useRef(null);
   const [showScrollTopButton, setShowScrollTopButton] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
         window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
             setShowScrollTopButton(true);
         } else {
             setShowScrollTopButton(false);
         }});
-    }, [])
+  }, [])
 
   useEffect(() => {
     GET('movie', movieID)
@@ -48,7 +49,8 @@ function App() {
   return (
     <div className="App">
       {showScrollTopButton && <IoMdArrowDropupCircle onClick={handleArrowUpClick} className="arrow-icon"/>}
-      <MainInput inputValue={inputValue} movieData={movieData} onHandleSubmit={onHandleSubmit} setInputValue={setInputValue}/>
+      <Navbar filmSection={filmSection}/>
+      <MainInput inputValue={inputValue} movieData={movieData} filmSection={filmSection} onHandleSubmit={onHandleSubmit} setInputValue={setInputValue}/>
       <MainSection setMovieID={setMovieID} filmSection={filmSection}/>
       <MovieEntity movieData={movieData} myRef={filmSection}/>
     </div>
