@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react'
+import {useState, useEffect, useRef } from 'react'
 import MovieEntity from './components/MovieEntity'
 import MainInput from './components/MainInput'
 import { GET } from './utils/api'; 

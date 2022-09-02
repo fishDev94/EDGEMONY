@@ -20,8 +20,6 @@ export default function MainModal({movieData, setModalVisibility}) {
         release_date,
       } = movieData;
 
-console.log(movieData)
-
     return (
         <div className={className}>
             <div className="MainModal__container" >
