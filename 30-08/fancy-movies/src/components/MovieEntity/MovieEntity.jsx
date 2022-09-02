@@ -42,5 +42,5 @@ const MovieEntity = ({movieData, myRef }) => {
   )
 }
 
-export default MovieEntity;
+export default React.memo(MovieEntity);
 

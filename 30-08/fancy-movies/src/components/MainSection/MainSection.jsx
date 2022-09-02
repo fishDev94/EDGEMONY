@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { GET } from '../../utils/api'
 import MainCard from '../MainCard';
 import CardList from '../CardList/CardList';
 import './index.css';
 
-export default function MainSection({ setMovieID, filmSection, setModalVisibility }){
+export default memo(function MainSection({ setMovieID, filmSection, setModalVisibility }){
     const [movieLists, setMovieLists] = useState({
       topRated: [{}],
       popular: [{}],
       upcoming: [{}],
     });
+    
     const [filteredTopRated, setFilteredTopRated] = useState([]);
 
     useEffect(() => {
@@ -41,4 +42,4 @@ export default function MainSection({ setMovieID, filmSection, setModalVisibilit
             </div>
         </div>
     )
-}
+})

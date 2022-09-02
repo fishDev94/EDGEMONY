@@ -1,6 +1,7 @@
 import './index.css';
+import { memo } from 'react';
 
-export default function Navbar({ filmSection, setModalVisibility }) {
+export default memo(function Navbar({ filmSection, setModalVisibility }) {
 
     const handleOnClickLink = () => {
         window.scrollTo({
@@ -19,4 +20,4 @@ export default function Navbar({ filmSection, setModalVisibility }) {
             </ul>
         </div>
     )
-};
+});
