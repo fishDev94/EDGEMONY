@@ -3,15 +3,16 @@ import { GET } from '../../utils/api'
 import MainCard from '../MainCard';
 import CardList from '../CardList/CardList';
 import './index.css';
+import loader from '../../assets/loader.gif'
 
 export default memo(function MainSection({ setMovieID, filmSection, setModalVisibility }){
     const [movieLists, setMovieLists] = useState({
-      topRated: [{}],
-      popular: [{}],
-      upcoming: [{}],
+      topRated: [{placeholder: loader}],
+      popular: [{placeholder: loader}],
+      upcoming: [{placeholder: loader}],
     });
     
-    const [filteredTopRated, setFilteredTopRated] = useState([]);
+    const [filteredTopRated, setFilteredTopRated] = useState([{placeholder: loader}]);
 
     useEffect(() => {
       GET('movie', 'popular', '&language=en-US&page=1')
@@ -31,8 +32,9 @@ export default memo(function MainSection({ setMovieID, filmSection, setModalVisi
 
     return (
         <div className="MainSection">
+          <div className="MainSection_background" />
           <div className="MainSection_background--overlay" />
-            <div className="MainSection_background" />
+          <div className="MainSection_background--halfoverlay" />
             <MainCard data={movieLists.popular[0]} setMovieID={setMovieID} filmSection={filmSection} className="MainCard_popular" />
             <div className="MainSection_content">
             <h2>Top Rated:</h2>

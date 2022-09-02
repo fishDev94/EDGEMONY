@@ -3,18 +3,19 @@
     top: 0;
     left: 0;
     z-index: 9998;
-    color: white;
+    color: rgba(255, 255, 255, 0.898);
     width: 100%;
     height: 100vh;
-    background-color:rgb(50, 50, 50);
+    background-color:rgba(41, 41, 41, 0.678);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
-    align-items: center;
-   
-   
+    align-items: center; 
 }
 
-
+.MainModal .MainCard_popular {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.211);
+}
 
 .MainModal__container {
     position: relative;
@@ -32,23 +33,109 @@
     opacity: 0;
 }
 
+.MainModal__container-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    z-index: -3;
+    filter: blur(1px);
+    opacity: 0.7;
+} 
+
+.MainModal__container-background_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+background: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0, 0, 0, 0.791) 98%);
+} 
+
+.MainModal__container-background_halfoverlay {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 90%;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 49%, rgba(0,0,0,0) 92%);
+}
+
 .MainModal.open .MainModal__container {
     transform: scale(1);
     opacity: 1;
 }
 
 .MainModal__info {
-    align-self: flex-start;
     
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    gap: 20px;
     padding: 40px;
+}
+
+.MainModal__info_container_title {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.MainModal__info_title {
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+}
+
+.MainModal__tagline {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgb(178, 178, 178)
+}
+
+.MainModal__info p {
+    padding: 0;
+    margin: 0;
+}
+
+.MainModal__info_genres {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.MainModal__info_genres li {
+    background-color: rgba(255, 255, 255, 0.233);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.MainModal__description {
+    line-height: 1.5;
 }
 
 .MainModal__info .release {
     text-align: right;
+    margin: 0;
+    padding: 0;
 }
 
 .MainModal__info .release::before {
-    content: "Release Data:";
+    content: "Release Data: ";
     color: rgba(255, 255, 255, 0.533);
 }
 
