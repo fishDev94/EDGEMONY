@@ -8,7 +8,7 @@ export default memo(function MainCard({ className, data, setMovieID, style={},ti
     const handleOnClick = useCallback(() => {
     setMovieID(id);
     setModalVisibility(true)
-    }, [id])
+    }, [setMovieID, setModalVisibility, id])
 
 
     return (

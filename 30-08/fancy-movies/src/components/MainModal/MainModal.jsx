@@ -26,7 +26,7 @@ export default function MainModal({movieData, setModalVisibility}) {
                 <div className="MainModal__container-background" style={{backgroundImage: `url("https://image.tmdb.org/t/p/original/${movieData.backdrop_path}")` }} />
                 <div className="MainModal__container-background_overlay" />
                 <div className="MainModal__container-background_halfoverlay" />
-                <MainCard style={{height: "100%"}} titleStyle={{display: "none"}} data={movieData} className="MainCard_popular"/>
+                <MainCard style={{height: "100%", opacity:"1"}} titleStyle={{display: "none"}} data={movieData} className="MainCard_popular"/>
                 <div className="MainModal__info">
                     <div className="MainModal__info_container_title">
                         <h2 className='MainModal__info_title'>{title}</h2>

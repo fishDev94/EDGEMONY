@@ -7,3 +7,12 @@ const GET = async(type, specific, ext="") => {
 }
 
 export { GET };
+
+// search link = https://api.themoviedb.org/3/search/companyAPI_KEY&query=film&page=1
+
+// type = "search";
+// specific ="company";
+// ext= `&query=${searchQuery}&page=${pageNumber}`
+// pageNumber = "1";
+
+// result= `https://api.themoviedb.org/3/${type}/${specific}${API_KEY}${ext}`
