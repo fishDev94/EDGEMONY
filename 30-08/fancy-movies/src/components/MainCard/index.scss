@@ -1,9 +1,9 @@
+@import '../../styles/_variables';
+@import '../../styles/_mixins';
+
 .MainCard_popular {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     position: relative;
+    @include flex-container($direction: column, $align: center, $justify: space-between);
     z-index: 0;
     flex: 0 0 auto;
     padding: 20px;
@@ -12,7 +12,7 @@
     height: 80%;
     color: white;
     text-transform: uppercase;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.387);
+    text-shadow: $box-shadow;
     background-color: black;
 
     h3 {
@@ -31,9 +31,8 @@
     }
 
     span {
+        @include flex-container($gap: 5px);
         align-self: flex-end;
-        display: flex;
-        gap: 5px;
         text-transform: none;
         font-weight: bold;
 
@@ -46,10 +45,7 @@
 
 
 .MainCard_topRated {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-container($direction: column, $align: center, $justify: space-between);
     position: relative;
     flex: 0 0 auto;
     width: 180px;
@@ -59,7 +55,7 @@
     cursor: pointer;
     color: rgba(255, 255, 255, 0);
     text-transform: uppercase;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.387);
+    text-shadow: $box-shadow;
     background-color: black;
 
     img {

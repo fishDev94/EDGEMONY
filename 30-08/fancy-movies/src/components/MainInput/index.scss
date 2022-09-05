@@ -1,3 +1,5 @@
+@import '../../styles/_variables';
+
 .MainInput {
   height: 50px;
   width: 0;
@@ -11,7 +13,7 @@
   display: none;
 
   select {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    box-shadow: $box-shadow;
     padding: 12px;
     border: 0;
     outline: none;
@@ -23,7 +25,7 @@
   }
 
   button {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    box-shadow: $box-shadow;
     border: 0;
     width: 54px;
     height: 100%;

@@ -1,7 +1,7 @@
+@import '../../styles/_mixins';
+
 .NavBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-container($justify: space-between, $align: center);
     width: 100%;
     box-sizing: border-box;
     position: absolute;
@@ -18,8 +18,7 @@
     }
 
     &_list {
-        display: flex;
-        align-items: center;
+        @include flex-container($align: center);
         list-style: none;
         padding: 0;
         margin: 0;
@@ -27,8 +26,7 @@
 
         li {
             padding: 0 20px;
-            display: flex;
-            align-items: center;
+            @include flex-container($align: center);
             height: 100%;
             color: rgb(233, 233, 233);
             cursor: pointer;
@@ -41,8 +39,7 @@
     }
 
     &-inputcontainer {
-        display: flex;
-        align-items: center;
+        @include flex-container($align: center);
         position: relative;
     }
 
@@ -71,10 +68,8 @@
     }
 
     .search_results {
-        display: flex;
-        flex-direction: column;
+        @include flex-container($direction: column, $gap: 15px);
         position: absolute;
-        gap: 15px;
         padding: 15px;
         top: 45px;
         left: 40px;
@@ -84,10 +79,8 @@
         height: 0;
 
         &-list {
-            display: flex;
-            flex-direction: column;
+            @include flex-container($direction: column, $gap: 6px);
             margin: 0;
-            gap: 6px;
             padding: 0;
         }
 
@@ -113,9 +106,7 @@
     }
 
     .list-results_button-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include flex-container($justify: space-between, $align: center);
     }
     
     .list-results-btn {

@@ -1,16 +1,13 @@
+@import '../../styles/_mixins';
+
 .MainSection {
     height: 100vh;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   gap: 20px;
+   @include flex-container ($justify: center, $align: center, $gap: 20px);
 
    &_content {
     position: relative;
     z-index: 999;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    @include flex-container ($direction: column, $gap: 10px);
     height: 83.8%;
     width: 60%;
     color: white;

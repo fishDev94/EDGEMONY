@@ -1,3 +1,5 @@
+@import '../../styles/_mixins';
+
 .MovieEntity {
   display: flex;
   background-color: rgb(26, 0, 45);
@@ -5,10 +7,7 @@
   text-transform: uppercase;
 
   &__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
+    @include flex-container($direction: column, $justify: space-between, $align: flex-end);
     width: 22%;
     padding: 20px;
 
@@ -57,8 +56,7 @@
   }
 
   &__book {
-    display: flex;
-    flex-direction: column-reverse;
+    @include flex-container($direction: column-reverse);
     width: 22%;
 
     &--btn {
