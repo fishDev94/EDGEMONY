@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, memo } from 'react';
-import './index.css';
+import './index.scss';
 
 const MainInput = ({onHandleSubmit, filmSection}) => {
   const inputRef = useRef(null);

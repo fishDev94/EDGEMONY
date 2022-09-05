@@ -3,7 +3,7 @@ import MovieEntity from './components/MovieEntity'
 import MainInput from './components/MainInput'
 import { GET } from './utils/api'; 
 import { IoMdArrowDropupCircle } from 'react-icons/io';
-import './App.css';
+import './App.scss';
 import MainSection from './components/MainSection';
 import Navbar from './components/NavBar/NavBar';
 import MainModal from './components/MainModal/MainModal';

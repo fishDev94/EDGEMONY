@@ -1,6 +1,6 @@
 import MainCard from '../MainCard'
 import { memo } from 'react';
-import './index.css'
+import './index.scss'
 
 export default memo(function CardList ({data, className, setMovieID, filmSection, setModalVisibility}) {
     

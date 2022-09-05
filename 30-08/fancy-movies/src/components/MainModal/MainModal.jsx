@@ -1,4 +1,4 @@
-import './index.css';
+import './index.scss';
 import MainCard from '../MainCard'
 import { useEffect ,useState } from 'react';
 

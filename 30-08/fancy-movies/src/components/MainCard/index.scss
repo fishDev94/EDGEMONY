@@ -1,0 +1,87 @@
+.MainCard_popular {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 0;
+    flex: 0 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 30%;
+    height: 80%;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.387);
+    background-color: black;
+
+    h3 {
+        margin: 0;
+        padding: 0;
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        z-index: -1;   
+        opacity: 0.6; 
+    }
+
+    span {
+        align-self: flex-end;
+        display: flex;
+        gap: 5px;
+        text-transform: none;
+        font-weight: bold;
+
+        &::before {
+            content: "Rating:";
+            font-weight: 400;
+        }
+    }
+}
+
+
+.MainCard_topRated {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex: 0 0 auto;
+    width: 180px;
+    z-index: -1;
+    padding: 20px;
+    height: 80%;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0);
+    text-transform: uppercase;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.387);
+    background-color: black;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.8;    
+        transition: all 0.45s;
+
+        &:hover {
+            opacity: 1;
+            transform: scale(1.025);
+        }
+    }
+
+    span {
+        color: white;
+        font-weight: bold;
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.58);
+    }
+}

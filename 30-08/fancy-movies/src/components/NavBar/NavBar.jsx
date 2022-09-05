@@ -1,10 +1,9 @@
-import './index.css';
+import './index.scss';
 import { GET } from '../../utils/api'
 import { memo, useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 export default memo(function Navbar({ callback, setMovieID, filmSection, setModalVisibility }) {
-    const [value, setValue] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [pageNumber, setPageNumber] = useState(1);
     const [results, setResults] = useState({results: []});
@@ -12,15 +11,13 @@ export default memo(function Navbar({ callback, setMovieID, filmSection, setModa
 
     const handleOnClickLink = () => {
         callback()
-        
+        setSearchQuery('')
     }
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        console.log(value);
-        
-        setSearchQuery(value);
-        setValue('');
+        setMovieID(results.results[0].id)
+        callback()
     }
 
     useEffect(() => {
@@ -35,12 +32,15 @@ export default memo(function Navbar({ callback, setMovieID, filmSection, setModa
             }
         })
 
+        searchQuery.length === 0 && setActive(false);
+
         return window.removeEventListener('click', (e)=> {
             onEventListener(e)
         })
-    }, [])
+    }, [searchQuery])
 
     useEffect(() => {
+        searchQuery.length > 1 &&
         GET('search', 'movie', `&query=${searchQuery}&page=${pageNumber}&include_adult=false`)
         .then(data => {setResults(data)})
     }, [searchQuery, pageNumber]);
@@ -57,7 +57,7 @@ export default memo(function Navbar({ callback, setMovieID, filmSection, setModa
                 <ul className='search_results-list'>
                    {results.results && results.results.length > 1
                    ? results.results.map((item, index)=> <li key={index} onClick={(e) => {setMovieID(e.target.id); callback()}} id={item.id}>{item.title}</li>)
-                    : <p>No results found...</p>
+                    : <p className="no-results">No results found...</p>
                     }
                 </ul>
                 <div className="list-results_button-container">

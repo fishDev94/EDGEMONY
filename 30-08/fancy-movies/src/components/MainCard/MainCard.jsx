@@ -1,4 +1,4 @@
-import './index.css';
+import './index.scss';
 import { memo, useCallback } from 'react';
 
 export default memo(function MainCard({ className, data, setMovieID, style={},titleStyle={}, setModalVisibility=()=>{} })

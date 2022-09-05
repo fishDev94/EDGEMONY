@@ -2,7 +2,7 @@ import { useState, useEffect, memo } from 'react';
 import { GET } from '../../utils/api'
 import MainCard from '../MainCard';
 import CardList from '../CardList/CardList';
-import './index.css';
+import './index.scss';
 import loader from '../../assets/loader.gif'
 
 export default memo(function MainSection({ setMovieID, filmSection, setModalVisibility }){
