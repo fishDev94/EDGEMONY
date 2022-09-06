@@ -23,8 +23,8 @@ export default memo(function Hero () {
     }]
     });
 
-    const touchStartX = useRef({});
-    const touchEndX = useRef({});
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     const handleOnNextButtonClick = () => {
         setIndex(prev => prev + 1)
@@ -44,13 +44,12 @@ export default memo(function Hero () {
     }
 
     const change = () => {
-        if (touchStartX.current.value > touchEndX.current.value && counter.current.value < 19) {
+        if (touchStartX > touchEndX && counter.current.value < 19) {
             setIndex(prev => prev + 1)
             setValuePage(prev => prev + 1); 
             counter.current.value += 1;
         } 
-        
-        if (touchStartX.current.value < touchEndX.current.value && counter.current.value > 0) {
+        if (touchStartX < touchEndX && counter.current.value > 0) {
             setIndex(prev => prev - 1)
             setValuePage(prev => prev - 1); 
             counter.current.value -= 1;
@@ -58,12 +57,13 @@ export default memo(function Hero () {
     }
 
     useEffect(() => {
-
         const onTouchStart = (e) => {
-            touchStartX.current.value = e.changedTouches[0].clientX;
+            touchStartX = e.changedTouches[0].clientX;
         }
 
-        const onTouchEnd = (e) => touchEndX.current.value = e.changedTouches[0].clientX;
+        const onTouchEnd = (e) => {
+            touchEndX = e.changedTouches[0].clientX
+        };
 
         btnContainer.current.addEventListener('touchstart', (e) => {
             onTouchStart(e) 
