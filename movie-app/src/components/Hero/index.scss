@@ -67,16 +67,18 @@
     .rounded-btn-container {
         position: absolute;
         bottom: 8px;
-        @include flex-container($gap: 4px, $justify: center);
+        @include flex-container($gap: 6px, $justify: center);
         width: 100%;
         z-index: 3;
 
         .btn-rounded {
             flex: 0 0 auto;
             width: 8px;
-            height: 12px;
+            height: 8px;
+            margin: 0;
+            padding: 0;
             border-radius: 100%;
-            transform: scale(0.8);
+            transform: scale(0.9);
             border: none;
             background-color: rgba(255, 255, 255, 0.395);
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.519);

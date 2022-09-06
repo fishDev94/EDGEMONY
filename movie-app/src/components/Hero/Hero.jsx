@@ -63,25 +63,16 @@ export default memo(function Hero () {
 
         const onTouchEnd = (e) => {
             touchEndX = e.changedTouches[0].clientX
+            change();
         };
 
-        btnContainer.current.addEventListener('touchstart', (e) => {
-            onTouchStart(e) 
-        })
+        btnContainer.current.addEventListener('touchstart', onTouchStart)
 
-        btnContainer.current.addEventListener('touchend', (e) => {
-            onTouchEnd(e)
-            change();    
-        })
+        btnContainer.current.addEventListener('touchend', onTouchEnd)
 
         return () => {
-            btnContainer.current.removeEventListener('touchstart', (e) => {
-                onTouchStart(e)
-            });
-            btnContainer.current.removeEventListener('touchend', (e) => {
-                onTouchEnd(e)
-                change();    
-            })
+            btnContainer.current.removeEventListener('touchstart', onTouchStart)
+            btnContainer.current.removeEventListener('touchend', onTouchEnd)
         }
     }, [])
 
