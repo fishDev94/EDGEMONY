@@ -2,22 +2,30 @@
 
 .Hero {
     position: relative;
-    @include flex-container($direction: column, $justify: center);
-  
+    @include flex-container($direction: row, $justify: flex-start, $align: center);
+    width: 100vw;
+    overflow-x: hidden;
+
     .Hero-img {
-        height: 400px;
-        width: 100%;
+        position: relative;
+        right: 0vw;
+        height: 250px;
+        width: 100vw;
+        flex: 0 0 auto;
         object-fit: cover;
         object-position: top;
         opacity: 0.8;
+        transition: all .35s ease-in-out;
     }
 
     h1 {
         position: absolute;
+        top: 20px;
         z-index: 1;
         flex: 0 0 auto;
-        margin-left: 80px;
-        font-size: 2.5rem;
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
         font-weight: 800;
         text-shadow: 0 0 16px rgba(0, 0, 0, 0.764);
     }
@@ -26,14 +34,14 @@
         @include flex-container($justify: space-between, $align: center);
         position: absolute;
         top: 0;
+        z-index: 2;
         height: 100%;
-        width: 100vw;
-        box-sizing: border-box;
+        width: 100%;
 
         button {
             background: none;
             border: none;
-            width: 5%;
+            width: 15%;
 
             &:nth-child(1):hover {
                 height: 100%;
@@ -44,7 +52,6 @@
 
             &:nth-child(2):hover {
                 height: 100%;
-                
                 background: rgb(0,0,0);
                 background: linear-gradient(270deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%);
             }
@@ -56,4 +63,127 @@
             font-size: 2rem;
         }
     }
+
+    .rounded-btn-container {
+        position: absolute;
+        bottom: 8px;
+        @include flex-container($gap: 4px, $justify: center);
+        width: 100%;
+        z-index: 3;
+
+        .btn-rounded {
+            flex: 0 0 auto;
+            width: 8px;
+            height: 12px;
+            border-radius: 100%;
+            transform: scale(0.8);
+            border: none;
+            background-color: rgba(255, 255, 255, 0.395);
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.519);
+            transition: all .25s;
+
+            &.active {
+                background-color: rgba(255, 255, 255, 0.801);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width:769px) {
+
+    .Hero {
+        position: relative;
+        @include flex-container($direction: row, $justify: flex-start, $align: center);
+        width: 100vw;
+        overflow-x: hidden;
+    
+        .Hero-img {
+            position: relative;
+            right: 0vw;
+            height: 400px;
+            width: 100vw;
+            flex: 0 0 auto;
+            object-fit: cover;
+            object-position: top;
+            opacity: 0.8;
+            transition: all .35s ease-in-out;
+        }
+
+        h1 {
+            position: absolute;
+            z-index: 1;
+            flex: 0 0 auto;
+            margin-left: 60px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.764);
+        }
+
+        .btn-container {
+            @include flex-container($justify: space-between, $align: center);
+            position: absolute;
+            top: 0;
+            height: 100%;
+            min-width: 100vw;
+            box-sizing: border-box;
+
+            button {
+                background: none;
+                border: none;
+                width: 5%;
+
+                &:nth-child(1):hover {
+                    height: 100%;
+                    
+                    background: rgb(0,0,0);
+                    background: linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0,0,0,0) 100%);
+                }
+
+                &:nth-child(2):hover {
+                    height: 100%;
+                    background: rgb(0,0,0);
+                    background: linear-gradient(270deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%);
+                }
+            }
+
+            .hero-arrow {
+                color: white;
+                padding: 0;
+                font-size: 2rem;
+            }
+        }
+
+        .rounded-btn-container {
+            position: absolute;
+            bottom: 8px;
+            @include flex-container($gap: 10px, $justify: center);
+            width: 100%;
+            z-index: 3;
+
+            .btn-rounded {
+                flex: 0 0 auto;
+                width: 15px;
+                height: 15px;
+                border-radius: 100%;
+                border: none;
+                background-color: rgba(255, 255, 255, 0.395);
+                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.519);
+                transition: all .25s;
+                
+                &:focus {
+                    background-color: rgba(255, 255, 255, 0.819);
+                }
+
+                &:focus-visible {
+                    outline: none;
+                    background-color: rgba(255, 255, 255, 0.819);
+                }
+
+                &.active {
+                    background-color: rgba(255, 255, 255, 0.801);
+                }
+            }
+        }
+    }
+
 }

@@ -9,36 +9,74 @@
     padding: 0 30px;
 
     &__link {
-        @include flex-container ($gap: 30px, $align: center);
-        width: 100%;
+        height: 0;
+        overflow: hidden;
 
-        li {
-            @include flex-container($align: center, $gap: 4px);
-            cursor: pointer;
-        }
+        &.active {
+            @include flex-container ($direction: column, $gap: 30px, $align: center);
+            width: 100%;
+            height: auto;
+            top: 7.8vh;
+            left: 0;
+            padding: 20px 0;
+            z-index: 3;
+            background-color: $backgroundColor-default;
+            position: absolute;
+            transition: all .35s;
 
-        .arrow {
-            color: rgba(255, 255, 255, 0.522);
+            li {
+                @include flex-container($align: center, $gap: 4px);
+                cursor: pointer;
+            }
+    
+            .arrow {
+                color: rgba(255, 255, 255, 0.522);
+            }
         }
     }
+
+    
 
     #logo-70 {
      width: 60px;
     }
 
-    &__searchbar-container {
-        position: relative;
+    .browse-btn {
         @include flex-container($align: center);
+        position: absolute;
+        z-index: 3;
+        left: 30%;
+        .arrow {
+            transform: rotate(180deg);
+            color: rgba(255, 255, 255, 0.522);
+            transition: all .5s;
+        }
+
+        &.active {
+            .arrow {
+                transform: rotate(0deg);
+            }
+        }
+    }
+
+    &__searchbar-container {
+        position: absolute;
+        right: 0;
+        @include flex-container($align: center, $justify: flex-end, $direction: row-reverse);
         flex: 0 0 auto;
+        margin: 0 5%;
+        z-index: 3;
+        box-sizing: border-box;
 
         .search-icon {
             font-size: 1.6rem;
             color: rgb(205, 205, 205);
             cursor: pointer;
-
+            transition: all 0.5s;
+            
             &.active {
                 position: absolute;
-                left: 5px;  
+                left: 6px;  
             }
 
             &:hover {
@@ -48,6 +86,7 @@
     } 
 
     &__searchbar {
+        margin: 0 auto;
         width: 0;
         border: 0;
         outline: 0;
@@ -62,7 +101,7 @@
         }
 
         &.active {
-            width: 200px;
+            width: 78vw;
             background-color: $DarkBackground;
             border: 1px solid rgba(255, 255, 255, 0.366);
             border-radius: 0;
@@ -75,4 +114,94 @@
         }
     }
 
+}
+
+@media only screen and (min-width:769px) {
+    .NavBar {
+        height: 8vh;
+        @include flex-container ($align: center, $justify: space-between, $gap: 30px);
+        background-color: $backgroundColor-default;
+        color: $defaultColorText;
+        padding: 0 30px;
+    
+        &__link {
+            @include flex-container ($gap: 30px, $align: center);
+            width: 100%;
+            position: relative;
+            top: auto;
+            left: auto;
+            padding: 0;
+            height: auto;
+            
+            li {
+                @include flex-container($align: center, $gap: 4px);
+                cursor: pointer;
+            }
+    
+            .arrow {
+                color: rgba(255, 255, 255, 0.522);
+            }
+        }
+    
+        #logo-70 {
+         width: 60px;
+        }
+
+        .browse-btn {
+            display: none;
+        }
+    
+        &__searchbar-container {
+            width: auto;
+            position: relative;
+            @include flex-container($align: center);
+            flex: 0 0 auto;
+            margin: 0;
+    
+            .search-icon {
+                position: static;
+                font-size: 1.6rem;
+                color: rgb(205, 205, 205);
+                cursor: pointer;
+    
+                &.active {
+                    position: absolute;
+                    left: 5px;  
+                }
+    
+                &:hover {
+                    color: white;
+                }
+            }
+        } 
+    
+        &__searchbar {
+            width: 0;
+            border: 0;
+            outline: 0;
+            background-color: rgba(255, 255, 255, 0);
+            padding: 10px;
+            outline: none;
+            transition: all 0.35s;
+    
+            &::placeholder {
+                transition: all 0.35s;
+                opacity: 0;
+            }
+    
+            &.active {
+                width: 200px;
+                background-color: $DarkBackground;
+                border: 1px solid rgba(255, 255, 255, 0.366);
+                border-radius: 0;
+                padding-left: 34px;
+                color: white;
+    
+                &::placeholder {
+                    opacity: 1;
+                }
+            }
+        }
+    
+    }
 }

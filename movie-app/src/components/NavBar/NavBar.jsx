@@ -2,15 +2,24 @@ import './index.scss';
 import {logoSvg} from '../../constants/index'
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoMdArrowDropdown } from 'react-icons/io'
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 
-export default function NavBar () {
+export default memo(function NavBar () {
     const searchInput = useRef(null);
     const [isActive, setIsActive] = useState(false);
+    const [menuIsActive, setMenuIsActive] = useState(false);
 
     const handleOnClick = () => {
         setIsActive(true);
         searchInput.current.focus();
+    }
+
+    const browseClick = () => {
+        if (menuIsActive) {
+            setMenuIsActive(false)
+        } else {
+        setMenuIsActive(true);
+        }
     }
 
     useEffect(() => {
@@ -32,7 +41,8 @@ export default function NavBar () {
             <div className='logo'>
                 {logoSvg}
             </div>
-            <ul className="NavBar__link">
+            <h3 onClick={browseClick} className={menuIsActive ? "browse-btn active" : "browse-btn"}>Browse <IoMdArrowDropdown className="arrow"/></h3>
+            <ul className={menuIsActive ? "NavBar__link active" : "NavBar__link"}>
                 <li>Home</li>
                 <li>Category <IoMdArrowDropdown className="arrow"/></li>
                 <li>My Stuff</li>
@@ -44,4 +54,4 @@ export default function NavBar () {
             </div>
         </div>
     )
-}
+})
