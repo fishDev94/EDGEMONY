@@ -1,0 +1,78 @@
+@import '../../styles/_variables';
+@import '../../styles/_mixins';
+
+.NavBar {
+    height: 8vh;
+    @include flex-container ($align: center, $justify: space-between, $gap: 30px);
+    background-color: $backgroundColor-default;
+    color: $defaultColorText;
+    padding: 0 30px;
+
+    &__link {
+        @include flex-container ($gap: 30px, $align: center);
+        width: 100%;
+
+        li {
+            @include flex-container($align: center, $gap: 4px);
+            cursor: pointer;
+        }
+
+        .arrow {
+            color: rgba(255, 255, 255, 0.522);
+        }
+    }
+
+    #logo-70 {
+     width: 60px;
+    }
+
+    &__searchbar-container {
+        position: relative;
+        @include flex-container($align: center);
+        flex: 0 0 auto;
+
+        .search-icon {
+            font-size: 1.6rem;
+            color: rgb(205, 205, 205);
+            cursor: pointer;
+
+            &.active {
+                position: absolute;
+                left: 5px;  
+            }
+
+            &:hover {
+                color: white;
+            }
+        }
+    } 
+
+    &__searchbar {
+        width: 0;
+        border: 0;
+        outline: 0;
+        background-color: rgba(255, 255, 255, 0);
+        padding: 10px;
+        outline: none;
+        transition: all 0.35s;
+
+        &::placeholder {
+            transition: all 0.35s;
+            opacity: 0;
+        }
+
+        &.active {
+            width: 200px;
+            background-color: $DarkBackground;
+            border: 1px solid rgba(255, 255, 255, 0.366);
+            border-radius: 0;
+            padding-left: 34px;
+            color: white;
+
+            &::placeholder {
+                opacity: 1;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,8 @@
+@import './styles/_variables';
+
+.App {
+  text-align: center;
+  height: 100vh;
+  background-color: $MainBackground;
+  color: white;
+}
