@@ -53,6 +53,8 @@ export default memo(function NavBar() {
       ) {
         setIsActive(false);
         setSearchActive(false);
+        setSearchQuery("");
+        console.log("prova");
       }
     };
 
