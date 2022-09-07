@@ -1,4 +1,4 @@
-import './index.scss';
+import styles from './index.module.scss';
 import { useEffect, useState, useRef, Fragment, memo } from 'react';
 import { GET } from '../../utils/api'
 import { BASE_URL_IMG } from '../../constants';
@@ -23,9 +23,6 @@ export default memo(function Hero () {
     }]
     });
 
-    let touchStartX = 0;
-    let touchEndX = 0;
-
     const handleOnNextButtonClick = () => {
         setIndex(prev => prev + 1)
         setValuePage(prev => prev + 1);
@@ -43,20 +40,11 @@ export default memo(function Hero () {
         setValuePage(Number(e.target.id));
     }
 
-    const change = () => {
-        if (touchStartX > touchEndX && counter.current.value < 19) {
-            setIndex(prev => prev + 1)
-            setValuePage(prev => prev + 1); 
-            counter.current.value += 1;
-        } 
-        if (touchStartX < touchEndX && counter.current.value > 0) {
-            setIndex(prev => prev - 1)
-            setValuePage(prev => prev - 1); 
-            counter.current.value -= 1;
-        } 
-    }
-
     useEffect(() => {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const refBtn = btnContainer.current
+
         const onTouchStart = (e) => {
             touchStartX = e.changedTouches[0].clientX;
         }
@@ -66,13 +54,26 @@ export default memo(function Hero () {
             change();
         };
 
-        btnContainer.current.addEventListener('touchstart', onTouchStart)
+        const change = () => {
+            if (touchStartX > touchEndX && counter.current.value < 19) {
+                setIndex(prev => prev + 1)
+                setValuePage(prev => prev + 1); 
+                counter.current.value += 1;
+            } 
+            if (touchStartX < touchEndX && counter.current.value > 0) {
+                setIndex(prev => prev - 1)
+                setValuePage(prev => prev - 1); 
+                counter.current.value -= 1;
+            } 
+        }
 
-        btnContainer.current.addEventListener('touchend', onTouchEnd)
+        refBtn.addEventListener('touchstart', onTouchStart)
+
+        refBtn.addEventListener('touchend', onTouchEnd)
 
         return () => {
-            btnContainer.current.removeEventListener('touchstart', onTouchStart)
-            btnContainer.current.removeEventListener('touchend', onTouchEnd)
+            refBtn.removeEventListener('touchstart', onTouchStart)
+            refBtn.removeEventListener('touchend', onTouchEnd)
         }
     }, [])
 
@@ -82,19 +83,19 @@ export default memo(function Hero () {
     }, [])
 
     return (
-        <div ref={heroRef} className="Hero">
+        <div ref={heroRef} className={styles.Hero}>
             <h1>{popularList.results[myIndex].title}</h1>
             { popularList.results.map((item, index) => 
                 <Fragment key={index}>
-                    <img key={index} ref={heroImgRef} style={{right:  valuePage * 100 + "vw" }}className="Hero-img" src={`${BASE_URL_IMG}${item.backdrop_path}`} alt="hero-img" />
+                    <img key={index} ref={heroImgRef} style={{right:  valuePage * 100 + "vw" }}className={styles.Hero_img} src={`${BASE_URL_IMG}${item.backdrop_path}`} alt="hero-img" />
                 </Fragment>
             )}
-            <div className="rounded-btn-container" >
-                {popularList.results.map((_, index) => <button key={index} onClick={handleOnPageHeroClick} ref={heroRoundPages} className={myIndex === index ? 'btn-rounded active' : 'btn-rounded'} id={index} />)}
+            <div className={styles.rounded_btn_container} >
+                {popularList.results.map((_, index) => <button key={index} onClick={handleOnPageHeroClick} ref={heroRoundPages} className={myIndex === index ? styles.btn_rounded + ' ' + styles.active : styles.btn_rounded} id={index} />)}
             </div>
-            <div ref={btnContainer} className="btn-container">
-                <button style={ myIndex === 0 ? {opacity: 0, pointerEvents: 'none' } : {opacity: 1, pointerEvents: 'all'}} onClick={handleOnBackButtonClick}><MdArrowBackIosNew className="hero-arrow"/></button>
-                <button style={ myIndex === popularList.results.length - 1 ? {opacity: 0, pointerEvents: 'none' } : {opacity: 1, pointerEvents: 'all'}} onClick={handleOnNextButtonClick}><MdArrowForwardIos className='hero-arrow'/></button>
+            <div ref={btnContainer} className={styles.btn_container}>
+                <button style={ myIndex === 0 ? {opacity: 0, pointerEvents: 'none' } : {opacity: 1, pointerEvents: 'all'}} onClick={handleOnBackButtonClick}><MdArrowBackIosNew className={styles.hero_arrow}/></button>
+                <button style={ myIndex === popularList.results.length - 1 ? {opacity: 0, pointerEvents: 'none' } : {opacity: 1, pointerEvents: 'all'}} onClick={handleOnNextButtonClick}><MdArrowForwardIos className={styles.hero_arrow}/></button>
             </div>
         </div>
     )

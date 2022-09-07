@@ -6,7 +6,7 @@
     width: 100vw;
     overflow-x: hidden;
 
-    .Hero-img {
+    .Hero_img {
         position: relative;
         right: 0vw;
         height: 250px;
@@ -30,7 +30,7 @@
         text-shadow: 0 0 16px rgba(0, 0, 0, 0.764);
     }
 
-    .btn-container {
+    .btn_container {
         @include flex-container($justify: space-between, $align: center);
         position: absolute;
         top: 0;
@@ -57,21 +57,21 @@
             }
         }
 
-        .hero-arrow {
+        .hero_arrow {
             color: white;
             padding: 0;
             font-size: 2rem;
         }
     }
 
-    .rounded-btn-container {
+    .rounded_btn_container {
         position: absolute;
         bottom: 8px;
         @include flex-container($gap: 6px, $justify: center);
         width: 100%;
         z-index: 3;
 
-        .btn-rounded {
+        .btn_rounded {
             flex: 0 0 auto;
             width: 8px;
             height: 8px;
@@ -99,7 +99,7 @@
         width: 100vw;
         overflow-x: hidden;
     
-        .Hero-img {
+        .Hero_img {
             position: relative;
             right: 0vw;
             height: 400px;
@@ -121,7 +121,7 @@
             text-shadow: 0 0 16px rgba(0, 0, 0, 0.764);
         }
 
-        .btn-container {
+        .btn_container {
             @include flex-container($justify: space-between, $align: center);
             position: absolute;
             top: 0;
@@ -148,21 +148,21 @@
                 }
             }
 
-            .hero-arrow {
+            .hero_arrow {
                 color: white;
                 padding: 0;
                 font-size: 2rem;
             }
         }
 
-        .rounded-btn-container {
+        .rounded_btn_container {
             position: absolute;
             bottom: 8px;
             @include flex-container($gap: 10px, $justify: center);
             width: 100%;
             z-index: 3;
 
-            .btn-rounded {
+            .btn_rounded {
                 flex: 0 0 auto;
                 width: 15px;
                 height: 15px;
@@ -176,7 +176,7 @@
                     background-color: rgba(255, 255, 255, 0.819);
                 }
 
-                &:focus-visible {
+                &:focus_visible {
                     outline: none;
                     background-color: rgba(255, 255, 255, 0.819);
                 }

@@ -23,25 +23,28 @@
             background-color: $backgroundColor-default;
             position: absolute;
             transition: all .35s;
-
-            li {
-                @include flex-container($align: center, $gap: 4px);
-                cursor: pointer;
-            }
     
             .arrow {
                 color: rgba(255, 255, 255, 0.522);
             }
         }
+
+        li {
+            @include flex-container($align: center, $gap: 4px);
+            cursor: pointer;
+            // height: 20px;
+            padding: 1px;
+            box-sizing: border-box;
+        }
     }
 
     
 
-    #logo-70 {
+    .logo_70 {
      width: 60px;
     }
 
-    .browse-btn {
+    .browse_btn {
         @include flex-container($align: center);
         position: absolute;
         z-index: 3;
@@ -59,7 +62,7 @@
         }
     }
 
-    &__searchbar-container {
+    &__searchbar_container {
         position: absolute;
         right: 0;
         @include flex-container($align: center, $justify: flex-end, $direction: row-reverse);
@@ -68,7 +71,7 @@
         z-index: 3;
         box-sizing: border-box;
 
-        .search-icon {
+        .search_icon {
             font-size: 1.6rem;
             color: rgb(205, 205, 205);
             cursor: pointer;
@@ -147,18 +150,18 @@
          width: 60px;
         }
 
-        .browse-btn {
+        .browse_btn {
             display: none;
         }
     
-        &__searchbar-container {
+        &__searchbar_container {
             width: auto;
             position: relative;
             @include flex-container($align: center);
             flex: 0 0 auto;
             margin: 0;
     
-            .search-icon {
+            .search_icon {
                 position: static;
                 font-size: 1.6rem;
                 color: rgb(205, 205, 205);

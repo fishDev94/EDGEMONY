@@ -1,8 +1,8 @@
-import './index.scss';
-import {logoSvg} from '../../constants/index'
+import styles from './index.module.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { useState, useRef, useEffect, memo } from 'react';
+import Logo from './Logo';
 
 export default memo(function NavBar () {
     const searchInput = useRef(null);
@@ -37,20 +37,20 @@ export default memo(function NavBar () {
     }, [])
 
     return (
-        <div className="NavBar">
-            <div className='logo'>
-                {logoSvg}
+        <div className={styles.NavBar}>
+            <div className={styles.logo}>
+                <Logo />
             </div>
-            <h3 onClick={browseClick} className={menuIsActive ? "browse-btn active" : "browse-btn"}>Browse <IoMdArrowDropdown className="arrow"/></h3>
-            <ul className={menuIsActive ? "NavBar__link active" : "NavBar__link"}>
+            <h3 onClick={browseClick} className={menuIsActive ? styles.browse_btn + " " + styles.active : styles.browse_btn}>Browse <IoMdArrowDropdown className={styles.arrow}/></h3>
+            <ul className={menuIsActive ? styles.NavBar__link + " " + styles.active : styles.NavBar__link}>
                 <li>Home</li>
-                <li>Category <IoMdArrowDropdown className="arrow"/></li>
+                <li>Category <IoMdArrowDropdown className={styles.arrow}/></li>
                 <li>My Stuff</li>
                 <li>About us</li>
             </ul>
-            <div className="NavBar__searchbar-container">
-                <AiOutlineSearch onClick={handleOnClick} className={`search-icon ${isActive ? 'active' : ''}`}/>
-                <input ref={searchInput} type="text" id="main_search" className={`NavBar__searchbar ${isActive ? 'active' : ''}`} placeholder='Search'/>
+            <div className={styles.NavBar__searchbar_container}>
+                <AiOutlineSearch onClick={handleOnClick} className={`${styles.search_icon} ${isActive ? styles.active : ''}`}/>
+                <input ref={searchInput} type="text" id="main_search" className={`${styles.NavBar__searchbar} ${isActive ? styles.active : ''}`} placeholder='Search'/>
             </div>
         </div>
     )
