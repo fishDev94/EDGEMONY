@@ -79,7 +79,7 @@ export default memo(function Hero () {
 
     useEffect(() => {
         GET('movie', 'popular', `&page=1&include_adult=false`)
-        .then(data => {setPopularList(data); console.log(data)})
+        .then(data => {setPopularList(data)})
     }, [])
 
     return (
