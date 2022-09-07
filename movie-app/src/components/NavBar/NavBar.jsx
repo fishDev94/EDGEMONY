@@ -52,6 +52,7 @@ export default memo(function NavBar() {
         e.target.tagName !== "svg"
       ) {
         setIsActive(false);
+        setSearchActive(false);
       }
     };
 
@@ -134,20 +135,20 @@ export default memo(function NavBar() {
           }`}
           placeholder="Search"
         />
+        <div
+          className={
+            isSerchActive
+              ? styles.results_container + " " + styles.active
+              : styles.results_container
+          }
+        >
+          <ul>
+            {results.results.map((item, index) => (
+              <li key={index}>{item.title}</li>
+            ))}
+          </ul>
+        </div>
       </form>
-      <div
-        className={
-          isSerchActive
-            ? styles.results_container + " " + styles.active
-            : styles.results_container
-        }
-      >
-        <ul>
-          {results.results.map((item, index) => (
-            <li key={index}>{item.title}</li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 });

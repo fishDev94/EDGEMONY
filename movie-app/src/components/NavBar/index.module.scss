@@ -72,7 +72,7 @@
     flex: 0 0 auto;
     margin: 0 5%;
     width: 90%;
-    z-index: 3;
+    z-index: 4;
     box-sizing: border-box;
     pointer-events: none;
 
@@ -143,9 +143,9 @@
 
   .results_container {
     position: absolute;
-    top: 8vh;
-    left: 0;
-    width: 100%;
+    top: 6vh;
+    left: -5vw;
+    width: 100vw;
     height: 0%;
     overflow: auto;
     z-index: 4;
@@ -163,9 +163,9 @@
 
       li {
         @include flex-container($justify: center, $align: center);
-        padding: 10px 0;
+        padding: 10px 15px;
         flex: 0 0 auto;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.151);
+        border-bottom: 1px solid rgba(197, 210, 255, 0.058);
       }
     }
   }
@@ -266,6 +266,17 @@
         &::placeholder {
           opacity: 1;
         }
+      }
+    }
+
+    .results_container {
+      top: 5vh;
+      right: 0;
+      left: auto;
+      width: 100%;
+
+      &.active {
+        height: auto;
       }
     }
   }
