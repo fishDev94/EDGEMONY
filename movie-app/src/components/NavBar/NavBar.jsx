@@ -55,6 +55,7 @@ export default memo(function NavBar() {
         setSearchActive(false);
         setSearchQuery("");
         console.log("prova");
+        console.log(e.target);
       }
     };
 

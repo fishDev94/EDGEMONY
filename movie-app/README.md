@@ -1,3 +1,7 @@
+# PREVIEW LINK
+
+This is the preview: https://movieapp-zeta-jade.vercel.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
