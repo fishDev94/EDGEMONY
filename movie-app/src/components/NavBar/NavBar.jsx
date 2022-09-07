@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
 import { AiOutlineSearch } from "react-icons/ai";
-import { IoMdArrowDropdown, IoMdClose } from "react-icons/io";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
 import { useState, useRef, useEffect, memo } from "react";
 import { GET } from "../../utils/api";
@@ -11,7 +11,7 @@ export default memo(function NavBar() {
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
+  // const [pageNumber, setPageNumber] = useState(1);
   const [results, setResults] = useState({ results: [] });
   const [isSerchActive, setSearchActive] = useState(false);
 
@@ -64,18 +64,18 @@ export default memo(function NavBar() {
       GET(
         "search",
         "movie",
-        `&query=${searchQuery}&page=${pageNumber}&include_adult=false`
+        `&query=${searchQuery}&page=1&include_adult=false`
       ).then((data) => {
         setResults(data);
       });
-  }, [searchQuery, pageNumber]);
+  }, [searchQuery]);
 
   useEffect(() => {
     searchQuery.length === 0 && setSearchActive(false);
     isActive
       ? (document.body.style.overflow = "hidden")
       : (document.body.style.overflow = "auto");
-  }, [searchQuery]);
+  }, [searchQuery, isActive]);
 
   return (
     <div className={styles.NavBar}>
