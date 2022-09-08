@@ -186,6 +186,12 @@
         padding: 10px 15px;
         flex: 0 0 auto;
         border-bottom: 1px solid rgba(197, 210, 255, 0.058);
+        cursor: pointer;
+        transition: all 0.15s;
+
+        &:hover {
+          color: rgb(21, 144, 239);
+        }
       }
     }
   }

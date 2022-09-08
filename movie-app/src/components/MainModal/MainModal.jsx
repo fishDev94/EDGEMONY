@@ -1,17 +1,17 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 import { useEffect, useState, memo } from "react";
 import { GET } from "../../utils/api";
 import { BASE_URL_IMG } from "../../constants";
 
 export default memo(function MainModal({ movieID, setModalVisibility }) {
-  const [className, setClassName] = useState("MainModal");
+  const [open, setOpen] = useState("");
   const [movieData, setMovieData] = useState({});
 
-  useEffect(() => {
-    setClassName("MainModal open");
-  }, []);
-
   const handleOnClickClose = () => {
+    setModalVisibility(false);
+  };
+
+  const handleOnBackgroundClick = () => {
     setModalVisibility(false);
   };
 
@@ -22,37 +22,43 @@ export default memo(function MainModal({ movieID, setModalVisibility }) {
     });
   }, [movieID]);
 
-  //   const { title, overview, release_date } = movieData;
+  useEffect(() => {
+    setOpen("open");
+  }, []);
 
   return (
-    <div className={className}>
-      <div className="MainModal__container">
-        <div className="img_container">
+    <div className={styles.MainModal + " " + styles[open]}>
+      <div
+        onClick={handleOnBackgroundClick}
+        className={styles.backdrop_overlay}
+      />
+      <div className={styles.MainModal__container}>
+        <div className={styles.img_container}>
           <img src={BASE_URL_IMG + movieData.poster_path} alt="poster" />
         </div>
         <div
-          className="MainModal__container-background"
+          className={styles.MainModal__container_background}
           style={{
             backgroundImage: `url("https://image.tmdb.org/t/p/original/${movieData.backdrop_path}")`,
           }}
         />
-        <div className="MainModal__container-background_overlay" />
-        <div className="MainModal__container-background_halfoverlay" />
-        <div className="MainModal__info">
-          <div className="MainModal__info_container_title">
-            <h2 className="MainModal__info_title">{movieData.title}</h2>
-            <p className="MainModal__tagline">{movieData.tagline}</p>
+        <div className={styles.MainModal__container_background_overlay} />
+        <div className={styles.MainModal__container_background_halfoverlay} />
+        <div className={styles.MainModal__info}>
+          <div className={styles.MainModal__info_container_title}>
+            <h2 className={styles.MainModal__info_title}>{movieData.title}</h2>
+            <p className={styles.MainModal__tagline}>{movieData.tagline}</p>
           </div>
-          <ul className="MainModal__info_genres">
+          <ul className={styles.MainModal__info_genres}>
             {movieData.genres &&
               movieData.genres.map((item, index) => (
                 <li key={index}>{item.name}</li>
               ))}
           </ul>
-          <p className="MainModal__description">{movieData.overview}</p>
-          <p className="release">{movieData.release_date}</p>
+          <p className={styles.MainModal__description}>{movieData.overview}</p>
+          <p className={styles.release}>{movieData.release_date}</p>
         </div>
-        <div onClick={handleOnClickClose} className="close">
+        <div onClick={handleOnClickClose} className={styles.close}>
           X
         </div>
       </div>

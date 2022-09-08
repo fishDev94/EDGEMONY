@@ -6,7 +6,7 @@ import { useState, useRef, useEffect, memo } from "react";
 import { GET } from "../../utils/api";
 import Logo from "./Logo";
 
-export default memo(function NavBar() {
+export default memo(function NavBar({ setMovieID, setModalVisibility }) {
   const searchInput = useRef(null);
   const overlay = useRef(null);
 
@@ -44,6 +44,11 @@ export default memo(function NavBar() {
     setIsActive(false);
     setSearchActive(false);
     setSearchQuery("");
+  };
+
+  const handleOnClickLink = (id) => {
+    setMovieID(id);
+    setModalVisibility(true);
   };
 
   useEffect(() => {
@@ -143,7 +148,9 @@ export default memo(function NavBar() {
         >
           <ul>
             {results.results.map((item, index) => (
-              <li key={index}>{item.title}</li>
+              <li onClick={() => handleOnClickLink(item.id)} key={index}>
+                {item.title}
+              </li>
             ))}
           </ul>
         </div>
