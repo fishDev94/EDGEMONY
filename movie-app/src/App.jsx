@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <NavBar setMovieID={setMovieID} setModalVisibility={setModalVisibility} />
-      <Hero />
+      <Hero setMovieID={setMovieID} setModalVisibility={setModalVisibility} />
       <MainSection
         setModalVisibility={setModalVisibility}
         setMovieID={setMovieID}
