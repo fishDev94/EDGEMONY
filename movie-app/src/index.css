@@ -107,7 +107,9 @@ body {
   line-height: 1;
   font-family: "Source Sans Pro", sans-serif;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
+
 ol,
 ul {
   list-style: none;

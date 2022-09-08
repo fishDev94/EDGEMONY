@@ -1,31 +1,47 @@
 import styles from "./index.module.scss";
 import { BASE_URL_IMG } from "../../constants";
+import { useRef, memo } from "react";
 
-export default function WrapperCard({ data }) {
+export default memo(function WrapperCard({ data, handleOnClickCard }) {
   const { id, title, backdrop_path, placeholder } = data;
+  const wrapperCard = useRef(null);
 
-  const handleOnClickCard = () => {
-    console.log(id);
+  const handleOnMouseHover = (e) => {
+    if (e.target.tagName === "P" || e.target.tagName === "IMG") {
+      wrapperCard.current.classList.add(styles.hover);
+    }
+  };
+
+  const handleOnMouseOut = () => {
+    wrapperCard.current.classList.remove(styles.hover);
   };
 
   return (
-    <div onClick={handleOnClickCard} className={styles.WrapperCard}>
-      <p>{title}</p>
-      {backdrop_path ? (
-        <img
-          className={styles.background}
-          src={BASE_URL_IMG + backdrop_path}
-          alt="background"
-        />
-      ) : (
-        <div className={styles.placeholder_container}>
+    <div
+      onMouseOver={(e) => handleOnMouseHover(e)}
+      onMouseOut={handleOnMouseOut}
+      ref={wrapperCard}
+      onClick={(e) => handleOnClickCard(e)}
+      className={styles.WrapperCard}
+    >
+      <div className={styles.inside_container}>
+        <p id={id}>{title}</p>
+        {backdrop_path ? (
           <img
-            className={styles.placeholder}
-            src={placeholder}
-            alt="placeholder"
+            className={styles.background}
+            src={BASE_URL_IMG + backdrop_path}
+            alt="background"
           />
-        </div>
-      )}
+        ) : (
+          <div className={styles.placeholder_container}>
+            <img
+              className={styles.placeholder}
+              src={placeholder}
+              alt="placeholder"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+});

@@ -2,7 +2,8 @@
 @import "../../styles/_mixins";
 
 .NavBar {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 4;
   height: 8%;
   @include flex-container($align: center, $justify: space-between, $gap: 30px);

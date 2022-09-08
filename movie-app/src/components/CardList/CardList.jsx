@@ -3,10 +3,16 @@ import styles from "./index.module.scss";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
 import { useRef, useState, useEffect } from "react";
 
-export default function CardList({ data, title }) {
+export default function CardList({
+  data,
+  title,
+  setModalVisibility,
+  setMovieID,
+}) {
   const listRef = useRef();
   const [isBackVisible, setIsBackVisibility] = useState(false);
   const [isNextVisible, setIsNextVisibility] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   const handleOnBackButtonClick = () => {
     listRef.current.scrollTo({
@@ -14,6 +20,7 @@ export default function CardList({ data, title }) {
       left: listRef.current.scrollLeft - 800,
       behavior: "smooth",
     });
+    setClicked(!clicked);
   };
 
   const handleOnNextButtonClick = () => {
@@ -22,12 +29,18 @@ export default function CardList({ data, title }) {
       left: listRef.current.scrollLeft + 800,
       behavior: "smooth",
     });
+    setClicked(!clicked);
+  };
+
+  const handleOnClickCard = (e) => {
+    setMovieID(e.target.id);
+    setModalVisibility(true);
   };
 
   useEffect(() => {
     let maxWidth = listRef.current.scrollWidth - listRef.current.clientWidth;
 
-    listRef.current.addEventListener("scroll", () => {
+    const hideAndShowPageButton = () => {
       if (listRef.current.scrollLeft === listRef.current.offsetLeft) {
         setIsBackVisibility(false);
       } else {
@@ -39,15 +52,22 @@ export default function CardList({ data, title }) {
       } else {
         setIsNextVisibility(true);
       }
-    });
-  }, [listRef.current]);
+    };
+
+    listRef.current.addEventListener("scroll", hideAndShowPageButton);
+  }, [clicked]);
 
   return (
     <div className={styles.CardList_section}>
       <h3>{title}</h3>
       <div ref={listRef} className={styles.CardList}>
         {data.map((item, index) => (
-          <WrapperCard data={item} key={index} />
+          <WrapperCard
+            handleOnClickCard={handleOnClickCard}
+            listRef={listRef}
+            data={item}
+            key={index}
+          />
         ))}
       </div>
       <div className={styles.button_container}>

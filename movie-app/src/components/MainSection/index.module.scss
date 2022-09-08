@@ -1,14 +1,16 @@
 @import "../../styles/_mixins";
+@import "../../styles/_variables";
 
 .MainSection {
   @include flex-container($direction: column, $gap: 20px);
   padding: 20px 0;
-  height: 60%;
+  background-color: $MainBackground;
   box-sizing: border-box;
 }
 
 @media only screen and (min-width: 769px) {
   .MainSection {
-    height: 57%;
+    @include flex-container($direction: column, $gap: 0px);
+    min-height: 57%;
   }
 }

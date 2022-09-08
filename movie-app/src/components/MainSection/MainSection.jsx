@@ -4,7 +4,7 @@ import { GET } from "../../utils/api";
 import loader from "../../assets/loader.svg";
 import CardList from "../CardList/CardList";
 
-export default function MainSection() {
+export default function MainSection(props) {
   const [movieLists, setMovieLists] = useState({
     topRated: [{ placeholder: loader }],
     popular: [{ placeholder: loader }],
@@ -23,8 +23,18 @@ export default function MainSection() {
 
   return (
     <div className={styles.MainSection}>
-      <CardList title="Top Rated" data={movieLists.topRated} />
-      <CardList title="Upcoming Movies" data={movieLists.upcoming} />
+      <CardList
+        setModalVisibility={props.setModalVisibility}
+        setMovieID={props.setMovieID}
+        title="Top Rated"
+        data={movieLists.topRated}
+      />
+      <CardList
+        setModalVisibility={props.setModalVisibility}
+        setMovieID={props.setMovieID}
+        title="Upcoming Movies"
+        data={movieLists.upcoming}
+      />
     </div>
   );
 }
