@@ -2,7 +2,6 @@ import styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { GET } from "../../utils/api";
 import loader from "../../assets/loader.svg";
-import WrapperCard from "../WrapperCard/WrapperCard";
 import CardList from "../CardList/CardList";
 
 export default function MainSection() {
