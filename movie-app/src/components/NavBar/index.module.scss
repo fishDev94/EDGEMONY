@@ -2,6 +2,8 @@
 @import "../../styles/_mixins";
 
 .NavBar {
+  position: relative;
+  z-index: 4;
   height: 8vh;
   @include flex-container($align: center, $justify: space-between, $gap: 30px);
   background-color: $backgroundColor-default;
@@ -19,10 +21,10 @@
       top: 7.8vh;
       left: 0;
       padding: 20px 0;
-      z-index: 3;
+      z-index: 1;
       background-color: $backgroundColor-default;
       position: absolute;
-      transition: all 0.35s;
+      transition: all 0.15s;
 
       .arrow {
         color: rgba(255, 255, 255, 0.522);
@@ -35,6 +37,23 @@
       // height: 20px;
       padding: 1px;
       box-sizing: border-box;
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 8vh;
+    left: 0;
+    z-index: 0;
+    height: 92vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
+    transition: all 0.15s;
+
+    &.active {
+      pointer-events: all;
+      background-color: rgba(0, 0, 0, 0.395);
     }
   }
 
@@ -200,6 +219,10 @@
       .arrow {
         color: rgba(255, 255, 255, 0.522);
       }
+    }
+
+    .overlay {
+      display: none;
     }
 
     #logo-70 {

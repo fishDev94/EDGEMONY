@@ -49,13 +49,12 @@ export default memo(function NavBar() {
       if (
         e.target.id !== "main_search" &&
         e.target.tagName !== "path" &&
-        e.target.tagName !== "svg"
+        e.target.tagName !== "svg" &&
+        e.target.id !== "results"
       ) {
         setIsActive(false);
         setSearchActive(false);
         setSearchQuery("");
-        console.log("prova");
-        console.log(e.target);
       }
     };
 
@@ -87,21 +86,11 @@ export default memo(function NavBar() {
       </div>
       <h3
         onClick={browseClick}
-        className={
-          menuIsActive
-            ? styles.browse_btn + " " + styles.active
-            : styles.browse_btn
-        }
+        className={`${styles.browse_btn} ${menuIsActive && styles.active}`}
       >
         Browse <IoMdArrowDropdown className={styles.arrow} />
       </h3>
-      <ul
-        className={
-          menuIsActive
-            ? styles.NavBar__link + " " + styles.active
-            : styles.NavBar__link
-        }
-      >
+      <ul className={`${styles.NavBar__link} ${menuIsActive && styles.active}`}>
         <li>Home</li>
         <li>
           Category <IoMdArrowDropdown className={styles.arrow} />
@@ -109,23 +98,20 @@ export default memo(function NavBar() {
         <li>My Stuff</li>
         <li>About us</li>
       </ul>
+      <div className={`${styles.overlay} ${menuIsActive && styles.active}`} />
       <form
         onSubmit={onSearchSubmit}
-        className={
-          isActive
-            ? styles.NavBar__searchbar_container + " " + styles.active
-            : styles.NavBar__searchbar_container
-        }
+        className={`${styles.NavBar__searchbar_container} ${
+          isActive && styles.active
+        }`}
       >
         <VscChromeClose
           onClick={handleOnCloseClick}
-          className={
-            isActive ? styles.close_bar + " " + styles.active : styles.close_bar
-          }
+          className={`${styles.close_bar} ${isActive && styles.active}`}
         />
         <AiOutlineSearch
           onClick={handleOnClick}
-          className={`${styles.search_icon} ${isActive ? styles.active : ""}`}
+          className={`${styles.search_icon} ${isActive && styles.active}`}
         />
         <input
           ref={searchInput}
@@ -133,12 +119,11 @@ export default memo(function NavBar() {
           id="main_search"
           onChange={onInputSearchChange}
           value={searchQuery}
-          className={`${styles.NavBar__searchbar} ${
-            isActive ? styles.active : ""
-          }`}
+          className={`${styles.NavBar__searchbar} ${isActive && styles.active}`}
           placeholder="Search"
         />
         <div
+          id="results"
           className={
             isSerchActive
               ? styles.results_container + " " + styles.active
