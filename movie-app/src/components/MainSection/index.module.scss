@@ -1,0 +1,14 @@
+@import "../../styles/_mixins";
+
+.MainSection {
+  @include flex-container($direction: column, $gap: 20px);
+  padding: 20px 0;
+  height: 60%;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 769px) {
+  .MainSection {
+    height: 57%;
+  }
+}

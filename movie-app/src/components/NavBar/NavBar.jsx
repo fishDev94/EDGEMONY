@@ -8,6 +8,8 @@ import Logo from "./Logo";
 
 export default memo(function NavBar() {
   const searchInput = useRef(null);
+  const overlay = useRef(null);
+
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,6 +47,8 @@ export default memo(function NavBar() {
   };
 
   useEffect(() => {
+    const overlayNode = overlay.current;
+
     const handleEventListener = (e) => {
       if (
         e.target.id !== "main_search" &&
@@ -57,8 +61,12 @@ export default memo(function NavBar() {
         setSearchQuery("");
       }
     };
+    const handleOverlayClick = () => {
+      setMenuIsActive(false);
+    };
 
-    window.addEventListener("click", (e) => handleEventListener(e));
+    window.addEventListener("click", handleEventListener);
+    overlayNode.addEventListener("click", handleOverlayClick);
   }, []);
 
   useEffect(() => {
@@ -98,7 +106,10 @@ export default memo(function NavBar() {
         <li>My Stuff</li>
         <li>About us</li>
       </ul>
-      <div className={`${styles.overlay} ${menuIsActive && styles.active}`} />
+      <div
+        ref={overlay}
+        className={`${styles.overlay} ${menuIsActive && styles.active}`}
+      />
       <form
         onSubmit={onSearchSubmit}
         className={`${styles.NavBar__searchbar_container} ${

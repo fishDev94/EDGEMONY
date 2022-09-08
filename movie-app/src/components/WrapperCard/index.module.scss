@@ -1,0 +1,43 @@
+@import "../../styles/_mixins";
+
+.WrapperCard {
+  position: relative;
+  background-color: rgb(230, 230, 230);
+  @include flex-container($align: center, $justify: center);
+  overflow: hidden;
+  width: 170px;
+  height: 95px;
+  margin: 0;
+  flex: 0 0 auto;
+  border-radius: 4px;
+
+  p {
+    @include flex-container($align: center, $justify: center);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    padding: 10px;
+    margin: 0;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.689);
+  }
+
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .placeholder_container {
+    @include flex-container($align: center, $justify: center);
+    height: 100%;
+    width: 100%;
+    .placeholder {
+      width: 70px;
+    }
+  }
+}

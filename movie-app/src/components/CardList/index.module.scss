@@ -1,0 +1,23 @@
+@import "../../styles/_mixins";
+
+.CardList_section {
+  h3 {
+    font-weight: bold;
+    margin: 0;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+    text-align: left;
+  }
+
+  .CardList {
+    @include flex-container($gap: 10px);
+    width: 100%;
+    padding: 0 10px;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
