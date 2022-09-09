@@ -198,8 +198,9 @@
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.252);
 
       img {
+        object-fit: cover;
         height: 100%;
-        width: auto;
+        width: 100%;
       }
     }
 
