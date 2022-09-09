@@ -5,6 +5,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import { useState, useRef, useEffect, memo } from "react";
 import { GET } from "../../utils/api";
 import Logo from "./Logo";
+// import ResultsSection from "../ResultsSection";
 
 export default memo(function NavBar({ setMovieID, setModalVisibility }) {
   const categoryRef = useRef(null);
@@ -15,9 +16,15 @@ export default memo(function NavBar({ setMovieID, setModalVisibility }) {
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  // const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
   const [results, setResults] = useState({ results: [] });
   const [isSerchActive, setSearchActive] = useState(false);
+  const [typeofGenres, setTypeOfGenres] = useState("movie");
+  const [genreList, setGenreList] = useState([{ id: "", name: "" }]);
+  const [genreID, setGenreID] = useState("");
+  const [movieList, setMovieList] = useState({
+    results: [{ title: "", poster_path: "", overview: "" }],
+  });
 
   const handleOnClick = () => {
     setIsActive(true);
@@ -63,6 +70,14 @@ export default memo(function NavBar({ setMovieID, setModalVisibility }) {
     setModalVisibility(true);
   };
 
+  const handleOnTypeOfGenreClick = (e) => {
+    setTypeOfGenres(e.target.id);
+  };
+
+  const handleOnGenreClick = (id) => {
+    setGenreID(id);
+  };
+
   useEffect(() => {
     const overlayNode = overlay.current;
 
@@ -104,6 +119,22 @@ export default memo(function NavBar({ setMovieID, setModalVisibility }) {
       : (document.body.style.overflow = "auto");
   }, [searchQuery, isActive]);
 
+  useEffect(() => {
+    GET("genre", `${typeofGenres}/list`).then((data) =>
+      setGenreList(data.genres)
+    );
+  }, [typeofGenres]);
+
+  useEffect(() => {
+    GET(
+      "discover",
+      `${typeofGenres}`,
+      `&language=en-US&sort_by=popularity.desc&include_adult=false&page=${pageNumber}&with_genres=${genreID}&with_watch_monetization_types=flatrate`
+    )
+      .then((data) => setMovieList(data))
+      .then(console.log(movieList));
+  }, [genreID, typeofGenres, pageNumber, movieList]);
+
   return (
     <div className={styles.NavBar}>
       <div className={styles.logo}>
@@ -128,19 +159,28 @@ export default memo(function NavBar({ setMovieID, setModalVisibility }) {
                 <div className={styles.list_container}>
                   <h3>Top Categories</h3>
                   <ul>
-                    <li>Movies</li>
-                    <li>TV</li>
+                    <li onClick={(e) => handleOnTypeOfGenreClick(e)} id="movie">
+                      Movies
+                    </li>
+                    <li onClick={(e) => handleOnTypeOfGenreClick(e)} id="tv">
+                      TV
+                    </li>
                   </ul>
                 </div>
               </div>
               <div className={styles.right_sider}>
                 <div className={styles.list_container}>
-                  <h4>Genres</h4>
+                  <h4>{typeofGenres} Genres</h4>
                   <ul>
-                    <li>Azione</li>
-                    <li>Comedy</li>
-                    <li>Drama</li>
-                    <li>Documentary</li>
+                    {genreList.map((genre, index) => (
+                      <li
+                        onClick={() => handleOnGenreClick(genre.id)}
+                        id={genre.id}
+                        key={index}
+                      >
+                        {genre.name}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -196,6 +236,7 @@ export default memo(function NavBar({ setMovieID, setModalVisibility }) {
           </ul>
         </div>
       </form>
+      {/* <ResultsSection /> */}
     </div>
   );
 });
