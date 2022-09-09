@@ -1,0 +1,91 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.CardList_section {
+  position: relative;
+  &.hover {
+    overflow: visible;
+  }
+
+  h3 {
+    font-weight: bold;
+    margin: 0;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .CardList {
+    @include flex-container($gap: 10px);
+    width: 100%;
+    padding: 0 10px;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .button_container {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .CardList_section {
+    .CardList {
+      padding: 20px;
+    }
+
+    h3 {
+      margin-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .button_container {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      @include flex-container($justify: space-between, $align: center);
+      top: 15.3%;
+      left: 0;
+      box-sizing: border-box;
+      height: 76.2%;
+      width: 100%;
+
+      .button_back {
+        height: 100%;
+        width: 3%;
+        background-color: $buttonPagingColor;
+        font-size: 1.8rem;
+        pointer-events: all;
+
+        &:hover {
+          background-color: $buttonPagingColorHover;
+        }
+
+        &_disabled {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+
+      .button_forward {
+        height: 100%;
+        width: 3%;
+        background-color: $buttonPagingColor;
+        font-size: 1.8rem;
+        pointer-events: all;
+
+        &:hover {
+          background-color: $buttonPagingColorHover;
+        }
+
+        &_disabled {
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
