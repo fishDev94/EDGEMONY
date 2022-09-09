@@ -5,29 +5,34 @@
   position: sticky;
   top: 0;
   z-index: 999;
-  height: 8%;
+  height: 8vh;
   @include flex-container($align: center, $justify: space-between, $gap: 30px);
   background-color: $backgroundColor-default;
   color: $defaultColorText;
   padding: 0 30px;
 
+  a {
+    color: $defaultColorText;
+    text-decoration: none;
+  }
+
   &__link {
     height: 0;
     overflow: hidden;
 
-    .category_list {
-      display: none;
-    }
-
     &.active {
-      @include flex-container($direction: column, $gap: 30px, $align: center);
+      @include flex-container(
+        $direction: column,
+        $gap: 30px,
+        $align: flex-start
+      );
       width: 100%;
       height: auto;
       top: 7.8vh;
       left: 0;
-      padding: 20px 0;
+      padding: 20px;
       z-index: 999;
-      background-color: $backgroundColor-default;
+      background-color: #252e39;
       position: absolute;
       transition: all 0.15s;
 
@@ -37,11 +42,29 @@
     }
 
     li {
-      @include flex-container($align: center, $gap: 4px);
       cursor: pointer;
       // height: 20px;
       padding: 1px;
       box-sizing: border-box;
+      width: 100%;
+
+      .text_and_icon {
+        @include flex-container($align: center, $gap: 4px);
+      }
+
+      .category_list {
+        display: none;
+        position: relative;
+        left: -20px;
+        flex: 0 0 auto;
+        background-color: $MainBackground;
+        width: 100vw;
+
+        .content {
+          @include flex-container($direction: column, $gap: 20px);
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -209,7 +232,7 @@
     padding: 0 30px;
 
     &__link {
-      @include flex-container($gap: 30px, $align: center);
+      @include flex-container($align: center);
       width: 100%;
       height: 100%;
       top: auto;
@@ -223,6 +246,100 @@
         @include flex-container($align: center, $gap: 4px);
         cursor: pointer;
         height: 100%;
+        width: auto;
+        padding: 0 20px;
+
+        .category_list {
+          position: absolute;
+          display: none;
+          top: 8vh;
+          left: 0vw;
+          z-index: 999;
+          background-color: $DarkBackground;
+          width: 100%;
+          height: max-content;
+
+          .content {
+            @include flex-container($direction: row, $justify: center);
+            padding: 30px;
+            height: 100%;
+            cursor: default;
+
+            .left_sider {
+              @include flex-container($align: flex-start, $justify: flex-end);
+              text-align: start;
+              width: 50%;
+              height: 100%;
+              padding-right: 40px;
+              border-right: 1.8px solid rgba(212, 236, 255, 0.239);
+
+              .list_container {
+                @include flex-container(
+                  $direction: column,
+                  $justify: center,
+                  $gap: 20px
+                );
+
+                ul {
+                  display: grid;
+                  flex: 0 0 auto;
+                  grid-template: 1fr 1fr;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 10px;
+                  li {
+                    @include flex-container($align: center, $justify: center);
+                    padding: 0;
+                    margin: 0;
+                    flex: 0 0 auto;
+                    padding: 30px 40px;
+                    border-radius: 4px;
+                    background-image: url("../../assets/category_btn.png");
+                    background-size: cover;
+                    background-repeat: no-repeat;
+
+                    &:hover {
+                      box-shadow: 0 0 3px 1.8px white;
+                    }
+                  }
+                }
+              }
+            }
+
+            .right_sider {
+              padding-left: 30px;
+              flex-grow: 1;
+              text-align: left;
+
+              .list_container {
+                @include flex-container($direction: column, $gap: 20px);
+
+                h4 {
+                  text-transform: capitalize;
+                }
+
+                ul {
+                  display: grid;
+                  grid-auto-flow: column;
+                  grid-template-columns: repeat(2, 1fr);
+                  grid-template-rows: repeat(10, auto);
+                  gap: 10px;
+                  li {
+                    padding-left: 10px;
+                    margin: 0;
+
+                    a {
+                      color: #8296a5;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.hover {
+            display: block;
+          }
+        }
       }
 
       .category_hover {
@@ -231,95 +348,6 @@
 
       .arrow {
         color: rgba(255, 255, 255, 0.522);
-      }
-    }
-
-    .category_list {
-      position: absolute;
-      display: none;
-      top: 8vh;
-      left: 0vw;
-      z-index: 999;
-      background-color: $DarkBackground;
-      width: 100%;
-      height: max-content;
-
-      .content {
-        @include flex-container($direction: row, $justify: center);
-        padding: 30px;
-        height: 100%;
-        cursor: default;
-
-        .left_sider {
-          @include flex-container($align: flex-start, $justify: flex-end);
-          text-align: start;
-          width: 50%;
-          height: 100%;
-          padding-right: 40px;
-          border-right: 1.8px solid rgba(212, 236, 255, 0.239);
-
-          .list_container {
-            @include flex-container(
-              $direction: column,
-              $justify: center,
-              $gap: 20px
-            );
-
-            ul {
-              display: grid;
-              flex: 0 0 auto;
-              grid-template: 1fr 1fr;
-              grid-template-columns: 1fr 1fr;
-              gap: 10px;
-              li {
-                @include flex-container($align: center, $justify: center);
-                padding: 0;
-                margin: 0;
-                flex: 0 0 auto;
-                padding: 30px 40px;
-                border-radius: 4px;
-                background-image: url("../../assets/category_btn.png");
-                background-size: cover;
-                background-repeat: no-repeat;
-
-                &:hover {
-                  box-shadow: 0 0 3px 1.8px white;
-                }
-              }
-            }
-          }
-        }
-
-        .right_sider {
-          padding-left: 40px;
-          flex-grow: 1;
-          text-align: left;
-
-          .list_container {
-            @include flex-container($direction: column, $gap: 20px);
-
-            h4 {
-              text-transform: capitalize;
-            }
-
-            ul {
-              display: grid;
-              grid-auto-flow: column;
-              grid-template-columns: repeat(2, 1fr);
-              grid-template-rows: repeat(10, auto);
-              gap: 10px;
-              li {
-                color: #8296a5;
-                padding-left: 8px;
-                margin: 0;
-              }
-            }
-          }
-        }
-      }
-
-      &.hover {
-        display: block;
       }
     }
 
