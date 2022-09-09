@@ -7,8 +7,10 @@ import { GET } from "../../utils/api";
 import Logo from "./Logo";
 
 export default memo(function NavBar({ setMovieID, setModalVisibility }) {
+  const categoryRef = useRef(null);
   const searchInput = useRef(null);
   const overlay = useRef(null);
+  const categoryList = useRef(null);
 
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
@@ -44,6 +46,16 @@ export default memo(function NavBar({ setMovieID, setModalVisibility }) {
     setIsActive(false);
     setSearchActive(false);
     setSearchQuery("");
+  };
+
+  const handleOnMouseEnter = (e) => {
+    e.target.classList.add(styles.category_hover);
+    categoryList.current.classList.add(styles.hover);
+  };
+
+  const handleOnMouseLeave = (e) => {
+    e.target.classList.remove(styles.category_hover);
+    categoryList.current.classList.remove(styles.hover);
   };
 
   const handleOnClickLink = (id) => {
@@ -105,12 +117,41 @@ export default memo(function NavBar({ setMovieID, setModalVisibility }) {
       </h3>
       <ul className={`${styles.NavBar__link} ${menuIsActive && styles.active}`}>
         <li>Home</li>
-        <li>
+        <li
+          onMouseOver={(e) => handleOnMouseEnter(e)}
+          onMouseOut={(e) => handleOnMouseLeave(e)}
+          ref={categoryRef}
+        >
+          <div ref={categoryList} className={styles.category_list}>
+            <div className={styles.content}>
+              <div className={styles.left_sider}>
+                <div className={styles.list_container}>
+                  <h3>Top Categories</h3>
+                  <ul>
+                    <li>Movies</li>
+                    <li>TV</li>
+                  </ul>
+                </div>
+              </div>
+              <div className={styles.right_sider}>
+                <div className={styles.list_container}>
+                  <h4>Genres</h4>
+                  <ul>
+                    <li>Azione</li>
+                    <li>Comedy</li>
+                    <li>Drama</li>
+                    <li>Documentary</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
           Category <IoMdArrowDropdown className={styles.arrow} />
         </li>
         <li>My Stuff</li>
         <li>About us</li>
       </ul>
+
       <div
         ref={overlay}
         className={`${styles.overlay} ${menuIsActive && styles.active}`}

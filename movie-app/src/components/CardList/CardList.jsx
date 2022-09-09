@@ -1,9 +1,9 @@
 import WrapperCard from "../WrapperCard/WrapperCard";
 import styles from "./index.module.scss";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, memo } from "react";
 
-export default function CardList({
+export default memo(function CardList({
   data,
   title,
   setModalVisibility,
@@ -88,4 +88,4 @@ export default function CardList({
       </div>
     </div>
   );
-}
+});

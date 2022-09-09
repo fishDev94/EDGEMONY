@@ -15,6 +15,10 @@
     height: 0;
     overflow: hidden;
 
+    .category_list {
+      display: none;
+    }
+
     &.active {
       @include flex-container($direction: column, $gap: 30px, $align: center);
       width: 100%;
@@ -199,11 +203,7 @@
 
 @media only screen and (min-width: 769px) {
   .NavBar {
-    @include flex-container(
-      $align: center,
-      $justify: space-between,
-      $gap: 30px
-    );
+    @include flex-container($justify: space-between, $gap: 30px);
     background-color: $backgroundColor-default;
     color: $defaultColorText;
     padding: 0 30px;
@@ -211,15 +211,22 @@
     &__link {
       @include flex-container($gap: 30px, $align: center);
       width: 100%;
-      position: relative;
+      height: 100%;
       top: auto;
       left: auto;
       padding: 0;
       height: auto;
+      overflow: visible;
+      color: rgba(255, 255, 255, 0.853);
 
       li {
         @include flex-container($align: center, $gap: 4px);
         cursor: pointer;
+        height: 100%;
+      }
+
+      .category_hover {
+        color: rgb(255, 255, 255);
       }
 
       .arrow {
@@ -227,8 +234,95 @@
       }
     }
 
+    .category_list {
+      position: absolute;
+      display: none;
+      top: 8vh;
+      left: 0vw;
+      z-index: 9999999999999;
+      background-color: $DarkBackground;
+      width: 100%;
+      height: 400px;
+
+      .content {
+        @include flex-container($direction: row, $justify: center);
+        padding: 30px;
+        height: 100%;
+        cursor: default;
+
+        .left_sider {
+          @include flex-container($align: flex-start, $justify: flex-end);
+          text-align: start;
+          flex: 0 0 auto;
+          width: 50%;
+          height: 100%;
+          padding-right: 40px;
+          border-right: 1.8px solid rgba(212, 236, 255, 0.239);
+
+          .list_container {
+            @include flex-container(
+              $direction: column,
+              $justify: center,
+              $gap: 20px
+            );
+
+            ul {
+              display: grid;
+              flex: 0 0 auto;
+              grid-template: 1fr 1fr;
+              grid-template-columns: 1fr 1fr;
+              gap: 10px;
+              li {
+                @include flex-container($align: center, $justify: center);
+                padding: 0;
+                margin: 0;
+                flex: 0 0 auto;
+                padding: 30px 40px;
+                border-radius: 4px;
+                background-image: url("../../assets/category_btn.png");
+                background-size: cover;
+                background-repeat: no-repeat;
+
+                &:hover {
+                  box-shadow: 0 0 3px 1.8px white;
+                }
+              }
+            }
+          }
+        }
+
+        .right_sider {
+          padding-left: 40px;
+          flex-grow: 1;
+          text-align: left;
+
+          .list_container {
+            @include flex-container($direction: column, $gap: 20px);
+
+            ul {
+              @include flex-container($direction: column, $gap: 8px);
+              li {
+                color: #8296a5;
+                padding-left: 8px;
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &.hover {
+        display: block;
+      }
+    }
+
     .overlay {
       display: none;
+    }
+
+    .logo {
+      @include flex-container($align: center);
+      height: 100%;
     }
 
     #logo-70 {

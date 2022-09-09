@@ -1,10 +1,10 @@
 import styles from "./index.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import { GET } from "../../utils/api";
 import loader from "../../assets/loader.svg";
 import CardList from "../CardList/CardList";
 
-export default function MainSection(props) {
+export default memo(function MainSection(props) {
   const [movieLists, setMovieLists] = useState({
     topRated: [{ placeholder: loader }],
     popular: [{ placeholder: loader }],
@@ -37,4 +37,4 @@ export default function MainSection(props) {
       />
     </div>
   );
-}
+});
