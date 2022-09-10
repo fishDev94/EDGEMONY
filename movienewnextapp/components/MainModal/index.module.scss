@@ -1,0 +1,345 @@
+@import "../../styles/_variables";
+@import "../../styles/_mixins";
+
+.MainModal {
+  @include flex-container(column, center, center);
+  position: fixed;
+  top: 8%;
+  left: 0;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.898);
+  width: 100vw;
+  height: 100%;
+
+  .backdrop_overlay {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .img_container {
+    @include flex-container(row, center, flex-start);
+    display: none;
+    overflow: hidden;
+    height: 40%;
+    width: 100%;
+    flex: 0 0 auto;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.252);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__container {
+    position: relative;
+    top: 0;
+    gap: 20px;
+    @include flex-container(column, space-between, center, nowrap, 20px);
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.684);
+
+    &_background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 30%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 0;
+      opacity: 1;
+
+      &_overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        background: rgb(0, 0, 0);
+        background: radial-gradient(
+          circle,
+          rgba(0, 0, 0, 0) 40%,
+          rgba(0, 0, 0, 0.791) 98%
+        );
+      }
+
+      &_halfoverlay {
+        position: absolute;
+        top: 10%;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 90%;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 1) 80%,
+          rgba(0, 0, 0, 0) 98%
+        );
+      }
+    }
+  }
+
+  &__info {
+    align-self: flex-start;
+    @include flex-container($direction: column, $justify: center, $gap: 20px);
+    height: 100%;
+    position: relative;
+    z-index: 999;
+    box-sizing: border-box;
+    padding: 40px;
+
+    &_container_title {
+      @include flex-container($direction: column, $gap: 5px);
+    }
+
+    &_title {
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+    }
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    &_genres {
+      @include flex-container($gap: 10px);
+      list-style: none;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      font-weight: bold;
+
+      li {
+        @include flex-container($align: center, $justify: center);
+        background-color: rgba(255, 255, 255, 0.233);
+        padding: 10px;
+        border-radius: 10px;
+      }
+    }
+
+    .release {
+      text-align: right;
+      margin: 0;
+      padding: 0;
+
+      &::before {
+        content: "Release Data: ";
+        color: $text-Gwhite;
+      }
+    }
+  }
+
+  &__tagline {
+    margin: 0;
+    font-size: 0.8rem;
+    color: $text-Gwhite;
+  }
+
+  &__description {
+    line-height: 1.5;
+  }
+
+  .close {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: rgb(249, 249, 249);
+    position: absolute;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.684);
+    z-index: 999;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: white;
+  }
+
+  .MainCard_popular {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.211);
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .MainModal {
+    @include flex-container(row, center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    color: rgba(255, 255, 255, 0.898);
+    width: 100%;
+    height: 100vh;
+
+    .backdrop_overlay {
+      opacity: 1;
+      pointer-events: all;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.64);
+      backdrop-filter: blur(5px);
+      width: 100%;
+      height: 100%;
+    }
+
+    .img_container {
+      @include flex-container(row, center, center);
+      overflow: hidden;
+      height: 100%;
+      width: 42%;
+      flex: 0 0 auto;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.252);
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    &.open .MainModal__container {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    &__container {
+      position: relative;
+      gap: 20px;
+      @include flex-container(row, space-between, center, nowrap, 20px);
+      padding: 20px;
+      box-sizing: border-box;
+      height: 80%;
+      width: 90%;
+      background-color: rgba(0, 0, 0, 0.684);
+      transition: all 0.45s;
+      transform: scale(0);
+      opacity: 0;
+
+      &_background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -3;
+        filter: blur(1px);
+        opacity: 0.7;
+
+        &_overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -2;
+          width: 100%;
+          height: 100%;
+          background: rgb(0, 0, 0);
+          background: radial-gradient(
+            circle,
+            rgba(0, 0, 0, 0) 40%,
+            rgba(0, 0, 0, 0.791) 98%
+          );
+        }
+
+        &_halfoverlay {
+          position: absolute;
+          top: 10%;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: 90%;
+          background: rgb(0, 0, 0);
+          background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 1) 49%,
+            rgba(0, 0, 0, 0) 92%
+          );
+        }
+      }
+    }
+
+    &__info {
+      align-self: flex-start;
+      @include flex-container($direction: column, $justify: center, $gap: 20px);
+      height: 100%;
+      box-sizing: border-box;
+      padding: 40px;
+
+      &_container_title {
+        @include flex-container($direction: column, $gap: 5px);
+      }
+
+      &_title {
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+      }
+
+      &_genres {
+        @include flex-container($gap: 10px);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+
+        li {
+          background-color: rgba(255, 255, 255, 0.233);
+          padding: 10px;
+          border-radius: 10px;
+        }
+      }
+
+      .release {
+        text-align: right;
+        margin: 0;
+        padding: 0;
+
+        &::before {
+          content: "Release Data: ";
+          color: $text-Gwhite;
+        }
+      }
+    }
+
+    &__tagline {
+      margin: 0;
+      font-size: 0.8rem;
+      color: $text-Gwhite;
+    }
+
+    &__description {
+      line-height: 1.5;
+    }
+
+    .close {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.511);
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: white;
+    }
+
+    .MainCard_popular {
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.211);
+    }
+  }
+}
