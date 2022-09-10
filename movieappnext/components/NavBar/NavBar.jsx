@@ -18,6 +18,7 @@ export default memo(function NavBar({
   typeofGenres,
   navBarPage,
   isModalVisibile,
+  setMovieList,
 }) {
   const categoryRef = useRef(null);
   const searchInput = useRef(null);
@@ -83,6 +84,7 @@ export default memo(function NavBar({
   const handleOnGenreClick = (id) => {
     setGenreID(id);
     categoryList.current.classList.remove(styles.hover);
+    setMovieList([]);
   };
 
   useEffect(() => {

@@ -60,11 +60,16 @@
     height: 180px;
     max-width: 320px;
     overflow: hidden;
+    flex: 0 0 auto;
     border-radius: 6px;
     transition: transform 0.25s;
 
+    &.big {
+      max-width: 100%;
+    }
+
     .background {
-      height: 180px;
+      height: 100%;
     }
 
     &.hover {

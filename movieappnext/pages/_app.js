@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
   const [genreID, setGenreID] = useState("");
   const [typeofGenres, setTypeOfGenres] = useState("movie");
   const [pageNumber, setPageNumber] = useState(1);
+  const [movieList, setMovieList] = useState([]);
 
   const handleOnClickCard = (e) => {
     setMovieID(e.target.id);
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps }) {
       setTypeOfGenres={setTypeOfGenres}
       typeofGenres={typeofGenres}
       navBarPage={navBarPage}
+      setMovieList={setMovieList}
     >
       <Component
         {...pageProps}
@@ -37,6 +39,9 @@ function MyApp({ Component, pageProps }) {
         pageNumber={pageNumber}
         navBarPage={navBarPage}
         handleOnClickCard={handleOnClickCard}
+        setPageNumber={setPageNumber}
+        setMovieList={setMovieList}
+        movieList={movieList}
       />
     </NavBar>
   );
