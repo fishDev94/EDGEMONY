@@ -38,7 +38,7 @@ export default function MovieList(props) {
     const scrollCondition = () => {
       const bottom = document.body.scrollHeight / 2;
 
-      if (window.scrollY > bottom - 200) {
+      if (window.scrollY > bottom - 50) {
         setPageNumber((prev) => prev + 1);
       }
     };
