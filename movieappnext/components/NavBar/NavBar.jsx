@@ -20,6 +20,8 @@ export default memo(function NavBar({
   isModalVisibile,
   setMovieList,
   navBarRef,
+  setLinkActive,
+  whichLinkActive,
 }) {
   const categoryRef = useRef(null);
   const searchInput = useRef(null);
@@ -155,9 +157,15 @@ export default memo(function NavBar({
           ref={navBarPage}
           className={`${styles.NavBar__link} ${menuIsActive && styles.active}`}
         >
-          <li>
+          <li className={whichLinkActive === "Home" ? styles.active : ""}>
             <Link href="/">
-              <a>Home</a>
+              <a
+                onClick={() => {
+                  setMenuIsActive(false);
+                }}
+              >
+                Home
+              </a>
             </Link>
           </li>
           <li
@@ -208,9 +216,9 @@ export default memo(function NavBar({
             </div>
           </li>
           <li>My Stuff</li>
-          <li>
+          <li className={whichLinkActive === "Aboutus" ? styles.active : ""}>
             <Link href="/Aboutus">
-              <a>About Us</a>
+              <a onClick={() => setMenuIsActive(false)}>About Us</a>
             </Link>
           </li>
         </ul>

@@ -30,6 +30,7 @@ export default function MovieList(props) {
     navBarRef,
     setGenreID,
     genreID,
+    setLinkActive,
   } = props;
 
   const handleOnDocumentBottom = useCallback(() => {

@@ -11,15 +11,11 @@ export default function aboutus(props) {
     typeofGenres,
     pageNumber,
     navBarPage,
+    setLinkActive,
   } = props;
 
   useEffect(() => {
-    navBarPage.current.childNodes.forEach(
-      (node) => (node.style = "border: none")
-    );
-
-    navBarPage.current.childNodes[3].style =
-      "border-bottom: 4px solid #fffffff5; border-top: 4px solid #ffffff00;";
+    setLinkActive("Aboutus");
   }, []);
 
   return (

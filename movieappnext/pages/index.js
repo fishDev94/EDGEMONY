@@ -11,14 +11,10 @@ export default function Home({
   setMovieID,
   setModalVisibility,
   navBarPage,
+  setLinkActive,
 }) {
   useEffect(() => {
-    navBarPage.current.childNodes.forEach(
-      (node) => (node.style = "border: none")
-    );
-
-    navBarPage.current.firstChild.style =
-      "border-bottom: 4px solid #fffffff5; border-top: 4px solid #ffffff00;";
+    setLinkActive("Home");
   }, []);
 
   return (

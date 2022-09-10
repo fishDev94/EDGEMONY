@@ -254,6 +254,11 @@
         width: auto;
         padding: 0 20px;
 
+        &.active {
+          border-top: 4px solid rgba(255, 255, 255, 0);
+          border-bottom: 4px solid rgba(255, 255, 255, 0.964);
+        }
+
         .category_list {
           position: absolute;
           display: none;

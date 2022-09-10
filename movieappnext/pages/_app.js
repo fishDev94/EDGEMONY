@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar/NavBar";
 
 function MyApp({ Component, pageProps }) {
   const [isModalVisibile, setModalVisibility] = useState(false);
+  const [whichLinkActive, setLinkActive] = useState("");
   const [movieID, setMovieID] = useState("");
   const [genreID, setGenreID] = useState("");
   const [typeofGenres, setTypeOfGenres] = useState("movie");
@@ -29,6 +30,8 @@ function MyApp({ Component, pageProps }) {
       navBarPage={navBarPage}
       setMovieList={setMovieList}
       navBarRef={navBarRef}
+      setLinkActive={setLinkActive}
+      whichLinkActive={whichLinkActive}
     >
       <Component
         {...pageProps}
@@ -46,6 +49,7 @@ function MyApp({ Component, pageProps }) {
         movieList={movieList}
         navBarRef={navBarRef}
         setGenreID={setGenreID}
+        setLinkActive={setLinkActive}
       />
     </NavBar>
   );
