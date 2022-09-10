@@ -1,9 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.scss";
-import { useState } from "react";
+import { useEffect } from "react";
 import Hero from "../components/Hero/Hero";
 import MainSection from "../components/MainSection";
-import NavBar from "../components/NavBar/NavBar";
 import MainModal from "../components/MainModal/MainModal";
 
 export default function Home({
@@ -11,7 +10,17 @@ export default function Home({
   movieID,
   setMovieID,
   setModalVisibility,
+  navBarPage,
 }) {
+  useEffect(() => {
+    navBarPage.current.childNodes.forEach(
+      (node) => (node.style = "border: none")
+    );
+
+    navBarPage.current.firstChild.style =
+      "border-bottom: 4px solid #fffffff5; border-top: 4px solid #ffffff00;";
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -20,15 +29,11 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <NavBar setMovieID={setMovieID} setModalVisibility={setModalVisibility} /> */}
       <Hero setMovieID={setMovieID} setModalVisibility={setModalVisibility} />
       <MainSection
         setModalVisibility={setModalVisibility}
         setMovieID={setMovieID}
       />
-      {isModalVisibile && (
-        <MainModal movieID={movieID} setModalVisibility={setModalVisibility} />
-      )}
     </div>
   );
 }

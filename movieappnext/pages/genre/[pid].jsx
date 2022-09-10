@@ -12,15 +12,7 @@ export default function MovieList(props) {
   const router = useRouter();
   const { pid } = router.query;
 
-  const {
-    isModalVisibile,
-    movieID,
-    setMovieID,
-    setModalVisibility,
-    genreID,
-    typeofGenres,
-    pageNumber,
-  } = props;
+  const { genreID, typeofGenres, pageNumber, navBarPage } = props;
 
   useEffect(() => {
     GET(
@@ -30,12 +22,13 @@ export default function MovieList(props) {
     ).then((data) => setMovieList(data));
   }, [genreID]);
 
+  useEffect(() => {
+    navBarPage.current.firstChild.style = "border: none";
+  }, []);
+
   return (
     <div className={styles.MovieList}>
-      <h1 style={{ fontSize: "4rem" }}>{pid}</h1>
-      {isModalVisibile && (
-        <MainModal movieID={movieID} setModalVisibility={setModalVisibility} />
-      )}
+      <h1 style={{ fontSize: "4rem", textTransform: "capitalize" }}>{pid}</h1>
       <Link href="/">
         <a>Back</a>
       </Link>

@@ -6,15 +6,18 @@ import { VscChromeClose } from "react-icons/vsc";
 import { useState, useRef, useEffect, memo } from "react";
 import { GET } from "../../utils/api";
 import Logo from "./Logo";
-// import ResultsSection from "../ResultsSection";
+import MainModal from "../MainModal/MainModal";
 
 export default memo(function NavBar({
   children,
   setMovieID,
+  movieID,
   setModalVisibility,
   setGenreID,
   setTypeOfGenres,
   typeofGenres,
+  navBarPage,
+  isModalVisibile,
 }) {
   const categoryRef = useRef(null);
   const searchInput = useRef(null);
@@ -146,9 +149,14 @@ export default memo(function NavBar({
           Browse <IoMdArrowDropdown className={styles.arrow} />
         </h3>
         <ul
+          ref={navBarPage}
           className={`${styles.NavBar__link} ${menuIsActive && styles.active}`}
         >
-          <li>Home</li>
+          <li>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </li>
           <li
             onMouseOver={(e) => handleOnMouseEnter(e)}
             onMouseOut={(e) => handleOnMouseLeave(e)}
@@ -185,7 +193,7 @@ export default memo(function NavBar({
                           id={genre.id}
                           key={index}
                         >
-                          <Link href={`/MovieList/${genre.name}`}>
+                          <Link href={`/genre/${genre.name.toLowerCase()}`}>
                             <a>{genre.name}</a>
                           </Link>
                         </li>
@@ -197,7 +205,11 @@ export default memo(function NavBar({
             </div>
           </li>
           <li>My Stuff</li>
-          <li>About us</li>
+          <li>
+            <Link href="/aboutus">
+              <a>About Us</a>
+            </Link>
+          </li>
         </ul>
 
         <div
@@ -246,7 +258,12 @@ export default memo(function NavBar({
             </ul>
           </div>
         </form>
-        {/* <ResultsSection /> */}
+        {isModalVisibile && (
+          <MainModal
+            movieID={movieID}
+            setModalVisibility={setModalVisibility}
+          />
+        )}
       </div>
       {children}
     </>

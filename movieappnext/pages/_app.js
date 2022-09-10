@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import NavBar from "../components/NavBar/NavBar";
 
 function MyApp({ Component, pageProps }) {
@@ -9,13 +9,17 @@ function MyApp({ Component, pageProps }) {
   const [typeofGenres, setTypeOfGenres] = useState("movie");
   const [pageNumber, setPageNumber] = useState(1);
 
+  const navBarPage = useRef(null);
   return (
     <NavBar
       setModalVisibility={setModalVisibility}
+      isModalVisibile={isModalVisibile}
       setMovieID={setMovieID}
+      movieID={movieID}
       setGenreID={setGenreID}
       setTypeOfGenres={setTypeOfGenres}
       typeofGenres={typeofGenres}
+      navBarPage={navBarPage}
     >
       <Component
         {...pageProps}
@@ -26,6 +30,7 @@ function MyApp({ Component, pageProps }) {
         genreID={genreID}
         typeofGenres={typeofGenres}
         pageNumber={pageNumber}
+        navBarPage={navBarPage}
       />
     </NavBar>
   );
