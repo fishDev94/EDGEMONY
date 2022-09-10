@@ -3,14 +3,14 @@ import { useEffect } from "react";
 
 export default function Aboutus(props) {
   const {
-    isModalVisibile,
-    movieID,
-    setMovieID,
-    setModalVisibility,
-    genreID,
-    typeofGenres,
-    pageNumber,
-    navBarPage,
+    // isModalVisibile,
+    // movieID,
+    // setMovieID,
+    // setModalVisibility,
+    // genreID,
+    // typeofGenres,
+    // pageNumber,
+    // navBarPage,
     setLinkActive,
   } = props;
 
