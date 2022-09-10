@@ -5,7 +5,7 @@ import { BASE_URL_IMG } from "../../constants";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
 
 export default memo(function Hero({ setMovieID, setModalVisibility }) {
-  let touchStartX = 0;
+  const touchStartX = 0;
   let touchEndX = 0;
 
   const [myIndex, setIndex] = useState(0);
