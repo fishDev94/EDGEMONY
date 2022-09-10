@@ -208,7 +208,7 @@ export default memo(function NavBar({
           </li>
           <li>My Stuff</li>
           <li>
-            <Link href="/aboutus">
+            <Link href="/Aboutus">
               <a>About Us</a>
             </Link>
           </li>
