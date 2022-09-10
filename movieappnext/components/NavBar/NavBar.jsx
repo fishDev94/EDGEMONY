@@ -19,6 +19,7 @@ export default memo(function NavBar({
   navBarPage,
   isModalVisibile,
   setMovieList,
+  navBarRef,
 }) {
   const categoryRef = useRef(null);
   const searchInput = useRef(null);
@@ -136,7 +137,7 @@ export default memo(function NavBar({
 
   return (
     <>
-      <div className={styles.NavBar}>
+      <div ref={navBarRef} className={styles.NavBar}>
         <div className={styles.logo}>
           <Link href="/">
             <a>
@@ -195,7 +196,7 @@ export default memo(function NavBar({
                           id={genre.id}
                           key={index}
                         >
-                          <Link href={`/genre/${genre.name.toLowerCase()}`}>
+                          <Link href={`/genre/${genre.id}&=${genre.name}`}>
                             <a>{genre.name}</a>
                           </Link>
                         </li>

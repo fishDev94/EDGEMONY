@@ -18,7 +18,7 @@ export default function Home({
     );
 
     navBarPage.current.firstChild.style =
-      "border-bottom: 4px solid #fffffff5; border-top: 4px solid #ffffff00;";
+      "@media only screen and (min-width: 769px) {border-bottom: 4px solid #fffffff5; border-top: 4px solid #ffffff00}";
   }, []);
 
   return (

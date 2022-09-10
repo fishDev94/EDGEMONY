@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
   };
 
   const navBarPage = useRef(null);
+  const navBarRef = useRef(null);
   return (
     <NavBar
       setModalVisibility={setModalVisibility}
@@ -27,6 +28,7 @@ function MyApp({ Component, pageProps }) {
       typeofGenres={typeofGenres}
       navBarPage={navBarPage}
       setMovieList={setMovieList}
+      navBarRef={navBarRef}
     >
       <Component
         {...pageProps}
@@ -42,6 +44,8 @@ function MyApp({ Component, pageProps }) {
         setPageNumber={setPageNumber}
         setMovieList={setMovieList}
         movieList={movieList}
+        navBarRef={navBarRef}
+        setGenreID={setGenreID}
       />
     </NavBar>
   );
