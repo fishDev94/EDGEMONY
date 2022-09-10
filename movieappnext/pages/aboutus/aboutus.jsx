@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
 import { useEffect } from "react";
 
-export default function aboutus(props) {
+export default function Aboutus(props) {
   const {
     isModalVisibile,
     movieID,

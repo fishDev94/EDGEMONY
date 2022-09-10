@@ -88,6 +88,7 @@ export default memo(function NavBar({
     setGenreID(id);
     categoryList.current.classList.remove(styles.hover);
     setMovieList([]);
+    setLinkActive("");
   };
 
   useEffect(() => {

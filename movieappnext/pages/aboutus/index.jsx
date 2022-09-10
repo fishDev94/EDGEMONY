@@ -1,3 +1,3 @@
-import aboutus from "./aboutus";
+import Aboutus from "./aboutus";
 
-export default aboutus;
+export default Aboutus;
