@@ -1,0 +1,25 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.MovieList {
+  @include flex-container($direction: column, $align: flex-start, $gap: 10px);
+  background-color: $DarkBackground;
+  min-height: calc(100vh - 8vh);
+  padding: 20px;
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-transform: capitalize;
+    flex: 0 0 auto;
+    width: 100%;
+    padding-bottom: 10px;
+    color: rgb(201, 201, 201);
+    border-bottom: 1px solid rgba(220, 232, 244, 0.282);
+  }
+
+  .cardContainer {
+    @include flex-container($direction: column, $gap: 10px);
+    width: 100%;
+  }
+}

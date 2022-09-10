@@ -1,9 +1,8 @@
 import styles from "./index.module.scss";
-import MainModal from "../../components/MainModal/MainModal";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GET } from "../../utils/api";
-import Link from "next/link";
+import WrapperCard from "../../components/WrapperCard/WrapperCard";
 
 export default function MovieList(props) {
   const [movieList, setMovieList] = useState({
@@ -12,7 +11,8 @@ export default function MovieList(props) {
   const router = useRouter();
   const { pid } = router.query;
 
-  const { genreID, typeofGenres, pageNumber, navBarPage } = props;
+  const { genreID, typeofGenres, pageNumber, navBarPage, handleOnClickCard } =
+    props;
 
   useEffect(() => {
     GET(
@@ -28,11 +28,18 @@ export default function MovieList(props) {
 
   return (
     <div className={styles.MovieList}>
-      <h1 style={{ fontSize: "4rem", textTransform: "capitalize" }}>{pid}</h1>
-      <Link href="/">
-        <a>Back</a>
-      </Link>
-      <button onClick={() => console.log(movieList)}>Lista</button>
+      <h2>{pid}</h2>
+      <div className={styles.cardContainer}>
+        {movieList.results &&
+          movieList.results.map((item, index) => (
+            <WrapperCard
+              data={item}
+              handleOnClickCard={handleOnClickCard}
+              key={index}
+              type="big"
+            />
+          ))}
+      </div>
     </div>
   );
 }

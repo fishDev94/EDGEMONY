@@ -9,6 +9,11 @@ function MyApp({ Component, pageProps }) {
   const [typeofGenres, setTypeOfGenres] = useState("movie");
   const [pageNumber, setPageNumber] = useState(1);
 
+  const handleOnClickCard = (e) => {
+    setMovieID(e.target.id);
+    setModalVisibility(true);
+  };
+
   const navBarPage = useRef(null);
   return (
     <NavBar
@@ -31,6 +36,7 @@ function MyApp({ Component, pageProps }) {
         typeofGenres={typeofGenres}
         pageNumber={pageNumber}
         navBarPage={navBarPage}
+        handleOnClickCard={handleOnClickCard}
       />
     </NavBar>
   );
