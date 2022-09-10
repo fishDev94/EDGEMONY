@@ -5,6 +5,9 @@ import { BASE_URL_IMG } from "../../constants";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
 
 export default memo(function Hero({ setMovieID, setModalVisibility }) {
+  let touchStartX = 0;
+  let touchEndX = 0;
+
   const [myIndex, setIndex] = useState(0);
   const [valuePage, setValuePage] = useState(0);
   const counter = useRef({ value: 0 });
@@ -47,46 +50,27 @@ export default memo(function Hero({ setMovieID, setModalVisibility }) {
     setModalVisibility(true);
   };
 
-  useEffect(() => {
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const refBtn = window;
+  const onTouchStart = (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  };
 
-    const onTouchStart = (e) => {
-      if (e.target.className === "Hero_Hero_img__rjzAe") {
-        touchStartX = e.changedTouches[0].clientX;
-      }
-    };
+  const onTouchEnd = (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    change();
+  };
 
-    const onTouchEnd = (e) => {
-      if (e.target.className === "Hero_Hero_img__rjzAe") {
-        touchEndX = e.changedTouches[0].clientX;
-        change();
-      }
-    };
-
-    const change = () => {
-      if (touchStartX > touchEndX && counter.current.value < 19) {
-        setIndex((prev) => prev + 1);
-        setValuePage((prev) => prev + 1);
-        counter.current.value += 1;
-      }
-      if (touchStartX < touchEndX && counter.current.value > 0) {
-        setIndex((prev) => prev - 1);
-        setValuePage((prev) => prev - 1);
-        counter.current.value -= 1;
-      }
-    };
-
-    refBtn.addEventListener("touchstart", onTouchStart);
-
-    refBtn.addEventListener("touchend", onTouchEnd);
-
-    return () => {
-      refBtn.removeEventListener("touchstart", onTouchStart);
-      refBtn.removeEventListener("touchend", onTouchEnd);
-    };
-  }, []);
+  const change = () => {
+    if (touchStartX > touchEndX && counter.current.value < 19) {
+      setIndex((prev) => prev + 1);
+      setValuePage((prev) => prev + 1);
+      counter.current.value += 1;
+    }
+    if (touchStartX < touchEndX && counter.current.value > 0) {
+      setIndex((prev) => prev - 1);
+      setValuePage((prev) => prev - 1);
+      counter.current.value -= 1;
+    }
+  };
 
   useEffect(() => {
     GET("movie", "popular", `&page=1&include_adult=false`).then((data) => {
@@ -103,6 +87,8 @@ export default memo(function Hero({ setMovieID, setModalVisibility }) {
             key={index}
             ref={heroImgRef}
             onClick={() => handleOnImgClick(item.id)}
+            onTouchStart={(e) => onTouchStart(e)}
+            onTouchEnd={(e) => onTouchEnd(e)}
             style={{ right: valuePage * 100 + "vw" }}
             className={styles.Hero_img}
             src={`${BASE_URL_IMG}${item.backdrop_path}`}
