@@ -83,7 +83,6 @@ export default memo(function NavBar({
     iconContainer.current.firstElementChild.classList.toggle(
       styles.desk_active
     );
-    console.log("lol");
   };
 
   const handleOnClickLink = (id) => {
@@ -107,6 +106,7 @@ export default memo(function NavBar({
     setMenuIsActive(false);
     categoryList.current.classList.remove(styles.hover);
     categoryList.current.classList.remove(styles.desk_active);
+    setModalVisibility(false);
   };
 
   useEffect(() => {

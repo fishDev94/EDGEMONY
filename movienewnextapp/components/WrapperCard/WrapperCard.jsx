@@ -34,8 +34,9 @@ export default memo(function WrapperCard({ data, handleOnClickCard, type }) {
       onClick={(e) => handleOnClickCard(e)}
       className={`${styles.WrapperCard} ${type && styles[type]}`}
     >
+      <div id={id} className={styles.clickable_area} />
       <div className={styles.inside_container}>
-        <p id={id}>{title}</p>
+        <p className={styles.titlecard}>{title}</p>
         {backdrop_path ? (
           <img
             className={styles.background}

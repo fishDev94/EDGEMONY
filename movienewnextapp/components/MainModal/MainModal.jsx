@@ -28,9 +28,9 @@ export default memo(function MainModal({
 
   useEffect(() => {
     GET(category, `${movieID}/videos`, "&language=en-US").then((dataMovie) => {
-      setVideoData(dataMovie.results[0]);
+      setVideoData(dataMovie?.results[0]);
     });
-  }, []);
+  }, [movieID, category]);
 
   useEffect(() => {
     setOpen("open");
