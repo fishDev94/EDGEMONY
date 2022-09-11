@@ -4,17 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import Link from "next/link";
 
 export default function Aboutus(props) {
-  const {
-    // isModalVisibile,
-    // movieID,
-    // setMovieID,
-    // setModalVisibility,
-    // genreID,
-    // typeofGenres,
-    // pageNumber,
-    // navBarPage,
-    setLinkActive,
-  } = props;
+  const { setLinkActive } = props;
 
   useEffect(() => {
     setLinkActive("Aboutus");
@@ -33,7 +23,20 @@ export default function Aboutus(props) {
             </Link>{" "}
             you can find the complete code of this App.
           </p>
-          <p className={styles.vercel}>deployed with vercel.</p>
+          <div className={styles.vercel}>
+            <p>
+              build with{" "}
+              <Link href="https://nextjs.org/">
+                <a>Next.js</a>
+              </Link>
+            </p>
+            <p>
+              deployed with{" "}
+              <Link href="https://vercel.com/">
+                <a>Vercel.app</a>
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
       <Footer />

@@ -133,6 +133,24 @@ export default memo(function NavBar({
     );
   }, [typeofGenres]);
 
+  useEffect(() => {
+    const handleEventListener = (e) => {
+      if (
+        e.target.id !== "main_search" &&
+        e.target.tagName !== "path" &&
+        e.target.tagName !== "svg" &&
+        e.target.id !== "results"
+      ) {
+        setIsActive(false);
+        setSearchActive(false);
+        setSearchQuery("");
+      }
+    };
+
+    window.addEventListener("click", handleEventListener);
+    return window.removeEventListener("click", handleEventListener);
+  }, []);
+
   return (
     <>
       <div ref={navBarRef} className={styles.NavBar}>

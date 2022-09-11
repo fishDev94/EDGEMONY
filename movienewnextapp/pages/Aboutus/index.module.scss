@@ -18,9 +18,10 @@
       @include flex-container($direction: column, $gap: 5px, $justify: center);
       background-color: rgba(255, 255, 255, 0.04);
       box-shadow: 0 0 100px rgba(255, 255, 255, 0.084);
-      padding: 60px;
+      padding: 10px;
       height: 50%;
       border-radius: 100%;
+      position: relative;
 
       h2 {
         font-weight: bold;
@@ -43,11 +44,88 @@
       }
 
       .vercel {
-        color: rgba(255, 255, 255, 0.244);
-        transform: scale(0.8);
+        @include flex-container($justify: space-between);
+
+        // transform: scale(0.8);
+        flex: 0 0 auto;
         width: 100%;
         margin-top: 10px;
-        text-align: right;
+        text-align: center;
+        p {
+          color: rgba(255, 255, 255, 0.244);
+          margin: 0;
+          flex: 0 0 auto;
+          font-size: 0.7rem;
+
+          a {
+            opacity: 0.6;
+            font-weight: bold;
+            text-decoration: underline;
+            color: rgb(94, 138, 158);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .aboutus {
+    background-color: $MainBackground;
+    height: 92vh;
+    color: $text-Gwhite;
+
+    .maincontent {
+      @include flex-container(
+        $direction: column,
+        $justify: center,
+        $align: center
+      );
+      height: 88vh;
+      padding: 40px;
+      .text_container {
+        @include flex-container(
+          $direction: column,
+          $gap: 5px,
+          $justify: center
+        );
+        background-color: rgba(255, 255, 255, 0.04);
+        box-shadow: 0 0 100px rgba(255, 255, 255, 0.084);
+        padding: 60px;
+        height: 50%;
+        border-radius: 100%;
+
+        h2 {
+          font-weight: bold;
+          font-size: 2rem;
+        }
+
+        h3 {
+          color: rgb(146, 158, 162);
+          font-size: 1.2rem;
+        }
+
+        p {
+          color: rgba(255, 255, 255, 0.763);
+
+          a {
+            font-weight: bold;
+            text-decoration: underline;
+            color: rgb(94, 138, 158);
+          }
+        }
+
+        .vercel {
+          @include flex-container($justify: space-between);
+          color: rgba(255, 255, 255, 0.244);
+          width: 100%;
+          margin-top: 10px;
+          text-align: right;
+
+          a {
+            opacity: 0.6;
+          }
+        }
       }
     }
   }
