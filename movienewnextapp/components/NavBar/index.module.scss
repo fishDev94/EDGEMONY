@@ -32,11 +32,15 @@
         $gap: 30px,
         $align: flex-start
       );
-      height: auto;
+      height: calc(100vh - 8vh);
+      overflow: auto;
+      overflow-x: hidden;
       opacity: 1;
       z-index: 999;
       background-color: #252e39;
       transition: all 0.15s;
+      box-sizing: border-box;
+      width: 100vw;
 
       .arrow {
         color: rgba(255, 255, 255, 0.522);
@@ -52,19 +56,60 @@
 
       .text_and_icon {
         @include flex-container($align: center, $gap: 4px);
+
+        .arrow {
+          transition: all 0.25s;
+          transform: rotate(180deg);
+
+          &.desk_active {
+            transform: rotate(0deg);
+          }
+        }
       }
 
       .category_list {
         display: none;
         position: relative;
+        top: 20px;
         left: -20px;
         flex: 0 0 auto;
         background-color: $MainBackground;
         width: 100vw;
+        padding: 20px;
+
+        &.desk_active {
+          display: block;
+        }
 
         .content {
           @include flex-container($direction: column, $gap: 20px);
           width: 100%;
+
+          .left_sider {
+            h3 {
+              padding: 10px 0;
+            }
+
+            ul {
+              @include flex-container($direction: column, $gap: 10px);
+              color: rgb(135, 150, 160);
+            }
+          }
+
+          .right_sider {
+            h4 {
+              text-transform: capitalize;
+              padding: 10px 0;
+            }
+
+            .list_container ul {
+              @include flex-container($direction: column, $gap: 10px);
+
+              li a {
+                color: rgb(135, 150, 160);
+              }
+            }
+          }
         }
       }
     }
@@ -239,12 +284,10 @@
       height: 100%;
       opacity: 1;
       position: static;
-
       top: auto;
       left: auto;
       padding: 0;
       height: auto;
-      overflow: visible;
       color: rgba(255, 255, 255, 0.853);
 
       li {
@@ -257,6 +300,17 @@
         &.active {
           border-top: 4px solid rgba(255, 255, 255, 0);
           border-bottom: 4px solid rgba(255, 255, 255, 0.964);
+        }
+
+        .text_and_icon {
+          .arrow {
+            transition: all 0;
+            transform: rotate(0deg);
+
+            &.desk_active {
+              transform: rotate(0deg);
+            }
+          }
         }
 
         .category_list {
@@ -306,6 +360,7 @@
                     background-image: url("../../assets/category_btn.png");
                     background-size: cover;
                     background-repeat: no-repeat;
+                    color: white;
 
                     &:hover {
                       box-shadow: 0 0 3px 1.8px white;

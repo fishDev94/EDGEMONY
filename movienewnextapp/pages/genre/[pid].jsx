@@ -43,13 +43,14 @@ export default function MovieList(props) {
     pid &&
       GET(
         "discover",
-        `${typeofGenres}`,
+        `${pid.split("&=")[2]}`,
         `&language=en-US&sort_by=popularity.desc&include_adult=false&page=${pageNumber}&with_genres=${
           pid.split("&=")[0]
         }&with_watch_monetization_types=flatrate`
       ).then((data) => {
         setMovieList(data.results);
         setDataObj(data);
+        setGenreID(pid.split("&=")[0]);
       });
   }, [pid]);
 
@@ -65,34 +66,9 @@ export default function MovieList(props) {
       });
   }, [genreID, pageNumber]);
 
-  // useEffect(() => {
-  //   navBarPage.current.firstChild.style = "border: none";
-
-  //   const scrollCondition = () => {
-  //     const bottom = document.body.scrollHeigh;
-
-  //     if (cardContainer.current) {
-  //       const { scrollTop, scrollHeight, clientHeight } =
-  //         cardContainer?.current;
-  //       if (scrollTop + clientHeight === scrollHeight) {
-  //         console.log("reached bottom");
-  //         console.log(window.scrollY + navBarRef.current.offsetHeight * 2);
-  //         console.log(clientHeight);
-  //       }
-  //     }
-
-  //     //   if (window.scrollY > bottom - 50) {
-  //     //     setPageNumber((prev) => prev + 1);
-  //     //   }
-  //     // };
-  //   };
-  //   window.addEventListener("scroll", scrollCondition);
-  // }, []);
-
   return (
     <div className={styles.MovieList}>
       <h2>{pid?.split("&=")[1]}</h2>
-      <button onClick={() => console.log(dataObj)}>click</button>
       <div ref={cardContainer} className={styles.cardContainer}>
         {movieList &&
           movieList.map((item, index) => (

@@ -27,6 +27,7 @@ export default memo(function NavBar({
   const searchInput = useRef(null);
   const overlay = useRef(null);
   const categoryList = useRef(null);
+  const iconContainer = useRef(null);
 
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
@@ -73,6 +74,14 @@ export default memo(function NavBar({
   const handleOnMouseLeave = (e) => {
     e.target.classList.remove(styles.category_hover);
     categoryList.current.classList.remove(styles.hover);
+    categoryList.current.classList.remove(styles.desk_active);
+  };
+
+  const handleCategoryClick = () => {
+    categoryList.current.classList.toggle(styles.desk_active);
+    iconContainer.current.firstElementChild.classList.toggle(
+      styles.desk_active
+    );
   };
 
   const handleOnClickLink = (id) => {
@@ -87,6 +96,7 @@ export default memo(function NavBar({
   const handleOnGenreClick = (id) => {
     setGenreID(id);
     categoryList.current.classList.remove(styles.hover);
+    categoryList.current.classList.toggle(styles.desk_active);
     setMovieList([]);
     setLinkActive("");
   };
@@ -172,9 +182,10 @@ export default memo(function NavBar({
           <li
             onMouseOver={(e) => handleOnMouseEnter(e)}
             onMouseOut={(e) => handleOnMouseLeave(e)}
+            onClick={handleCategoryClick}
             ref={categoryRef}
           >
-            <div className={styles.text_and_icon}>
+            <div ref={iconContainer} className={styles.text_and_icon}>
               Category <IoMdArrowDropdown className={styles.arrow} />
             </div>
             <div ref={categoryList} className={styles.category_list}>
@@ -205,7 +216,9 @@ export default memo(function NavBar({
                           id={genre.id}
                           key={index}
                         >
-                          <Link href={`/genre/${genre.id}&=${genre.name}`}>
+                          <Link
+                            href={`/genre/${genre.id}&=${genre.name}&=${typeofGenres}`}
+                          >
                             <a>{genre.name}</a>
                           </Link>
                         </li>
