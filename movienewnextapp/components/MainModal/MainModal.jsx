@@ -10,6 +10,7 @@ export default memo(function MainModal({
 }) {
   const [open, setOpen] = useState("");
   const [movieData, setMovieData] = useState({});
+  const [videoData, setVideoData] = useState({});
 
   const handleOnClickClose = () => {
     setModalVisibility(false);
@@ -25,6 +26,13 @@ export default memo(function MainModal({
       console.log(category);
     });
   }, [movieID]);
+
+  useEffect(() => {
+    GET(category, `${movieID}/videos`, "&language=en-US").then((dataMovie) => {
+      setVideoData(dataMovie.results[0]);
+      console.log(dataMovie.results);
+    });
+  }, []);
 
   useEffect(() => {
     setOpen("open");
@@ -65,6 +73,16 @@ export default memo(function MainModal({
               ? movieData.release_date
               : movieData.first_air_date}
           </p>
+          {videoData.key && (
+            <iframe
+              className={styles.movie}
+              src={`https://www.youtube.com/embed/${videoData.key}?autoplay=1&controls=1&disablekb=1&fs=0&mute=1`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          )}
         </div>
         <div onClick={handleOnClickClose} className={styles.close}>
           X

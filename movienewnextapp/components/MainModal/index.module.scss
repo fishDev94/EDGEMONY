@@ -92,6 +92,10 @@
     box-sizing: border-box;
     padding: 40px;
 
+    .movie {
+      height: auto;
+    }
+
     &_container_title {
       @include flex-container($direction: column, $gap: 5px);
     }
@@ -270,8 +274,13 @@
       align-self: flex-start;
       @include flex-container($direction: column, $justify: center, $gap: 20px);
       height: 100%;
+      width: 58%;
       box-sizing: border-box;
       padding: 40px;
+
+      .movie {
+        height: 100%;
+      }
 
       &_container_title {
         @include flex-container($direction: column, $gap: 5px);
@@ -289,7 +298,7 @@
       }
 
       &_genres {
-        @include flex-container($gap: 10px);
+        @include flex-container($gap: 10px, $wrap: wrap);
         list-style: none;
         padding: 0;
         margin: 0;
