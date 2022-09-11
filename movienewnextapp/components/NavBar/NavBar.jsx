@@ -27,7 +27,6 @@ export default memo(function NavBar({
 }) {
   const categoryRef = useRef(null);
   const searchInput = useRef(null);
-  // const overlay = useRef(null);
   const categoryList = useRef(null);
   const iconContainer = useRef(null);
 
@@ -76,7 +75,6 @@ export default memo(function NavBar({
   const handleOnMouseLeave = (e) => {
     e.target.classList.remove(styles.category_hover);
     categoryList.current.classList.remove(styles.hover);
-    // categoryList.current.classList.remove(styles.desk_active);
   };
 
   const handleCategoryClick = () => {
@@ -109,29 +107,6 @@ export default memo(function NavBar({
     categoryList.current.classList.remove(styles.hover);
     categoryList.current.classList.remove(styles.desk_active);
   };
-
-  useEffect(() => {
-    // const overlayNode = overlay.current;
-
-    const handleEventListener = (e) => {
-      if (
-        e.target.id !== "main_search" &&
-        e.target.tagName !== "path" &&
-        e.target.tagName !== "svg" &&
-        e.target.id !== "results"
-      ) {
-        setIsActive(false);
-        setSearchActive(false);
-        setSearchQuery("");
-      }
-    };
-    const handleOverlayClick = () => {
-      setMenuIsActive(false);
-    };
-
-    // window.addEventListener("click", handleEventListener);
-    // overlayNode.addEventListener("click", handleOverlayClick);
-  }, []);
 
   useEffect(() => {
     searchQuery.length > 1 &&
@@ -246,11 +221,6 @@ export default memo(function NavBar({
             </Link>
           </li>
         </ul>
-
-        {/* <div
-          ref={overlay}
-          className={`${styles.overlay} ${menuIsActive && styles.active}`}
-        /> */}
         <form
           onSubmit={onSearchSubmit}
           className={`${styles.NavBar__searchbar_container} ${
