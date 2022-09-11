@@ -25,7 +25,7 @@ export default function Aboutus(props) {
       <div className={styles.maincontent}>
         <div className={styles.text_container}>
           <h2>HELLO THERE!</h2>
-          <h3>It's just an excercise</h3>
+          <h3>It&apos;s just an excercise</h3>
           <p>
             if you are curious,{" "}
             <Link href="https://github.com/marco94gug/EDGEMONY/tree/main/movienewnextapp">
