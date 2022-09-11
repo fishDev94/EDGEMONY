@@ -7,6 +7,7 @@ import { useState, useRef, useEffect, memo } from "react";
 import { GET } from "../../utils/api";
 import Logo from "./Logo";
 import MainModal from "../MainModal/MainModal";
+import Footer from "../Footer/Footer";
 
 export default memo(function NavBar({
   children,
