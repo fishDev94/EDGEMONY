@@ -22,10 +22,12 @@ export default memo(function NavBar({
   navBarRef,
   setLinkActive,
   whichLinkActive,
+  setCategory,
+  category,
 }) {
   const categoryRef = useRef(null);
   const searchInput = useRef(null);
-  const overlay = useRef(null);
+  // const overlay = useRef(null);
   const categoryList = useRef(null);
   const iconContainer = useRef(null);
 
@@ -74,7 +76,7 @@ export default memo(function NavBar({
   const handleOnMouseLeave = (e) => {
     e.target.classList.remove(styles.category_hover);
     categoryList.current.classList.remove(styles.hover);
-    categoryList.current.classList.remove(styles.desk_active);
+    // categoryList.current.classList.remove(styles.desk_active);
   };
 
   const handleCategoryClick = () => {
@@ -82,27 +84,34 @@ export default memo(function NavBar({
     iconContainer.current.firstElementChild.classList.toggle(
       styles.desk_active
     );
+    console.log("lol");
   };
 
   const handleOnClickLink = (id) => {
     setMovieID(id);
     setModalVisibility(true);
+    setCategory("movie");
+    setSearchActive(false);
+    setIsActive(false);
+    setSearchQuery("");
   };
 
   const handleOnTypeOfGenreClick = (e) => {
     setTypeOfGenres(e.target.id);
+    setCategory(e.target.text);
   };
 
   const handleOnGenreClick = (id) => {
     setGenreID(id);
-    categoryList.current.classList.remove(styles.hover);
-    categoryList.current.classList.toggle(styles.desk_active);
     setMovieList([]);
     setLinkActive("");
+    setMenuIsActive(false);
+    categoryList.current.classList.remove(styles.hover);
+    categoryList.current.classList.remove(styles.desk_active);
   };
 
   useEffect(() => {
-    const overlayNode = overlay.current;
+    // const overlayNode = overlay.current;
 
     const handleEventListener = (e) => {
       if (
@@ -120,8 +129,8 @@ export default memo(function NavBar({
       setMenuIsActive(false);
     };
 
-    window.addEventListener("click", handleEventListener);
-    overlayNode.addEventListener("click", handleOverlayClick);
+    // window.addEventListener("click", handleEventListener);
+    // overlayNode.addEventListener("click", handleOverlayClick);
   }, []);
 
   useEffect(() => {
@@ -151,7 +160,7 @@ export default memo(function NavBar({
   return (
     <>
       <div ref={navBarRef} className={styles.NavBar}>
-        <div className={styles.logo}>
+        <div onClick={() => setModalVisibility(false)} className={styles.logo}>
           <Link href="/">
             <a>
               <Logo />
@@ -188,48 +197,49 @@ export default memo(function NavBar({
             <div ref={iconContainer} className={styles.text_and_icon}>
               Category <IoMdArrowDropdown className={styles.arrow} />
             </div>
-            <div ref={categoryList} className={styles.category_list}>
-              <div className={styles.content}>
-                <div className={styles.left_sider}>
-                  <div className={styles.list_container}>
-                    <h3>Top Categories</h3>
-                    <ul>
-                      <li
-                        onClick={(e) => handleOnTypeOfGenreClick(e)}
-                        id="movie"
-                      >
-                        Movies
-                      </li>
-                      <li onClick={(e) => handleOnTypeOfGenreClick(e)} id="tv">
-                        TV
-                      </li>
-                    </ul>
-                  </div>
+          </li>
+          <div
+            ref={categoryList}
+            className={styles.category_list}
+            onMouseOver={(e) => handleOnMouseEnter(e)}
+            onMouseOut={(e) => handleOnMouseLeave(e)}
+          >
+            <div className={styles.content}>
+              <div className={styles.left_sider}>
+                <div className={styles.list_container}>
+                  <h3>Top Categories</h3>
+                  <ul>
+                    <li onClick={(e) => handleOnTypeOfGenreClick(e)} id="movie">
+                      Movies
+                    </li>
+                    <li onClick={(e) => handleOnTypeOfGenreClick(e)} id="tv">
+                      TV
+                    </li>
+                  </ul>
                 </div>
-                <div className={styles.right_sider}>
-                  <div className={styles.list_container}>
-                    <h4>{typeofGenres} Genres</h4>
-                    <ul>
-                      {genreList.map((genre, index) => (
-                        <li
-                          onClick={() => handleOnGenreClick(genre.id)}
-                          id={genre.id}
-                          key={index}
+              </div>
+              <div className={styles.right_sider}>
+                <div className={styles.list_container}>
+                  <h4>{typeofGenres} Genres</h4>
+                  <ul>
+                    {genreList.map((genre, index) => (
+                      <li
+                        onClick={() => handleOnGenreClick(genre.id)}
+                        id={genre.id}
+                        key={index}
+                      >
+                        <Link
+                          href={`/genre/${genre.id}&=${genre.name}&=${typeofGenres}`}
                         >
-                          <Link
-                            href={`/genre/${genre.id}&=${genre.name}&=${typeofGenres}`}
-                          >
-                            <a>{genre.name}</a>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                          <a>{genre.name}</a>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
-          </li>
-          <li>My Stuff</li>
+          </div>
           <li className={whichLinkActive === "Aboutus" ? styles.active : ""}>
             <Link href="/Aboutus">
               <a onClick={() => setMenuIsActive(false)}>About Us</a>
@@ -237,10 +247,10 @@ export default memo(function NavBar({
           </li>
         </ul>
 
-        <div
+        {/* <div
           ref={overlay}
           className={`${styles.overlay} ${menuIsActive && styles.active}`}
-        />
+        /> */}
         <form
           onSubmit={onSearchSubmit}
           className={`${styles.NavBar__searchbar_container} ${
@@ -287,6 +297,7 @@ export default memo(function NavBar({
           <MainModal
             movieID={movieID}
             setModalVisibility={setModalVisibility}
+            category={category}
           />
         )}
       </div>

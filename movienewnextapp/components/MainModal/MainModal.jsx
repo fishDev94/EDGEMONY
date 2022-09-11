@@ -3,7 +3,11 @@ import { useEffect, useState, memo } from "react";
 import { GET } from "../../utils/api";
 import { BASE_URL_IMG } from "../../constants";
 
-export default memo(function MainModal({ movieID, setModalVisibility }) {
+export default memo(function MainModal({
+  movieID,
+  setModalVisibility,
+  category,
+}) {
   const [open, setOpen] = useState("");
   const [movieData, setMovieData] = useState({});
 
@@ -16,9 +20,9 @@ export default memo(function MainModal({ movieID, setModalVisibility }) {
   };
 
   useEffect(() => {
-    GET("movie", movieID).then((data) => {
+    GET(category, movieID).then((data) => {
       setMovieData(data);
-      console.log(data);
+      console.log(category);
     });
   }, [movieID]);
 
@@ -56,7 +60,11 @@ export default memo(function MainModal({ movieID, setModalVisibility }) {
               ))}
           </ul>
           <p className={styles.MainModal__description}>{movieData.overview}</p>
-          <p className={styles.release}>{movieData.release_date}</p>
+          <p className={styles.release}>
+            {movieData.release_date
+              ? movieData.release_date
+              : movieData.first_air_date}
+          </p>
         </div>
         <div onClick={handleOnClickClose} className={styles.close}>
           X

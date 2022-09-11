@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }) {
   const [typeofGenres, setTypeOfGenres] = useState("movie");
   const [pageNumber, setPageNumber] = useState(1);
   const [movieList, setMovieList] = useState([]);
+  const [category, setCategory] = useState("movie");
 
   const handleOnClickCard = (e) => {
     setMovieID(e.target.id);
@@ -32,6 +33,8 @@ function MyApp({ Component, pageProps }) {
       navBarRef={navBarRef}
       setLinkActive={setLinkActive}
       whichLinkActive={whichLinkActive}
+      setCategory={setCategory}
+      category={category}
     >
       <Component
         {...pageProps}
@@ -50,6 +53,8 @@ function MyApp({ Component, pageProps }) {
         navBarRef={navBarRef}
         setGenreID={setGenreID}
         setLinkActive={setLinkActive}
+        setCategory={setCategory}
+        category={category}
       />
     </NavBar>
   );

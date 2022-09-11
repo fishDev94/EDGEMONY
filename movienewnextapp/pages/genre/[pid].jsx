@@ -31,6 +31,8 @@ export default function MovieList(props) {
     setGenreID,
     genreID,
     setLinkActive,
+    setCategory,
+    category,
   } = props;
 
   const handleOnDocumentBottom = useCallback(() => {
@@ -51,6 +53,7 @@ export default function MovieList(props) {
         setMovieList(data.results);
         setDataObj(data);
         setGenreID(pid.split("&=")[0]);
+        setCategory(pid.split("&=")[2]);
       });
   }, [pid]);
 
@@ -69,16 +72,18 @@ export default function MovieList(props) {
   return (
     <div className={styles.MovieList}>
       <h2>{pid?.split("&=")[1]}</h2>
-      <div ref={cardContainer} className={styles.cardContainer}>
-        {movieList &&
-          movieList.map((item, index) => (
-            <WrapperCard
-              data={item}
-              handleOnClickCard={handleOnClickCard}
-              key={index}
-              type="big"
-            />
-          ))}
+      <div className={styles.primaryContainer}>
+        <div ref={cardContainer} className={styles.cardContainer}>
+          {movieList &&
+            movieList.map((item, index) => (
+              <WrapperCard
+                data={item}
+                handleOnClickCard={handleOnClickCard}
+                key={index}
+                type="big"
+              />
+            ))}
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
 
 .WrapperCard {
   position: relative;
-  background-color: rgb(230, 230, 230);
+  background-color: $backgroundColor-default;
   @include flex-container($align: center, $justify: center);
   width: 45%;
   min-height: 88px;
@@ -12,13 +12,47 @@
   border-radius: 4px;
   overflow: hidden;
 
+  .textContainer {
+    display: none;
+  }
+
   &.big {
     color: rgb(244, 244, 244);
     width: 100%;
-    height: 200px;
+    height: 250px;
 
     img {
       object-fit: cover;
+      height: 200px;
+    }
+
+    .textContainer {
+      display: block;
+      @include flex-container(
+        $direction: column,
+        $align: flex-start,
+        $justify: center,
+        $gap: 5px
+      );
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      height: 52px;
+      padding: 0 10px;
+      .vote_average {
+        @include flex-container($justify: space-between);
+        width: 100%;
+        span {
+          font-size: 0.9rem;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.684);
+        }
+        .rating::before {
+          content: "Rating: ";
+          opacity: 0.5;
+        }
+      }
     }
   }
 

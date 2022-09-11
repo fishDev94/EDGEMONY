@@ -3,7 +3,17 @@ import { BASE_URL_IMG } from "../../constants";
 import { useRef, memo } from "react";
 
 export default memo(function WrapperCard({ data, handleOnClickCard, type }) {
-  const { id, title, backdrop_path, placeholder } = data;
+  const {
+    id,
+    title,
+    backdrop_path,
+    placeholder,
+    name,
+    first_air_date,
+    release_date,
+    vote_average,
+  } = data;
+
   const wrapperCard = useRef(null);
 
   const handleOnMouseHover = (e) => {
@@ -41,6 +51,17 @@ export default memo(function WrapperCard({ data, handleOnClickCard, type }) {
             />
           </div>
         )}
+      </div>
+      <div className={styles.textContainer}>
+        <h4>{title ? title : name}</h4>
+        <div className={styles.vote_average}>
+          <span>
+            {release_date
+              ? release_date.split("-")[0]
+              : first_air_date?.split("-")[0]}
+          </span>
+          <span className={styles.rating}>{vote_average}</span>
+        </div>
       </div>
     </div>
   );

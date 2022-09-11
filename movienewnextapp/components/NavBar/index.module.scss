@@ -5,6 +5,7 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  width: 100vw;
   height: 8vh;
   @include flex-container($align: center, $justify: space-between, $gap: 30px);
   background-color: $backgroundColor-default;
@@ -40,7 +41,7 @@
       background-color: #252e39;
       transition: all 0.15s;
       box-sizing: border-box;
-      width: 100vw;
+      // width: 100%;
 
       .arrow {
         color: rgba(255, 255, 255, 0.522);
@@ -48,15 +49,18 @@
     }
 
     li {
+      width: max-content;
       cursor: pointer;
       // height: 20px;
       padding: 1px;
       box-sizing: border-box;
-      width: 100%;
+      width: max-content;
 
       .text_and_icon {
         @include flex-container($align: center, $gap: 4px);
 
+        flex: 0 0 auto;
+        width: max-content;
         .arrow {
           transition: all 0.25s;
           transform: rotate(180deg);
@@ -66,48 +70,48 @@
           }
         }
       }
+    }
+    .category_list {
+      display: none;
+      position: relative;
+      z-index: 999999999999999;
+      top: 0px;
+      left: -20px;
+      flex: 0 0 auto;
+      background-color: $MainBackground;
+      width: 100vw;
+      padding: 20px;
 
-      .category_list {
-        display: none;
-        position: relative;
-        top: 20px;
-        left: -20px;
-        flex: 0 0 auto;
-        background-color: $MainBackground;
-        width: 100vw;
-        padding: 20px;
+      &.desk_active {
+        display: block;
+      }
 
-        &.desk_active {
-          display: block;
-        }
+      .content {
+        @include flex-container($direction: column, $gap: 20px);
+        width: 100%;
 
-        .content {
-          @include flex-container($direction: column, $gap: 20px);
-          width: 100%;
-
-          .left_sider {
-            h3 {
-              padding: 10px 0;
-            }
-
-            ul {
-              @include flex-container($direction: column, $gap: 10px);
-              color: rgb(135, 150, 160);
-            }
+        .left_sider {
+          h3 {
+            padding: 10px 0;
           }
 
-          .right_sider {
-            h4 {
-              text-transform: capitalize;
-              padding: 10px 0;
-            }
+          ul {
+            @include flex-container($direction: column, $gap: 10px);
+            color: rgb(135, 150, 160);
+          }
+        }
 
-            .list_container ul {
-              @include flex-container($direction: column, $gap: 10px);
+        .right_sider {
+          h4 {
+            text-transform: capitalize;
+            padding: 10px 0;
+          }
 
-              li a {
-                color: rgb(135, 150, 160);
-              }
+          .list_container ul {
+            @include flex-container($direction: column, $gap: 10px);
+
+            li a {
+              color: rgb(135, 150, 160);
             }
           }
         }
@@ -312,98 +316,98 @@
             }
           }
         }
+      }
 
-        .category_list {
-          position: absolute;
-          display: none;
-          top: 8vh;
-          left: 0vw;
-          z-index: 999;
-          background-color: $DarkBackground;
-          width: 100%;
-          height: max-content;
+      .category_list {
+        position: absolute;
+        display: none;
+        top: 8vh;
+        left: 0vw;
+        z-index: 999;
+        background-color: $DarkBackground;
+        width: 100%;
+        height: max-content;
 
-          .content {
-            @include flex-container($direction: row, $justify: center);
-            padding: 30px;
+        .content {
+          @include flex-container($direction: row, $justify: center);
+          padding: 30px;
+          height: 100%;
+          cursor: default;
+
+          .left_sider {
+            @include flex-container($align: flex-start, $justify: flex-end);
+            text-align: start;
+            width: 50%;
             height: 100%;
-            cursor: default;
+            padding-right: 40px;
+            border-right: 1.8px solid rgba(212, 236, 255, 0.239);
 
-            .left_sider {
-              @include flex-container($align: flex-start, $justify: flex-end);
-              text-align: start;
-              width: 50%;
-              height: 100%;
-              padding-right: 40px;
-              border-right: 1.8px solid rgba(212, 236, 255, 0.239);
+            .list_container {
+              @include flex-container(
+                $direction: column,
+                $justify: center,
+                $gap: 20px
+              );
 
-              .list_container {
-                @include flex-container(
-                  $direction: column,
-                  $justify: center,
-                  $gap: 20px
-                );
-
-                ul {
-                  display: grid;
+              ul {
+                display: grid;
+                flex: 0 0 auto;
+                grid-template: 1fr 1fr;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                li {
+                  @include flex-container($align: center, $justify: center);
+                  padding: 0;
+                  margin: 0;
                   flex: 0 0 auto;
-                  grid-template: 1fr 1fr;
-                  grid-template-columns: 1fr 1fr;
-                  gap: 10px;
-                  li {
-                    @include flex-container($align: center, $justify: center);
-                    padding: 0;
-                    margin: 0;
-                    flex: 0 0 auto;
-                    padding: 30px 40px;
-                    border-radius: 4px;
-                    background-image: url("../../assets/category_btn.png");
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    color: white;
+                  padding: 30px 40px;
+                  border-radius: 4px;
+                  background-image: url("../../assets/category_btn.png");
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                  color: white;
 
-                    &:hover {
-                      box-shadow: 0 0 3px 1.8px white;
-                    }
-                  }
-                }
-              }
-            }
-
-            .right_sider {
-              padding-left: 30px;
-              flex-grow: 1;
-              text-align: left;
-
-              .list_container {
-                @include flex-container($direction: column, $gap: 20px);
-
-                h4 {
-                  text-transform: capitalize;
-                }
-
-                ul {
-                  display: grid;
-                  grid-auto-flow: column;
-                  grid-template-columns: repeat(2, 1fr);
-                  grid-template-rows: repeat(10, auto);
-                  gap: 10px;
-                  li {
-                    padding-left: 10px;
-                    margin: 0;
-
-                    a {
-                      color: #8296a5;
-                    }
+                  &:hover {
+                    box-shadow: 0 0 3px 1.8px white;
                   }
                 }
               }
             }
           }
 
-          &.hover {
-            display: block;
+          .right_sider {
+            padding-left: 30px;
+            flex-grow: 1;
+            text-align: left;
+
+            .list_container {
+              @include flex-container($direction: column, $gap: 20px);
+
+              h4 {
+                text-transform: capitalize;
+              }
+
+              ul {
+                display: grid;
+                grid-auto-flow: column;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(10, auto);
+                gap: 10px;
+                li {
+                  padding-left: 10px;
+                  margin: 0;
+
+                  a {
+                    color: #8296a5;
+                  }
+                }
+              }
+            }
           }
+        }
+
+        &.hover {
+          display: block;
         }
       }
 

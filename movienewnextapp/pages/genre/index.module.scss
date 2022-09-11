@@ -2,10 +2,12 @@
 @import "../../styles/_variables";
 
 .MovieList {
-  @include flex-container($direction: column, $align: flex-start, $gap: 10px);
+  @include flex-container($direction: column, $align: center, $gap: 10px);
   background-color: $DarkBackground;
   min-height: calc(100vh - 8vh);
-  padding: 20px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  width: 100%;
 
   h2 {
     font-size: 1.4rem;
@@ -17,18 +19,27 @@
     color: rgb(201, 201, 201);
     border-bottom: 1px solid rgba(220, 232, 244, 0.282);
   }
-
-  .cardContainer {
-    @include flex-container($direction: column, $gap: 10px);
+  .primaryContainer {
     width: 100%;
+    .cardContainer {
+      @include flex-container($direction: column, $gap: 10px);
+    }
   }
 }
 
 @media only screen and (min-width: 769px) {
-  .cardContainer {
-    width: auto;
-    display: grid !important;
-    grid-gap: 12px;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  .MovieList {
+    padding: 20px 48px;
+    .primaryContainer {
+      width: 100%;
+      max-width: 1500px;
+      .cardContainer {
+        width: auto;
+        display: grid !important;
+        grid-gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        width: 100%;
+      }
+    }
   }
 }
