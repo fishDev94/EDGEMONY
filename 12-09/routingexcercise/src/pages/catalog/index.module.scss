@@ -6,8 +6,22 @@
   background-color: $MainBackground;
   color: $text-Gwhite;
   padding: 40px;
+  height: 94vh;
   box-sizing: border-box;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
 
+  &::-webkit-scrollbar-track {
+    background: #ffffff00;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #696969;
+    border-radius: 10px;
+    border: 3px solid #ffffff00;
+  }
   .gallery {
     box-sizing: border-box;
     @include flex-container($justify: center, $gap: 10px, $wrap: wrap);
