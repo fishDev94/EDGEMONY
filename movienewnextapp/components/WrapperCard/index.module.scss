@@ -22,6 +22,12 @@
     height: 100%;
   }
 
+  &:hover {
+    border: 2px solid rgb(22, 173, 255);
+    transform: scale(1.1);
+    z-index: 1;
+  }
+
   .textContainer {
     display: none;
   }
@@ -119,12 +125,6 @@
 
     .background {
       height: 100%;
-    }
-
-    &.hover {
-      border: 2px solid rgb(22, 173, 255);
-      transform: scale(1.1);
-      z-index: 1;
     }
   }
 }
