@@ -43,6 +43,12 @@
         }
       }
 
+      a {
+        font-weight: bold;
+        text-decoration: underline;
+        color: rgb(94, 138, 158);
+      }
+
       .vercel {
         @include flex-container($justify: space-between);
 

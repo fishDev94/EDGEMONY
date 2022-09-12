@@ -29,23 +29,43 @@ export default function Aboutus(props) {
             <h3>It&apos;s just an excercise</h3>
             <p>
               if you are curious,{" "}
-              <Link href="https://github.com/marco94gug/EDGEMONY/tree/main/movienewnextapp">
-                <a>HERE</a>
-              </Link>{" "}
+              <a
+                href="https://github.com/marco94gug/EDGEMONY/tree/main/movienewnextapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                HERE
+              </a>{" "}
               you can find the complete code of this App.
             </p>
+            <a
+              href="https://marcoguglielmino.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textAlign: "right" }}
+            >
+              ...About me
+            </a>
             <div className={styles.vercel}>
               <p>
                 build with{" "}
-                <Link href="https://nextjs.org/">
-                  <a>Next.js</a>
-                </Link>
+                <a
+                  href="https://nextjs.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Next.js
+                </a>
               </p>
               <p>
                 deployed with{" "}
-                <Link href="https://vercel.com/">
-                  <a>Vercel.app</a>
-                </Link>
+                <a
+                  href="https://vercel.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Vercel.app
+                </a>
               </p>
             </div>
           </div>
