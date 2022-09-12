@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import Head from "next/head";
 import { useBottomScrollListener } from "react-bottom-scroll-listener";
 import { useRouter } from "next/router";
@@ -9,25 +9,21 @@ import WrapperCard from "../../components/WrapperCard/WrapperCard";
 export default function MovieList(props) {
   const cardContainer = useRef(null);
 
-  const [dataObj, setDataObj] = useState({});
-
   const router = useRouter();
   const { pid } = router.query;
 
   const {
     typeofGenres,
     pageNumber,
-    navBarPage,
+
     handleOnClickCard,
     setPageNumber,
     movieList,
     setMovieList,
-    navBarRef,
+
     setGenreID,
     genreID,
-    setLinkActive,
     setCategory,
-    category,
   } = props;
 
   const handleOnDocumentBottom = useCallback(() => {
@@ -46,7 +42,6 @@ export default function MovieList(props) {
         }&with_watch_monetization_types=flatrate`
       ).then((data) => {
         setMovieList(data.results);
-        setDataObj(data);
         setGenreID(pid.split("&=")[0]);
         setCategory(pid.split("&=")[2]);
       });
@@ -60,7 +55,6 @@ export default function MovieList(props) {
         `&language=en-US&sort_by=popularity.desc&include_adult=false&page=${pageNumber}&with_genres=${genreID}&with_watch_monetization_types=flatrate`
       ).then((data) => {
         setMovieList((prev) => [...prev, ...data.results]);
-        setDataObj(data);
       });
   }, [genreID, pageNumber]);
 

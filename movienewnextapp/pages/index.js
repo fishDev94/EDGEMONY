@@ -32,7 +32,6 @@ export default function Home({
         setModalVisibility={setModalVisibility}
         setMovieID={setMovieID}
       />
-      <Footer />
     </div>
   );
 }

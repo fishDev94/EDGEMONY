@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { useState, useRef } from "react";
 import NavBar from "../components/NavBar/NavBar";
+import Footer from "../components/Footer/Footer";
 
 function MyApp({ Component, pageProps }) {
   const [isModalVisibile, setModalVisibility] = useState(false);
@@ -20,22 +21,23 @@ function MyApp({ Component, pageProps }) {
   const navBarPage = useRef(null);
   const navBarRef = useRef(null);
   return (
-    <NavBar
-      setModalVisibility={setModalVisibility}
-      isModalVisibile={isModalVisibile}
-      setMovieID={setMovieID}
-      movieID={movieID}
-      setGenreID={setGenreID}
-      setTypeOfGenres={setTypeOfGenres}
-      typeofGenres={typeofGenres}
-      navBarPage={navBarPage}
-      setMovieList={setMovieList}
-      navBarRef={navBarRef}
-      setLinkActive={setLinkActive}
-      whichLinkActive={whichLinkActive}
-      setCategory={setCategory}
-      category={category}
-    >
+    <>
+      <NavBar
+        setModalVisibility={setModalVisibility}
+        isModalVisibile={isModalVisibile}
+        setMovieID={setMovieID}
+        movieID={movieID}
+        setGenreID={setGenreID}
+        setTypeOfGenres={setTypeOfGenres}
+        typeofGenres={typeofGenres}
+        navBarPage={navBarPage}
+        setMovieList={setMovieList}
+        navBarRef={navBarRef}
+        setLinkActive={setLinkActive}
+        whichLinkActive={whichLinkActive}
+        setCategory={setCategory}
+        category={category}
+      ></NavBar>
       <Component
         {...pageProps}
         movieID={movieID}
@@ -56,7 +58,8 @@ function MyApp({ Component, pageProps }) {
         setCategory={setCategory}
         category={category}
       />
-    </NavBar>
+      <Footer />
+    </>
   );
 }
 

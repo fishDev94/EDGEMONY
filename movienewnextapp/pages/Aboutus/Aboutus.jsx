@@ -1,7 +1,5 @@
 import styles from "./index.module.scss";
 import { useEffect } from "react";
-import Footer from "../../components/Footer/Footer";
-import Link from "next/link";
 import Head from "next/head";
 
 export default function Aboutus(props) {
@@ -70,7 +68,6 @@ export default function Aboutus(props) {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );
