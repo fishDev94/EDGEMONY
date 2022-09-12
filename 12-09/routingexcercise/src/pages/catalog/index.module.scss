@@ -1,0 +1,25 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Catalog {
+  @include flex-container($direction: column, $align: center, $gap: 20px);
+  background-color: $MainBackground;
+  color: $text-Gwhite;
+  padding: 40px;
+  box-sizing: border-box;
+
+  .gallery {
+    box-sizing: border-box;
+    @include flex-container($justify: center, $gap: 10px, $wrap: wrap);
+
+    img:hover {
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+      box-sizing: border-box;
+      box-shadow: 0 0 8px white;
+      transition: all 0.35s ease-in-out;
+      transform: scale(1.1);
+    }
+  }
+}

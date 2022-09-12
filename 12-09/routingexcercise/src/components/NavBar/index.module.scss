@@ -1,0 +1,23 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.NavBar {
+  @include flex-container($justify: flex-end);
+  height: 6vh;
+  background-color: $backgroundColor-default;
+  color: $text-Gwhite;
+
+  .link {
+    @include flex-container($align: center);
+    text-decoration: none;
+    padding: 0 20px;
+    font-weight: bold;
+    color: $text-Gwhite;
+
+    &_active {
+      text-decoration: none;
+      border-top: 2px solid rgba(255, 255, 255, 0);
+      border-bottom: 2px solid white;
+    }
+  }
+}

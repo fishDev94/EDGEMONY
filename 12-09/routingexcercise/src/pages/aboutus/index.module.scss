@@ -1,0 +1,11 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Aboutus {
+  @include flex-container($direction: column, $align: center, $gap: 20px);
+  background-color: $MainBackground;
+  height: 94vmin;
+  color: $text-Gwhite;
+  padding: 40px;
+  box-sizing: border-box;
+}
