@@ -24,7 +24,7 @@ export default memo(function MainModal({
     GET(category, movieID).then((data) => {
       setMovieData(data);
     });
-  }, [movieID]);
+  }, [movieID, category]);
 
   useEffect(() => {
     GET(category, `${movieID}/videos`, "&language=en-US").then((dataMovie) => {

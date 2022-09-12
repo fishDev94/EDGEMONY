@@ -32,7 +32,6 @@ export default memo(function NavBar({
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
   const [results, setResults] = useState({ results: [] });
   const [isSerchActive, setSearchActive] = useState(false);
   const [genreList, setGenreList] = useState([{ id: "", name: "" }]);
@@ -52,7 +51,6 @@ export default memo(function NavBar({
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
-    console.log(results);
   };
 
   const onInputSearchChange = (e) => {

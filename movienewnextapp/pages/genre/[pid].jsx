@@ -15,12 +15,10 @@ export default function MovieList(props) {
   const {
     typeofGenres,
     pageNumber,
-
     handleOnClickCard,
     setPageNumber,
     movieList,
     setMovieList,
-
     setGenreID,
     genreID,
     setCategory,

@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }) {
 
   const navBarPage = useRef(null);
   const navBarRef = useRef(null);
+
   return (
     <>
       <NavBar
