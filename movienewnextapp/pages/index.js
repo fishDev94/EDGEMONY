@@ -3,15 +3,12 @@ import styles from "../styles/Home.module.scss";
 import { useEffect } from "react";
 import Hero from "../components/Hero/Hero";
 import MainSection from "../components/MainSection";
-import MainModal from "../components/MainModal/MainModal";
+
 import Footer from "../components/Footer/Footer";
 
 export default function Home({
-  isModalVisibile,
-  movieID,
   setMovieID,
   setModalVisibility,
-  navBarPage,
   setLinkActive,
 }) {
   useEffect(() => {
