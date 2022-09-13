@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Error from "./pages/error/error";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -16,7 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/aboutus" element={<Aboutus />} />
-        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/catalog/:categoryName" element={<Catalog />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

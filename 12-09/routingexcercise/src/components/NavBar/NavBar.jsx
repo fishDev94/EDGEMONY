@@ -20,14 +20,6 @@ export default function NavBar() {
       >
         About Us
       </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? `${styles.link} ${styles.link_active}` : styles.link
-        }
-        to="catalog"
-      >
-        Catalog
-      </NavLink>
     </div>
   );
 }
