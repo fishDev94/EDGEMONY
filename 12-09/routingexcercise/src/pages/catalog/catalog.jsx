@@ -1,25 +1,19 @@
 import styles from "./index.module.scss";
+import { useParams} from 'react-router-dom';
+import { useFetch } from "../../utils/api/useFetch";
+import { ENDPOINT } from "../../utils/api/endpoints";
+
+import MealsList from "../../components/meals-list";
 
 export default function Catalog() {
-  const images = [
-    "https://picsum.photos/300/200?random=1",
-    "https://picsum.photos/300/200?random=2",
-    "https://picsum.photos/300/200?random=3",
-    "https://picsum.photos/300/200?random=4",
-    "https://picsum.photos/300/200?random=5",
-    "https://picsum.photos/300/200?random=6",
-    "https://picsum.photos/300/200?random=7",
-    "https://picsum.photos/300/200?random=8",
-  ];
+  const {categoryName} = useParams();
+
+  const { loading, data }= useFetch(`${ENDPOINT.FILTER}?c=${categoryName}`)
 
   return (
     <div className={styles.Catalog}>
-      <h2>Catalog</h2>
-      <div className={styles.gallery}>
-        {images.map((image, index) => (
-          <img src={image} alt={image} key={index} />
-        ))}
-      </div>
+      <h2>{categoryName}</h2>
+    {loading ? (<h2>Loading...</h2>) : <MealsList data={data} />}
     </div>
   );
 }

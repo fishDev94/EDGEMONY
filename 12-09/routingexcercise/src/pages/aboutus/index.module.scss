@@ -3,9 +3,8 @@
 
 .Aboutus {
   @include flex-container($direction: column, $align: center, $gap: 20px);
-  background-color: $MainBackground;
   height: 94vmin;
-  color: $text-Gwhite;
+  color: $defaultColorText;
   padding: 40px;
   box-sizing: border-box;
 }

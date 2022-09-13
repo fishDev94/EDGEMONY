@@ -1,0 +1,22 @@
+@import '../../styles/_mixins';
+
+.MealCard {
+    @include flex-container($gap: 30px, $align: center);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.303);
+    overflow: hidden;
+    border-radius: 8px;
+    width: 100%;
+    transition: all .25s;
+    background-color: rgba(255, 255, 255, 0.537);
+    
+
+    &:hover {
+        background-color: rgb(255, 255, 255);
+        transform: scale(1.1);
+    }
+
+    .thumbnail {
+        width: 180px;
+        height: 180px;
+    }
+}
