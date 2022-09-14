@@ -1,0 +1,14 @@
+@import "../../styles/_mixins";
+
+.Instruction {
+  @include flex-container($direction: column, $gap: 20px);
+  color: rgb(32, 32, 32);
+
+  .maincontent {
+    @include flex-container($gap: 20px);
+
+    .thumbnail {
+      width: 400px;
+    }
+  }
+}
