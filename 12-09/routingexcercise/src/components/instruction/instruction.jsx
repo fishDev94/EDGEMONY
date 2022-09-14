@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 import { useOutletContext } from "react-router-dom";
 
 export default function Instruction() {
-  const data = useOutletContext();
+  const data = useOutletContext() ?? [];
 
   return (
     <div className={styles.Instruction}>
