@@ -3,6 +3,7 @@ import { memo } from "react";
 import { useParams, NavLink, Outlet } from "react-router-dom";
 import { ENDPOINT } from "../../utils/api/endpoints";
 import { useFetch } from "../../utils/api/useFetch";
+import { background } from "../../constants/constants";
 
 export default memo(function Recipe() {
   const { categoryName, recipeName, id } = useParams();
@@ -56,6 +57,10 @@ export default memo(function Recipe() {
 
   return (
     <div className={styles.Recipe}>
+      <div
+        className={styles.background}
+        style={{ backgroundImage: `url(${background})` }}
+      />
       <h2>{recipeName}</h2>
       <div className={styles.cardContainer}>
         <div className={styles.container}>
