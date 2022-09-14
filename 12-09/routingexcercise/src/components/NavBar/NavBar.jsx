@@ -16,6 +16,7 @@ export default function NavBar() {
           className={({ isActive }) =>
             isActive ? `${styles.link} ${styles.link_active}` : styles.link
           }
+          end
         >
           {text}
         </NavLink>
