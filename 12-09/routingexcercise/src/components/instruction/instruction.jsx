@@ -7,13 +7,10 @@ export default function Instruction() {
   return (
     <div className={styles.Instruction}>
       <h2>Instruction</h2>
+      <div className={styles.overlay} />
+      <img className={styles.thumbnail} src={data.thumbnail} alt={data.name} />
       <div className={styles.maincontent}>
         <p className={styles.text}>{data.instruction}</p>
-        <img
-          className={styles.thumbnail}
-          src={data.thumbnail}
-          alt={data.name}
-        />
       </div>
     </div>
   );
