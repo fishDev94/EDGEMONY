@@ -25,15 +25,16 @@
     background: rgb(255, 255, 255);
     background: linear-gradient(
       90deg,
-      rgba(245, 245, 245, 1) 45%,
+      rgba(245, 245, 245, 1) 35%,
       rgba(245, 245, 245, 0) 85%
     );
   }
 
   .thumbnail {
-    width: 600px;
+    width: 80%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     position: absolute;
     top: 0px;
     bottom: 0;
