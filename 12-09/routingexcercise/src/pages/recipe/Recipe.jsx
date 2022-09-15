@@ -1,13 +1,11 @@
 import styles from "./index.module.scss";
-import { memo, useEffect } from "react";
+import { memo } from "react";
 import { useParams, NavLink, Outlet, useLoaderData } from "react-router-dom";
-import { ENDPOINT } from "../../utils/api/endpoints";
-import { useFetch } from "../../utils/api/useFetch";
 import { background } from "../../constants/constants";
 
 export default memo(function Recipe() {
   const params = useParams();
-  const { categoryName, recipeName, id } = params;
+  const { recipeName, searchName } = params;
 
   const tab = [
     {
@@ -25,7 +23,7 @@ export default memo(function Recipe() {
   ];
 
   const formatRecipe = (data) => {
-    const initialRecipe = data?.meals.at(0);
+    const initialRecipe = data?.meals?.at(0);
 
     const ingredients = [];
     if (data) {
@@ -55,33 +53,47 @@ export default memo(function Recipe() {
 
   return (
     <div className={styles.Recipe}>
-      <div
-        className={styles.background}
-        style={{ backgroundImage: `url(${background})` }}
-      />
-      <h2>{recipeName}</h2>
-      <div className={styles.cardContainer}>
-        <div className={styles.container}>
-          <nav className={styles.tab}>
-            {tab.map((item, i) => (
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? `${styles.link} ${styles.link_active}`
-                    : styles.link
-                }
-                to={`.${item.path}`}
-                key={i}
-              >
-                {item.name}
-              </NavLink>
-            ))}
-          </nav>
-          <div className={styles.content}>
-            <Outlet context={formatRecipe(data)} />
+      {data?.meals ? (
+        <>
+          <div
+            className={styles.background}
+            style={{ backgroundImage: `url(${background})` }}
+          />
+          <h2>{recipeName ?? searchName}</h2>
+          <div className={styles.cardContainer}>
+            <div className={styles.container}>
+              <nav className={styles.tab}>
+                {tab.map((item, i) => (
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? `${styles.link} ${styles.link_active}`
+                        : styles.link
+                    }
+                    to={`.${item.path}`}
+                    key={i}
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
+              </nav>
+              <div className={styles.content}>
+                <Outlet context={formatRecipe(data)} />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        <>
+          <div className={styles.notfound}>
+            <h1>Meal not found...</h1>
+          </div>
+          <div
+            className={styles.background}
+            style={{ backgroundImage: `url(${background})` }}
+          />
+        </>
+      )}
     </div>
   );
 });

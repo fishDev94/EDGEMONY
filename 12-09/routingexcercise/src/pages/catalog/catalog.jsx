@@ -1,7 +1,5 @@
 import styles from "./index.module.scss";
 import { useLoaderData, useParams } from "react-router-dom";
-import { useFetch } from "../../utils/api/useFetch";
-import { ENDPOINT } from "../../utils/api/endpoints";
 
 import MealsList from "../../components/meals-list";
 

@@ -36,6 +36,31 @@ const router = createBrowserRouter([
         element: <Aboutus />,
       },
       {
+        path: ":searchName",
+        element: <Recipe />,
+        loader: async ({ params }) => {
+          return fetch(`${ENDPOINT.SEARCH}?s=${params.searchName}`);
+        },
+        children: [
+          {
+            path: "",
+            element: <Navigate to="./ingredients" />,
+          },
+          {
+            path: "ingredients",
+            element: <Ingredients />,
+          },
+          {
+            path: "instructions",
+            element: <Instruction />,
+          },
+          {
+            path: "video",
+            element: <Player />,
+          },
+        ],
+      },
+      {
         path: "/catalog/:categoryName",
         children: [
           {
@@ -79,6 +104,8 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+console.log(router);
 
 root.render(
   <React.StrictMode>

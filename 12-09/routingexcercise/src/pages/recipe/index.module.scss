@@ -4,6 +4,10 @@
   padding: 80px;
   @include flex-container($direction: column, $gap: 50px);
 
+  h2 {
+    text-transform: capitalize;
+  }
+
   .background {
     position: fixed;
     top: 0;
@@ -28,7 +32,7 @@
       .tab {
         @include flex-container();
         position: absolute;
-        top: -38px;
+        top: -39px;
         overflow: hidden;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;

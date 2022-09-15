@@ -2,22 +2,66 @@
 @import "../../styles/_variables";
 
 .NavBar {
-  @include flex-container($justify: flex-end);
+  @include flex-container($justify: space-between);
   height: 6vh;
   background-color: $backgroundColor-default;
   color: $text-Gwhite;
 
-  .link {
+  .form {
     @include flex-container($align: center);
-    text-decoration: none;
-    padding: 0 20px;
-    font-weight: bold;
-    color: $text-Gwhite;
+    position: relative;
+    padding-left: 20px;
+    margin: 10px;
 
-    &_active {
+    .search_icon {
+      position: absolute;
+      top: 0;
+      left: 5px;
+      z-index: 1;
+      color: rgba(0, 0, 0, 0.615);
+      font-size: 1.2rem;
+      height: 100%;
+    }
+
+    .search_input {
+      position: absolute;
+      left: 0;
+      border: none;
+      outline: none;
+      height: 100%;
+      box-sizing: border-box;
+      border-radius: 6px;
+      width: 280px;
+      padding-left: 28px;
+      color: rgba(0, 0, 0, 0.771);
+      font-weight: bold;
+
+      &:focus {
+        &::placeholder {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .link_container {
+    @include flex-container();
+
+    .link {
+      @include flex-container($align: center);
       text-decoration: none;
-      border-top: 2px solid rgba(255, 255, 255, 0);
-      border-bottom: 2px solid white;
+      padding: 0 20px;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.475);
+      box-sizing: border-box;
+      height: 100%;
+
+      &_active {
+        text-decoration: none;
+        border-top: 4px solid rgba(255, 255, 255, 0);
+        border-bottom: 4px solid white;
+        color: $text-Gwhite;
+      }
     }
   }
 }
