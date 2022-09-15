@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         element: <Aboutus />,
       },
       {
-        path: ":searchName",
+        path: "/search/:searchName",
         element: <Recipe />,
         loader: async ({ params }) => {
           return fetch(`${ENDPOINT.SEARCH}?s=${params.searchName}`);

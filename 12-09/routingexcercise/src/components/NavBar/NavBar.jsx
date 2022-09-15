@@ -14,7 +14,7 @@ export default function NavBar() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    navigate(`${inputValue}`);
+    navigate(`/search/${inputValue}`);
   };
 
   return (
