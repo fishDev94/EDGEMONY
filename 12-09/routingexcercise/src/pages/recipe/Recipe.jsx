@@ -1,12 +1,13 @@
 import styles from "./index.module.scss";
-import { memo } from "react";
-import { useParams, NavLink, Outlet } from "react-router-dom";
+import { memo, useEffect } from "react";
+import { useParams, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { ENDPOINT } from "../../utils/api/endpoints";
 import { useFetch } from "../../utils/api/useFetch";
 import { background } from "../../constants/constants";
 
 export default memo(function Recipe() {
-  const { categoryName, recipeName, id } = useParams();
+  const params = useParams();
+  const { categoryName, recipeName, id } = params;
 
   const tab = [
     {
@@ -50,10 +51,7 @@ export default memo(function Recipe() {
     };
   };
 
-  const { loading, data } = useFetch(
-    `${ENDPOINT.LOOKUP}?i=${id}`,
-    formatRecipe
-  );
+  const data = useLoaderData();
 
   return (
     <div className={styles.Recipe}>
@@ -80,7 +78,7 @@ export default memo(function Recipe() {
             ))}
           </nav>
           <div className={styles.content}>
-            <Outlet context={data} />
+            <Outlet context={formatRecipe(data)} />
           </div>
         </div>
       </div>
