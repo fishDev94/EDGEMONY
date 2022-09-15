@@ -16,6 +16,7 @@ export default function Player() {
         frameBorder="0"
         allow="autoplay; encrypted-media"
         allowFullScreen
+        title="youtube"
       ></iframe>
     </div>
   );

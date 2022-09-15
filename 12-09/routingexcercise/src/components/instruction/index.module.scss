@@ -5,12 +5,13 @@
   color: rgb(32, 32, 32);
   position: relative;
   overflow: hidden;
-  padding: 20px;
+  padding: 40px;
   min-height: 40vh;
 
   h2 {
     position: relative;
     z-index: 2;
+    font-weight: 800;
   }
 
   .overlay {
@@ -18,13 +19,14 @@
     z-index: 1;
     top: 0;
     bottom: 0;
-    left: 0;
+    left: 0px;
     right: 0;
+    border-bottom-left-radius: 8px;
     background: rgb(255, 255, 255);
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(245, 245, 245, 0) 100%
+      rgba(245, 245, 245, 1) 45%,
+      rgba(245, 245, 245, 0) 85%
     );
   }
 
@@ -50,6 +52,9 @@
       z-index: 1;
       width: 80%;
       line-height: 25px;
+      color: rgba(0, 0, 0, 0.585);
+      font-weight: bold;
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.64);
     }
   }
 }

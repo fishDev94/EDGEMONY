@@ -1,3 +1,14 @@
+@import "../../styles/_mixins";
+
 .Player {
+  @include flex-container($direction: column, $gap: 20px);
   padding: 20px;
+
+  h2 {
+    color: rgba(0, 0, 0, 0.806);
+  }
+
+  iframe {
+    width: 100%;
+  }
 }
