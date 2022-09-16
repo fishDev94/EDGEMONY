@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Await } from "react-router-dom";
 // import { MealCard } from "../meal-card/meal-card";
 import styles from "./index.module.scss";
 import { background } from "../../constants/constants";
@@ -15,7 +16,9 @@ export default function MealsList({ data }) {
       />
       {data?.meals?.map((meal) => (
         <Suspense key={meal.idMeal} fallback={<MealCardSK />}>
-          <MealCard data={meal} key={meal.idMeal} />
+          <Await resolve={meal} errorElement={<div>Error</div>}>
+            <MealCard data={meal} key={meal.idMeal} />
+          </Await>
         </Suspense>
       ))}
     </div>
