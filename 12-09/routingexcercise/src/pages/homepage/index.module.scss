@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/_mixins";
 
 .Homepage {
   display: flex;
@@ -30,5 +31,33 @@
   .images {
     width: 500px;
     height: 350;
+  }
+
+  .button_container {
+    @include flex-container($justify: space-between);
+    width: 100%;
+
+    .button {
+      background-color: #943b3b;
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:disabled {
+        background-color: #943b3b56;
+        cursor: auto;
+        &:hover {
+          transform: scale(1);
+        }
+      }
+    }
   }
 }
