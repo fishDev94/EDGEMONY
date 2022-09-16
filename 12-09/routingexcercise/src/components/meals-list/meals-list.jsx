@@ -5,9 +5,9 @@ import styles from "./index.module.scss";
 import { background } from "../../constants/constants";
 import MealCardSK from "../meal-card-sk";
 
-export default function MealsList({ data }) {
-  const MealCard = lazy(() => import("../meal-card/meal-card"));
+export const MealCard = lazy(() => import("../meal-card/meal-card"));
 
+export default function MealsList({ data }) {
   return (
     <div className={styles.MealsList}>
       <div
