@@ -14,7 +14,7 @@ export default function MealsList({ data }) {
         style={{ backgroundImage: `url(${background})` }}
       />
       {data?.meals?.map((meal) => (
-        <Suspense fallback={<MealCardSK />}>
+        <Suspense key={meal.idMeal} fallback={<MealCardSK />}>
           <MealCard data={meal} key={meal.idMeal} />
         </Suspense>
       ))}

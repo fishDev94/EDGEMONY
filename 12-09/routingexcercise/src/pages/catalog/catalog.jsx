@@ -1,11 +1,14 @@
 import styles from "./index.module.scss";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useLocation, useParams } from "react-router-dom";
 
 import MealsList from "../../components/meals-list";
 
 export default function Catalog() {
   const { categoryName } = useParams();
   const data = useLoaderData();
+  const { state } = useLocation();
+
+  console.log(state);
 
   return (
     <div className={styles.Catalog}>
