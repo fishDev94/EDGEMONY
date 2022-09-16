@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { memo } from "react";
+import { memo, Suspense } from "react";
 import { useParams, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { background } from "../../constants/constants";
 

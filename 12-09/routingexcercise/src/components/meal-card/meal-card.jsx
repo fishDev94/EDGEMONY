@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
 import { Link, useParams } from "react-router-dom";
 
-export const MealCard = ({ data }) => {
+export default function MealCard({ data }) {
   const { strMeal, strMealThumb, idMeal } = data;
   const { categoryName } = useParams();
   return (
@@ -17,4 +17,4 @@ export const MealCard = ({ data }) => {
       </Link>
     </div>
   );
-};
+}
