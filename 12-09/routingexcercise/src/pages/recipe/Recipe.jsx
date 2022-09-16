@@ -1,7 +1,14 @@
 import styles from "./index.module.scss";
 import { memo } from "react";
-import { useParams, NavLink, Outlet, useLoaderData } from "react-router-dom";
+import {
+  useParams,
+  NavLink,
+  Outlet,
+  useLoaderData,
+  Link,
+} from "react-router-dom";
 import { background } from "../../constants/constants";
+import { BiLeftArrow } from "react-icons/bi";
 
 export default memo(function Recipe() {
   const params = useParams();
@@ -59,6 +66,11 @@ export default memo(function Recipe() {
             className={styles.background}
             style={{ backgroundImage: `url(${background})` }}
           />
+          <Link to="..">
+            <button className={styles.button}>
+              <BiLeftArrow />
+            </button>
+          </Link>
           <h2>{recipeName ?? searchName}</h2>
           <div className={styles.cardContainer}>
             <div className={styles.container}>

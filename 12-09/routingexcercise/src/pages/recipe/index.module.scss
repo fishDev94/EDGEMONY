@@ -1,7 +1,7 @@
 @import "../../styles/_mixins";
 
 .Recipe {
-  padding: 80px;
+  padding: 40px;
   @include flex-container($direction: column, $gap: 50px);
 
   h2 {
@@ -19,6 +19,21 @@
     background-size: cover;
     opacity: 0.3;
     filter: blur(10px);
+  }
+
+  .button {
+    background-color: #943b3b;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   .cardContainer {

@@ -21,6 +21,24 @@
     border-radius: 10px;
     border: 3px solid #ffffff00;
   }
+  .btncontainer {
+    width: 100%;
+    .button {
+      background-color: #943b3b;
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
   .gallery {
     box-sizing: border-box;
     @include flex-container($justify: center, $gap: 10px, $wrap: wrap);
