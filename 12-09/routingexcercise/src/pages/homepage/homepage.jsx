@@ -8,10 +8,9 @@ import { useMemo } from "react";
 
 function Homepage() {
   const data = useLoaderData();
-  const [pagePath, setPagePath] = useSearchParams({ page: 1 });
-  // const [page, setPage] = useState(1);
-  const page = pagePath?.get("page") ?? 1;
 
+  const [pagePath, setPagePath] = useSearchParams({ page: 1 });
+  const page = pagePath?.get("page") ?? 1;
   const perPage = 4;
   const totalPages = Math.ceil(data?.categories?.length / perPage);
   const catPaginated = useMemo(() => {
@@ -48,6 +47,9 @@ function Homepage() {
         >
           Previous
         </button>
+        <p style={{ fontWeight: "bold" }}>
+          {page}/{totalPages}
+        </p>
         <button
           onClick={handleOnClick.bind(this, 1)}
           className={styles.button}
