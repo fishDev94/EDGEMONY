@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -10,7 +10,7 @@ import {
 import Aboutus from "./pages/aboutus/aboutus";
 import Catalog from "./pages/catalog/catalog";
 import Error from "./pages/error/error";
-import Recipe from "./pages/recipe";
+// import Recipe from "./pages/recipe";
 import Ingredients from "./components/ingredients";
 import Instruction from "./components/instruction";
 import Player from "./components/player/player";
@@ -18,6 +18,7 @@ import Homepage from "./pages/homepage";
 import { ENDPOINT } from "./utils/api/endpoints";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const LazyRecipe = React.lazy(() => import("./pages/recipe"));
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/search/:searchName",
-        element: <Recipe />,
+        element: (
+          <Suspense fallback={<div>loading...</div>}>
+            <LazyRecipe />
+          </Suspense>
+        ),
         loader: async ({ params }) => {
           return fetch(`${ENDPOINT.SEARCH}?s=${params.searchName}`);
         },
@@ -72,7 +77,11 @@ const router = createBrowserRouter([
           },
           {
             path: ":recipeName/:id",
-            element: <Recipe />,
+            element: (
+              <Suspense fallback={<div>loading...</div>}>
+                <LazyRecipe />
+              </Suspense>
+            ),
             loader: async ({ params }) => {
               return fetch(`${ENDPOINT.LOOKUP}?i=${params.id}`);
             },
