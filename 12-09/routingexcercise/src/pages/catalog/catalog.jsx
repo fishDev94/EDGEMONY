@@ -1,9 +1,10 @@
 import styles from "./index.module.scss";
+import { memo } from "react";
 import { useLoaderData, useLocation, useParams } from "react-router-dom";
 
 import MealsList from "../../components/meals-list";
 
-export default function Catalog() {
+export default memo(function Catalog() {
   const { categoryName } = useParams();
   const data = useLoaderData();
   const { state } = useLocation();
@@ -16,4 +17,4 @@ export default function Catalog() {
       {data && <MealsList data={data} />}
     </div>
   );
-}
+});

@@ -4,7 +4,7 @@ import { background } from "../../constants/constants";
 // import { ENDPOINT } from "../../utils/api/endpoints";
 import CategoryList from "../../components/category-list/category-list";
 import { useLoaderData, useSearchParams } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 function Homepage() {
   const data = useLoaderData();

@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
 
-export default function MealCardSK({}) {
+export default function MealCardSK() {
   return (
     <div className={styles.MealCard}>
       <div className={styles.thumbnail} />
