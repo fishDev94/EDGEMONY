@@ -1,7 +1,9 @@
 import "../styles/globals.css";
-import { useState, useRef } from "react";
+import { useState, useRef, createContext } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
+
+export const modalVisibility = createContext();
 
 function MyApp({ Component, pageProps }) {
   const [isModalVisibile, setModalVisibility] = useState(false);
@@ -23,43 +25,41 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <NavBar
-        setModalVisibility={setModalVisibility}
-        isModalVisibile={isModalVisibile}
-        setMovieID={setMovieID}
-        movieID={movieID}
-        setGenreID={setGenreID}
-        setTypeOfGenres={setTypeOfGenres}
-        typeofGenres={typeofGenres}
-        navBarPage={navBarPage}
-        setMovieList={setMovieList}
-        navBarRef={navBarRef}
-        setLinkActive={setLinkActive}
-        whichLinkActive={whichLinkActive}
-        setCategory={setCategory}
-        category={category}
-      ></NavBar>
-      <Component
-        {...pageProps}
-        movieID={movieID}
-        isModalVisibile={isModalVisibile}
-        setMovieID={setMovieID}
-        setModalVisibility={setModalVisibility}
-        genreID={genreID}
-        typeofGenres={typeofGenres}
-        pageNumber={pageNumber}
-        navBarPage={navBarPage}
-        handleOnClickCard={handleOnClickCard}
-        setPageNumber={setPageNumber}
-        setMovieList={setMovieList}
-        movieList={movieList}
-        navBarRef={navBarRef}
-        setGenreID={setGenreID}
-        setLinkActive={setLinkActive}
-        setCategory={setCategory}
-        category={category}
-      />
-      <Footer />
+      <modalVisibility.Provider value={{ isModalVisibile, setModalVisibility }}>
+        <NavBar
+          setMovieID={setMovieID}
+          movieID={movieID}
+          setGenreID={setGenreID}
+          setTypeOfGenres={setTypeOfGenres}
+          typeofGenres={typeofGenres}
+          navBarPage={navBarPage}
+          setMovieList={setMovieList}
+          navBarRef={navBarRef}
+          setLinkActive={setLinkActive}
+          whichLinkActive={whichLinkActive}
+          setCategory={setCategory}
+          category={category}
+        ></NavBar>
+        <Component
+          {...pageProps}
+          movieID={movieID}
+          setMovieID={setMovieID}
+          genreID={genreID}
+          typeofGenres={typeofGenres}
+          pageNumber={pageNumber}
+          navBarPage={navBarPage}
+          handleOnClickCard={handleOnClickCard}
+          setPageNumber={setPageNumber}
+          setMovieList={setMovieList}
+          movieList={movieList}
+          navBarRef={navBarRef}
+          setGenreID={setGenreID}
+          setLinkActive={setLinkActive}
+          setCategory={setCategory}
+          category={category}
+        />
+        <Footer />
+      </modalVisibility.Provider>
     </>
   );
 }

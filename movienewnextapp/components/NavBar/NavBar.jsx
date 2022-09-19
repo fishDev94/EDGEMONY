@@ -3,20 +3,19 @@ import Link from "next/link";
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
-import { useState, useRef, useEffect, memo } from "react";
+import { useState, useRef, useEffect, memo, useContext } from "react";
 import { GET } from "../../utils/api";
+import { modalVisibility } from "../../pages/_app";
 import Logo from "./Logo";
 import MainModal from "../MainModal/MainModal";
 
 export default memo(function NavBar({
   setMovieID,
   movieID,
-  setModalVisibility,
   setGenreID,
   setTypeOfGenres,
   typeofGenres,
   navBarPage,
-  isModalVisibile,
   setMovieList,
   navBarRef,
   setLinkActive,
@@ -28,6 +27,9 @@ export default memo(function NavBar({
   const searchInput = useRef(null);
   const categoryList = useRef(null);
   const iconContainer = useRef(null);
+
+  const modalStatus = useContext(modalVisibility);
+  const { isModalVisibile, setModalVisibility } = modalStatus;
 
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);

@@ -1,18 +1,16 @@
 import WrapperCard from "../WrapperCard/WrapperCard";
 import styles from "./index.module.scss";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
-import { useRef, useState, useEffect, memo } from "react";
+import { useRef, useState, useEffect, memo, useContext } from "react";
+import { modalVisibility } from "../../pages/_app";
 
-export default memo(function CardList({
-  data,
-  title,
-  setModalVisibility,
-  setMovieID,
-}) {
+export default memo(function CardList({ data, title, setMovieID }) {
   const listRef = useRef();
   const [isBackVisible, setIsBackVisibility] = useState(false);
   const [isNextVisible, setIsNextVisibility] = useState(true);
   const [clicked, setClicked] = useState(false);
+
+  const { setModalVisibility } = useContext(modalVisibility);
 
   const handleOnBackButtonClick = () => {
     listRef.current.scrollTo({
