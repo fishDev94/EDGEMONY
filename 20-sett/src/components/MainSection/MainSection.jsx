@@ -7,7 +7,6 @@ export default function MainSection() {
   const { state, dispatch } = useContext(counterData);
 
   const handleOnChange = (e) => {
-    console.log(e.target.value);
     dispatch({ type: "SET_USERNAME", payload: e.target.value });
   };
 

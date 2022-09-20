@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { counterData } from "../..";
 
 export default function Counter() {
-  const { state, dispatch } = useContext(counterData);
+  const { dispatch } = useContext(counterData);
 
   const handleOnIncrement = () => {
     dispatch({ type: "INCRESE" });

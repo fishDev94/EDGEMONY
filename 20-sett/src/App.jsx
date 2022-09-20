@@ -22,8 +22,6 @@ const reducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log(state);
-
   return (
     <counterData.Provider value={{ state, dispatch }}>
       <div className="App">
