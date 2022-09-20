@@ -10,7 +10,7 @@ export const reducerData = createContext(initialState);
 function MyApp({ Component, pageProps }) {
   const [isModalVisibile, setModalVisibility] = useState(false);
   const [whichLinkActive, setLinkActive] = useState("");
-  const [movieID, setMovieID] = useState("");
+  // const [movieID, setMovieID] = useState("");
   const [genreID, setGenreID] = useState("");
   const [typeofGenres, setTypeOfGenres] = useState("movie");
   const [pageNumber, setPageNumber] = useState(1);
@@ -43,8 +43,8 @@ function MyApp({ Component, pageProps }) {
       <modalVisibility.Provider value={{ isModalVisibile, setModalVisibility }}>
         <reducerData.Provider value={{ state, dispatch }}>
           <NavBar
-            setMovieID={setMovieID}
-            movieID={state.movieID}
+            // setMovieID={setMovieID}
+            // movieID={state.movieID}
             setGenreID={setGenreID}
             setTypeOfGenres={setTypeOfGenres}
             typeofGenres={typeofGenres}
@@ -58,8 +58,8 @@ function MyApp({ Component, pageProps }) {
           ></NavBar>
           <Component
             {...pageProps}
-            movieID={movieID}
-            setMovieID={setMovieID}
+            // movieID={movieID}
+            // setMovieID={setMovieID}
             genreID={genreID}
             typeofGenres={typeofGenres}
             pageNumber={pageNumber}

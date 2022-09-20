@@ -5,7 +5,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
 import { useState, useRef, useEffect, memo, useContext } from "react";
 import { GET } from "../../utils/api";
-import { modalVisibility } from "../../pages/_app";
+import { modalVisibility, reducerData } from "../../pages/_app";
 import Logo from "./Logo";
 import MainModal from "../MainModal/MainModal";
 
@@ -30,6 +30,7 @@ export default memo(function NavBar({
 
   const modalStatus = useContext(modalVisibility);
   const { isModalVisibile, setModalVisibility } = modalStatus;
+  const { dispatch } = useContext(reducerData);
 
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
@@ -84,7 +85,7 @@ export default memo(function NavBar({
   };
 
   const handleOnClickLink = (id) => {
-    setMovieID(id);
+    dispatch({ type: "SET_MOVIEID", payload: id });
     setModalVisibility(true);
     setCategory("movie");
     setSearchActive(false);
