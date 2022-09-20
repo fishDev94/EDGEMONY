@@ -5,13 +5,13 @@ import { useRef, useState, useEffect, memo, useContext } from "react";
 import { modalVisibility } from "../../pages/_app";
 import { reducerData } from "../../pages/_app";
 
-export default memo(function CardList({ data, title, setMovieID }) {
+export default memo(function CardList({ data, title }) {
   const listRef = useRef();
   const [isBackVisible, setIsBackVisibility] = useState(false);
   const [isNextVisible, setIsNextVisibility] = useState(true);
   const [clicked, setClicked] = useState(false);
 
-  const { state, dispatch } = useContext(reducerData);
+  const { dispatch } = useContext(reducerData);
   const { setModalVisibility } = useContext(modalVisibility);
 
   const handleOnBackButtonClick = () => {

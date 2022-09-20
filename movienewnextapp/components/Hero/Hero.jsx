@@ -1,10 +1,11 @@
 import styles from "./index.module.scss";
-import { useEffect, useState, useRef, Fragment, memo } from "react";
+import { useEffect, useState, useRef, Fragment, memo, useContext } from "react";
 import { GET } from "../../utils/api";
 import { BASE_URL_IMG } from "../../constants";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
+import { modalVisibility, reducerData } from "../../pages/_app";
 
-export default memo(function Hero({ setMovieID, setModalVisibility }) {
+export default memo(function Hero({ setMovieID }) {
   const touchStartX = 0;
   let touchEndX = 0;
 
@@ -16,6 +17,10 @@ export default memo(function Hero({ setMovieID, setModalVisibility }) {
   const heroImgRef = useRef(null);
   const heroRoundPages = useRef(null);
   const btnContainer = useRef(null);
+
+  const modalStatus = useContext(modalVisibility);
+  const { setModalVisibility } = modalStatus;
+  const { dispatch } = useContext(reducerData);
 
   const [popularList, setPopularList] = useState({
     results: [
@@ -46,7 +51,7 @@ export default memo(function Hero({ setMovieID, setModalVisibility }) {
   };
 
   const handleOnImgClick = (id) => {
-    setMovieID(id);
+    dispatch({ type: "SET_MOVIEID", payload: id });
     setModalVisibility(true);
   };
 
