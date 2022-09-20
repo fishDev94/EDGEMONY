@@ -1,7 +1,8 @@
 import styles from "./index.module.scss";
-import { useEffect, useState, memo } from "react";
+import { useEffect, useState, memo, useContext } from "react";
 import { GET } from "../../utils/api";
 import { BASE_URL_IMG } from "../../constants";
+import { reducerData } from "../../pages/_app";
 
 export default memo(function MainModal({
   movieID,
@@ -12,6 +13,10 @@ export default memo(function MainModal({
   const [movieData, setMovieData] = useState({});
   const [videoData, setVideoData] = useState({});
 
+  const { state } = useContext(reducerData);
+
+  // console.log(data);
+
   const handleOnClickClose = () => {
     setModalVisibility(false);
   };
@@ -21,16 +26,18 @@ export default memo(function MainModal({
   };
 
   useEffect(() => {
-    GET(category, movieID).then((data) => {
+    GET(category, state.movieID).then((data) => {
       setMovieData(data);
     });
-  }, [movieID, category]);
+  }, [state.movieID, category]);
 
   useEffect(() => {
-    GET(category, `${movieID}/videos`, "&language=en-US").then((dataMovie) => {
-      setVideoData(dataMovie?.results[0]);
-    });
-  }, [movieID, category]);
+    GET(category, `${state.movieID}/videos`, "&language=en-US").then(
+      (dataMovie) => {
+        setVideoData(dataMovie?.results[0]);
+      }
+    );
+  }, [state.movieID, category]);
 
   useEffect(() => {
     setOpen("open");

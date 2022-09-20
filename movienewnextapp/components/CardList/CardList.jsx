@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
 import { useRef, useState, useEffect, memo, useContext } from "react";
 import { modalVisibility } from "../../pages/_app";
+import { reducerData } from "../../pages/_app";
 
 export default memo(function CardList({ data, title, setMovieID }) {
   const listRef = useRef();
@@ -10,6 +11,7 @@ export default memo(function CardList({ data, title, setMovieID }) {
   const [isNextVisible, setIsNextVisibility] = useState(true);
   const [clicked, setClicked] = useState(false);
 
+  const { state, dispatch } = useContext(reducerData);
   const { setModalVisibility } = useContext(modalVisibility);
 
   const handleOnBackButtonClick = () => {
@@ -31,7 +33,8 @@ export default memo(function CardList({ data, title, setMovieID }) {
   };
 
   const handleOnClickCard = (e) => {
-    setMovieID(e.target.id);
+    // setMovieID(e.target.id);
+    dispatch({ type: "SET_MOVIEID", payload: e.target.id });
     setModalVisibility(true);
   };
 
