@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
 import { useDispatch } from "react-redux";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 export default function InputContainer() {
   const [inputValue, setInputValue] = useState("");
