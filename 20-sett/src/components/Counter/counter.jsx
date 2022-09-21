@@ -1,16 +1,25 @@
 import styles from "./index.module.scss";
-import { useContext } from "react";
-import { counterData } from "../..";
+// import { useContext } from "react";
+// import { counterData } from "../..";
+import { useSelector, useDispatch } from "react-redux";
+import { memo } from "react";
 
-export default function Counter() {
-  const { dispatch } = useContext(counterData);
+export default memo(function Counter() {
+  // const { dispatch } = useContext(counterData);
+  const store = useSelector((state) => state);
+  const { count } = store;
+  const dispatcher = useDispatch();
+
+  console.log(count);
 
   const handleOnIncrement = () => {
-    dispatch({ type: "INCRESE" });
+    // dispatch({ type: "INCRESE" });
+    dispatcher({ type: "INCREMENT", payload: 1 });
   };
 
   const handleOnDecrement = () => {
-    dispatch({ type: "DECRESE" });
+    // dispatch({ type: "DECRESE" });
+    dispatcher({ type: "DECREMENT", payload: 1 });
   };
 
   return (
@@ -23,4 +32,4 @@ export default function Counter() {
       </button>
     </div>
   );
-}
+});
