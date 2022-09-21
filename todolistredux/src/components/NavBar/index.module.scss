@@ -1,0 +1,50 @@
+.NavBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.629);
+  backdrop-filter: blur(50px);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+
+  h5 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .input_container {
+    display: flex;
+
+    .Input {
+      border: none;
+      outline: none;
+      padding: 5px;
+      box-sizing: border-box;
+      color: rgb(40, 40, 40);
+      &:focus::placeholder {
+        opacity: 0;
+      }
+    }
+
+    .submit_btn {
+      border: none;
+      background-color: rgb(78, 127, 172);
+      color: white;
+      padding: 5px;
+      box-sizing: border-box;
+      font-weight: bold;
+
+      &:hover {
+        background-color: rgb(113, 162, 208);
+      }
+
+      &:active {
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.511);
+      }
+    }
+  }
+}

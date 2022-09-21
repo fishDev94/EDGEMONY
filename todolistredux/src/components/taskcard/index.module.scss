@@ -1,0 +1,27 @@
+.TaskCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: rgb(196, 196, 196);
+  font-weight: bold;
+  color: rgb(47, 47, 47);
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  .closeBtn {
+    background-color: rgb(195, 93, 93);
+    color: rgba(0, 0, 0, 0);
+    padding: 10px 6px;
+    border-radius: 100%;
+    line-height: 0;
+    transform: scale(0.8);
+    cursor: pointer;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.232);
+    }
+  }
+}

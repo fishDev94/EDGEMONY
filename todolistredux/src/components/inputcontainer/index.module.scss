@@ -1,0 +1,40 @@
+.InputContainer {
+  overflow: hidden;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  form {
+    display: flex;
+
+    .input_text {
+      flex-grow: 3;
+      padding: 10px 20px;
+      outline: none;
+      border: none;
+
+      box-sizing: border-box;
+      color: rgb(44, 44, 44);
+      font-weight: bold;
+    }
+
+    .submit_btn {
+      border: none;
+      box-sizing: border-box;
+      padding: 10px 20px;
+      background-color: rgb(98, 159, 96);
+      font-weight: bold;
+      color: white;
+      flex-grow: 1;
+
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.408);
+      }
+    }
+  }
+}
