@@ -5,6 +5,7 @@ import { useBottomScrollListener } from "react-bottom-scroll-listener";
 import { useRouter } from "next/router";
 import { GET } from "../../utils/api";
 import WrapperCard from "../../components/WrapperCard/WrapperCard";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function MovieList(props) {
   const cardContainer = useRef(null);
@@ -12,14 +13,18 @@ export default function MovieList(props) {
   const router = useRouter();
   const { pid } = router.query;
 
+  const dispatch = useDispatch();
+  const { movieSetup } = useSelector((state) => state);
+  const { typeofGenres } = movieSetup;
+
   const {
-    typeofGenres,
+    // typeofGenres,
     pageNumber,
     handleOnClickCard,
     setPageNumber,
     movieList,
     setMovieList,
-    setGenreID,
+    // setGenreID,
     genreID,
     setCategory,
   } = props;
@@ -40,7 +45,8 @@ export default function MovieList(props) {
         }&with_watch_monetization_types=flatrate`
       ).then((data) => {
         setMovieList(data.results);
-        setGenreID(pid.split("&=")[0]);
+        // setGenreID(pid.split("&=")[0]);
+        dispatch({ type: "SET_GENRE_ID", payload: pid.split("&=")[0] });
         setCategory(pid.split("&=")[2]);
       });
   }, [pid]);

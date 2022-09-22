@@ -11,8 +11,8 @@ export default memo(function CardList({ data, title }) {
   const [isNextVisible, setIsNextVisibility] = useState(true);
   const [clicked, setClicked] = useState(false);
 
-  const { dispatch } = useContext(reducerData);
-  const { setModalVisibility } = useContext(modalVisibility);
+  // const { dispatch } = useContext(reducerData);
+  // const { setModalVisibility } = useContext(modalVisibility);
 
   const handleOnBackButtonClick = () => {
     listRef.current.scrollTo({
@@ -32,11 +32,11 @@ export default memo(function CardList({ data, title }) {
     setClicked(!clicked);
   };
 
-  const handleOnClickCard = (e) => {
-    // setMovieID(e.target.id);
-    dispatch({ type: "SET_MOVIEID", payload: e.target.id });
-    setModalVisibility(true);
-  };
+  // const handleOnClickCard = (e) => {
+  //   // setMovieID(e.target.id);
+  //   dispatch({ type: "SET_MOVIEID", payload: e.target.id });
+  //   setModalVisibility(true);
+  // };
 
   useEffect(() => {
     let maxWidth = listRef.current.scrollWidth - listRef.current.clientWidth;
@@ -64,7 +64,7 @@ export default memo(function CardList({ data, title }) {
       <div ref={listRef} className={styles.CardList}>
         {data.map((item, index) => (
           <WrapperCard
-            handleOnClickCard={handleOnClickCard}
+            // handleOnClickCard={handleOnClickCard}
             listRef={listRef}
             data={item}
             key={index}

@@ -1,8 +1,9 @@
 import styles from "./index.module.scss";
 import { BASE_URL_IMG } from "../../constants";
 import { useRef, memo } from "react";
+import { useDispatch } from "react-redux";
 
-export default memo(function WrapperCard({ data, handleOnClickCard, type }) {
+export default memo(function WrapperCard({ data, type }) {
   const {
     id,
     title,
@@ -16,10 +17,20 @@ export default memo(function WrapperCard({ data, handleOnClickCard, type }) {
 
   const wrapperCard = useRef(null);
 
+  const dispatch = useDispatch();
+
   const handleOnMouseHover = (e) => {
     if (e.target.tagName === "P" || e.target.tagName === "IMG") {
       wrapperCard.current.classList.add(styles.hover);
     }
+  };
+
+  const handleOnClickCard = (e) => {
+    // setMovieID(e.target.id);
+    dispatch({ type: "SET_MOVIE_ID", payload: e.target.id });
+    console.log(e.target.id);
+    // setModalVisibility(true);
+    dispatch({ type: "SET_MODAL_ACTIVE" });
   };
 
   const handleOnMouseOut = () => {

@@ -5,6 +5,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { VscChromeClose } from "react-icons/vsc";
 import { useState, useRef, useEffect, memo, useContext } from "react";
 import { GET } from "../../utils/api";
+import { useDispatch, useSelector } from "react-redux";
 import { modalVisibility, reducerData } from "../../pages/_app";
 import Logo from "./Logo";
 import MainModal from "../MainModal/MainModal";
@@ -12,9 +13,9 @@ import MainModal from "../MainModal/MainModal";
 export default memo(function NavBar({
   setMovieID,
   movieID,
-  setGenreID,
-  setTypeOfGenres,
-  typeofGenres,
+  // setGenreID,
+  // setTypeOfGenres,
+  // typeofGenres,
   navBarPage,
   setMovieList,
   navBarRef,
@@ -28,9 +29,13 @@ export default memo(function NavBar({
   const categoryList = useRef(null);
   const iconContainer = useRef(null);
 
-  const modalStatus = useContext(modalVisibility);
-  const { isModalVisibile, setModalVisibility } = modalStatus;
-  const { dispatch } = useContext(reducerData);
+  // const modalStatus = useContext(modalVisibility);
+  // const { isModalVisibile, setModalVisibility } = modalStatus;
+  // const { dispatch } = useContext(reducerData);
+  const dispatch = useDispatch();
+  const { modalSetup, movieSetup } = useSelector((state) => state);
+  console.log(modalSetup);
+  const { typeofGenres } = movieSetup;
 
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
@@ -85,8 +90,8 @@ export default memo(function NavBar({
   };
 
   const handleOnClickLink = (id) => {
-    dispatch({ type: "SET_MOVIEID", payload: id });
-    setModalVisibility(true);
+    dispatch({ type: "SET_MOVIE_ID", payload: id });
+    dispatch({ type: "SET_MODAL_ACTIVE" });
     setCategory("movie");
     setSearchActive(false);
     setIsActive(false);
@@ -94,18 +99,19 @@ export default memo(function NavBar({
   };
 
   const handleOnTypeOfGenreClick = (e) => {
-    setTypeOfGenres(e.target.id);
+    // setTypeOfGenres(e.target.id);
+    dispatch({ type: "SET_TYPE_OF_GENRES", payload: e.target.id });
     setCategory(e.target.text);
   };
 
   const handleOnGenreClick = (id) => {
-    setGenreID(id);
+    dispatch({ type: "SET_GENRE_ID", payload: id });
     setMovieList([]);
     setLinkActive("");
     setMenuIsActive(false);
     categoryList.current.classList.remove(styles.hover);
     categoryList.current.classList.remove(styles.desk_active);
-    setModalVisibility(false);
+    dispatch({ type: "SET_MODAL_INACTIVE" });
   };
 
   useEffect(() => {
@@ -152,7 +158,10 @@ export default memo(function NavBar({
 
   return (
     <div ref={navBarRef} className={styles.NavBar}>
-      <div onClick={() => setModalVisibility(false)} className={styles.logo}>
+      <div
+        onClick={() => dispatch({ type: "SET_MODAL_INACTIVE" })}
+        className={styles.logo}
+      >
         <Link href="/">
           <a>
             <Logo />
@@ -278,12 +287,8 @@ export default memo(function NavBar({
           </ul>
         </div>
       </form>
-      {isModalVisibile && (
-        <MainModal
-          movieID={movieID}
-          setModalVisibility={setModalVisibility}
-          category={category}
-        />
+      {modalSetup.isModalVisibile && (
+        <MainModal movieID={movieID} category={category} />
       )}
     </div>
   );

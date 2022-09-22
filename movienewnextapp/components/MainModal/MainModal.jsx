@@ -2,42 +2,45 @@ import styles from "./index.module.scss";
 import { useEffect, useState, memo, useContext } from "react";
 import { GET } from "../../utils/api";
 import { BASE_URL_IMG } from "../../constants";
+import { useDispatch, useSelector } from "react-redux";
 import { reducerData } from "../../pages/_app";
 
 export default memo(function MainModal({
-  movieID,
-  setModalVisibility,
+  // movieID,
+  // setModalVisibility,
   category,
 }) {
   const [open, setOpen] = useState("");
   const [movieData, setMovieData] = useState({});
   const [videoData, setVideoData] = useState({});
 
-  const { state } = useContext(reducerData);
+  // const { state } = useContext(reducerData);
 
   // console.log(data);
+  const dispatch = useDispatch();
+  const { movieSetup } = useSelector((state) => state);
 
   const handleOnClickClose = () => {
-    setModalVisibility(false);
+    dispatch({ type: "SET_MODAL_INACTIVE" });
   };
 
   const handleOnBackgroundClick = () => {
-    setModalVisibility(false);
+    dispatch({ type: "SET_MODAL_INACTIVE" });
   };
 
   useEffect(() => {
-    GET(category, state.movieID).then((data) => {
+    GET(category, movieSetup.movieID).then((data) => {
       setMovieData(data);
     });
-  }, [state.movieID, category]);
+  }, [movieSetup.movieID, category]);
 
   useEffect(() => {
-    GET(category, `${state.movieID}/videos`, "&language=en-US").then(
+    GET(category, `${movieSetup.movieID}/videos`, "&language=en-US").then(
       (dataMovie) => {
         setVideoData(dataMovie?.results[0]);
       }
     );
-  }, [state.movieID, category]);
+  }, [movieSetup.movieID, category]);
 
   useEffect(() => {
     setOpen("open");
