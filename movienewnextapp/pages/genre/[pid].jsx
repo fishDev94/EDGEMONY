@@ -15,7 +15,7 @@ export default function MovieList(props) {
 
   const dispatch = useDispatch();
   const { movieSetup } = useSelector((state) => state);
-  const { typeofGenres } = movieSetup;
+  const { typeofGenres, genreID } = movieSetup;
 
   const {
     // typeofGenres,
@@ -25,7 +25,7 @@ export default function MovieList(props) {
     movieList,
     setMovieList,
     // setGenreID,
-    genreID,
+    // genreID,
     setCategory,
   } = props;
 

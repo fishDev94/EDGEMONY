@@ -12,7 +12,7 @@ import MainModal from "../MainModal/MainModal";
 
 export default memo(function NavBar({
   setMovieID,
-  movieID,
+  // movieID,
   // setGenreID,
   // setTypeOfGenres,
   // typeofGenres,
@@ -34,8 +34,7 @@ export default memo(function NavBar({
   // const { dispatch } = useContext(reducerData);
   const dispatch = useDispatch();
   const { modalSetup, movieSetup } = useSelector((state) => state);
-  console.log(modalSetup);
-  const { typeofGenres } = movieSetup;
+  const { typeofGenres, movieID } = movieSetup;
 
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
