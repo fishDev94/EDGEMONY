@@ -1,0 +1,103 @@
+@import "../../styles/_variables";
+@import "../../styles/_mixins";
+
+.Login {
+  @include flex-container($justify: center, $align: center);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  //   height: calc(100vh - 12vh);
+  background-color: $MainBackground;
+  color: rgb(191, 191, 191);
+
+  .Main_container {
+    @include flex-container($align: center);
+
+    width: 60%;
+    height: 60%;
+
+    .logo {
+      @include flex-container(
+        $direction: column,
+        $justify: center,
+        $align: center,
+        $gap: 40px
+      );
+
+      width: 50%;
+
+      h2 {
+        font-size: 1.2rem;
+        letter-spacing: 6px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .row {
+        background-color: rgba(255, 255, 255, 0.116);
+        width: 60%;
+        height: 2px;
+      }
+    }
+
+    .vertical_row {
+      width: 2px;
+      height: 80%;
+      background-color: rgba(255, 255, 255, 0.048);
+    }
+
+    .login_section {
+      @include flex-container(
+        $direction: column,
+        $justify: center,
+        $align: center,
+        $gap: 40px
+      );
+
+      width: 50%;
+
+      .icons {
+        @include flex-container($gap: 20px);
+        font-size: 2.2rem;
+
+        .google_icon {
+          cursor: pointer;
+          transition: all 0.35s;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+
+        .fb_icon {
+          cursor: pointer;
+          color: #314f8a;
+          margin: 0;
+          padding: 0;
+          box-shadow: 0 0 2px rgba(255, 255, 255, 0.346);
+          border-radius: 4px;
+          overflow: hidden;
+          background-color: rgba(255, 255, 255, 0.96);
+          transition: all 0.35s;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+
+        .twitter_icon {
+          cursor: pointer;
+          color: #1ea1f1;
+          transition: all 0.35s;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}

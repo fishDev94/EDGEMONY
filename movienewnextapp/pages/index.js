@@ -3,7 +3,9 @@ import styles from "../styles/Home.module.scss";
 import { useEffect } from "react";
 import Hero from "../components/Hero/Hero";
 import MainSection from "../components/MainSection";
-
+import { Router, useRouter } from "next/router";
+import { userAgent } from "next/server";
+import authProva from "../services/firebase";
 // import Footer from "../components/Footer/Footer";
 
 export default function Home({
@@ -13,6 +15,13 @@ export default function Home({
 }) {
   useEffect(() => {
     setLinkActive("Home");
+  }, []);
+
+  const router = useRouter();
+  // userAgent;
+  useEffect(() => {
+    router.push("/Login");
+    console.log(authProva);
   }, []);
 
   return (

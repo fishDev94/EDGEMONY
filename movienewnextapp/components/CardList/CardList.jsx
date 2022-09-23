@@ -2,8 +2,8 @@ import WrapperCard from "../WrapperCard/WrapperCard";
 import styles from "./index.module.scss";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
 import { useRef, useState, useEffect, memo, useContext } from "react";
-import { modalVisibility } from "../../pages/_app";
-import { reducerData } from "../../pages/_app";
+// import { modalVisibility } from "../../pages/_app";
+// import { reducerData } from "../../pages/_app";
 
 export default memo(function CardList({ data, title }) {
   const listRef = useRef();
