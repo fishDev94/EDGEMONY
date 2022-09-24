@@ -13,6 +13,11 @@ const initialState = {
     whichLinkActive: "",
     isModalVisibile: false,
   },
+
+  userData: {
+    userName: "",
+    email: "",
+  },
 };
 
 const movieReducer = (state = {}, action) => {
@@ -45,9 +50,19 @@ const modalReducer = (state = {}, action) => {
   }
 };
 
+const userDataReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_USER_NAME":
+      return { ...state, userName: action.payload };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   movieSetup: movieReducer,
   modalSetup: modalReducer,
+  userData: userDataReducer,
 });
 
 const store = createStore(rootReducer, initialState);

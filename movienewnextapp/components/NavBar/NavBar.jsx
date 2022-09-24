@@ -6,7 +6,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import { useState, useRef, useEffect, memo, useContext } from "react";
 import { GET } from "../../utils/api";
 import { useDispatch, useSelector } from "react-redux";
-import { modalVisibility, reducerData } from "../../pages/_app";
+import { user } from "../../services/firebase";
 import Logo from "./Logo";
 import MainModal from "../MainModal/MainModal";
 
@@ -33,8 +33,11 @@ export default memo(function NavBar({
   // const { isModalVisibile, setModalVisibility } = modalStatus;
   // const { dispatch } = useContext(reducerData);
   const dispatch = useDispatch();
-  const { modalSetup, movieSetup } = useSelector((state) => state);
+  const { modalSetup, movieSetup, userData } = useSelector((state) => state);
+
   const { typeofGenres, movieID } = movieSetup;
+
+  console.log(userData);
 
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
@@ -246,6 +249,9 @@ export default memo(function NavBar({
           </Link>
         </li>
       </ul>
+      <h2 className={styles.userName}>
+        <span style={{ opacity: "0.5" }}>Benvenuto:</span> {userData.userName}
+      </h2>
       <form
         onSubmit={onSearchSubmit}
         className={`${styles.NavBar__searchbar_container} ${

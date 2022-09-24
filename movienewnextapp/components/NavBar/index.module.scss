@@ -140,6 +140,17 @@
     width: 60px;
   }
 
+  .userName {
+    @include flex-container($align: center, $gap: 5px);
+    flex: 0 0 auto;
+    font-size: 0.7rem;
+    margin-right: 40px;
+
+    span {
+      display: none;
+    }
+  }
+
   .browse_btn {
     @include flex-container($align: center);
     position: absolute;
@@ -422,6 +433,15 @@
 
     .overlay {
       display: none;
+    }
+
+    .userName {
+      font-size: 0.9rem;
+      margin: 0;
+
+      span {
+        display: inline;
+      }
     }
 
     .logo {
