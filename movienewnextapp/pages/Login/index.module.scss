@@ -101,3 +101,32 @@
     }
   }
 }
+
+@media only screen and (max-width: 769px) {
+  .Login {
+    .Main_container {
+      flex-direction: column;
+      gap: 28px;
+      justify-content: center;
+      .logo {
+        gap: 18px;
+        width: 100%;
+        h2 {
+          text-align: center;
+          flex: 0 0 auto;
+          width: 100%;
+          letter-spacing: 5px;
+        }
+      }
+
+      .vertical_row {
+        height: 2px;
+        width: 80%;
+      }
+
+      .login_section {
+        gap: 18px;
+      }
+    }
+  }
+}
