@@ -1,17 +1,68 @@
 <script>
+import { watchEffect } from "vue";
 
+export default {
+  data() {
+    watchEffect(async () => {
+      this.value = await fetch("https://edgemony-backend.herokuapp.com/series")
+        .then((res) => res.json())
+        .then((data) => data);
+
+      console.log(this.value);
+    });
+
+    return {
+      title: "Hello world",
+      value: [],
+    };
+  },
+
+  methods: {
+    onClick() {
+      console.log("cliccato");
+    },
+  },
+};
 </script>
 
 <template>
-  <div id="app">
-    <h1>Home</h1>
-  </div>
+  <main>
+    <h1>{{ title }}</h1>
+    <button @click="onClick">Clicca</button>
+
+    <h2>Series List:</h2>
+    <div class="MyFilm">
+      <div v-for="serie in value">
+        <img :src="serie.poster" />
+        <p>{{ serie.title }}</p>
+      </div>
+    </div>
+  </main>
 </template>
 
 <style scoped lang="scss">
- #app {
-  text-align: center;
-  margin-top: 20px;
-  color: white;
- }
+main {
+  h1 {
+    color: red;
+  }
+
+  .MyFilm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.337);
+      width: 200px;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}
 </style>
