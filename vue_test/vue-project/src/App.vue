@@ -1,5 +1,7 @@
 <script>
 import { watchEffect } from "vue";
+import SerieCard from "./components/SerieCard.vue";
+import Modal from "./components/Modal.vue";
 
 export default {
   data() {
@@ -7,21 +9,31 @@ export default {
       this.value = await fetch("https://edgemony-backend.herokuapp.com/series")
         .then((res) => res.json())
         .then((data) => data);
-
       console.log(this.value);
     });
-
     return {
       title: "Hello world",
       value: [],
+      serieInfo: {},
+      isVisible: false,
     };
   },
-
   methods: {
+    onClickChild(data) {
+      const { value, boolean } = data;
+      this.serieInfo = value;
+      this.isVisible = boolean;
+    },
+
+    onModalClose(value) {
+      this.isVisible = value;
+    },
+
     onClick() {
       console.log("cliccato");
     },
   },
+  components: { SerieCard, Modal },
 };
 </script>
 
@@ -29,13 +41,20 @@ export default {
   <main>
     <h1>{{ title }}</h1>
     <button @click="onClick">Clicca</button>
-
+    <Modal v-if="isVisible" :serieInfo="serieInfo" @delete="onModalClose" />
     <h2>Series List:</h2>
     <div class="MyFilm">
-      <div v-for="serie in value">
+      <SerieCard
+        @clicked="onClickChild"
+        v-for="serie in value"
+        :title="serie.title"
+        :poster="serie.poster"
+        :serieData="serie"
+      />
+      <!-- <div v-for="serie in value">
         <img :src="serie.poster" />
         <p>{{ serie.title }}</p>
-      </div>
+      </div> -->
     </div>
   </main>
 </template>
