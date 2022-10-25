@@ -43,7 +43,6 @@ export default {
     <button @click="onClick">Clicca</button>
     <Modal v-if="isVisible" :serieInfo="serieInfo" @delete="onModalClose" />
     <h2>Series List:</h2>
-    <p>prova</p>
     <div class="MyFilm">
       <SerieCard
         @clicked="onClickChild"
