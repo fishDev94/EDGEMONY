@@ -32,23 +32,23 @@ export default {
     },
 
     onBackClick() {
-      this.el.scrollTo({
+      this.topRated_ref.scrollTo({
         top: 0,
-        left: this.el.scrollLeft - 400,
+        left: this.topRated_ref.scrollLeft - 600,
         behavior: "smooth",
       });
     },
 
     onForwardClick() {
-      this.el.scrollTo({
+      this.topRated_ref.scrollTo({
         top: 0,
-        left: this.el.scrollLeft + 400,
+        left: this.topRated_ref.scrollLeft + 600,
         behavior: "smooth",
       });
     },
 
     onMountedRef(val) {
-      this.el = val;
+      this.topRated_ref = val;
     },
   },
 

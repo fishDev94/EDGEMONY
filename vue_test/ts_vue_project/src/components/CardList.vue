@@ -21,10 +21,10 @@ export default {
 
 <style scoped lang="scss">
 .card_list {
-  padding: 0;
+  padding: 10px 0;
   display: flex;
-  justify-content: center;
   gap: 10px;
   overflow-x: scroll;
+  width: 100%;
 }
 </style>
