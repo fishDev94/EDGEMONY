@@ -7,6 +7,7 @@ export default {
     return {
       API_KEY: "4e20f22505a0317004237194ab48d928",
       topRatedList: [],
+      topRated_ref: "",
     };
   },
 
@@ -29,6 +30,26 @@ export default {
       const data = res.json();
       return await data;
     },
+
+    onBackClick() {
+      this.el.scrollTo({
+        top: 0,
+        left: this.el.scrollLeft - 400,
+        behavior: "smooth",
+      });
+    },
+
+    onForwardClick() {
+      this.el.scrollTo({
+        top: 0,
+        left: this.el.scrollLeft + 400,
+        behavior: "smooth",
+      });
+    },
+
+    onMountedRef(val) {
+      this.el = val;
+    },
   },
 
   mounted() {
@@ -41,20 +62,51 @@ export default {
 
 <template>
   <main>
-    <CardList :dataFilm="topRatedList" />
+    <div class="header_list">
+      <h2>Top Rated</h2>
+      <div class="scroll_btn">
+        <button @click="onBackClick">{{ "<" }}</button>
+        <button @click="onForwardClick">{{ ">" }}</button>
+      </div>
+    </div>
+    <CardList :dataFilm="topRatedList" @ref_mounted="onMountedRef" />
   </main>
 </template>
 
 <style scoped lang="scss">
 main {
-  padding: 80px 0;
+  padding: 80px 40px;
 
-  ul {
-    padding: 0;
+  .header_list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    h2 {
+      font-weight: bold;
+
+      &::after {
+        content: ":";
+        font-weight: bold;
+        margin-left: 4px;
+      }
+    }
+    .scroll_btn {
+      display: flex;
+      gap: 5px;
+
+      button {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        border: none;
+        cursor: pointer;
+
+        &:active {
+          transform: scale(0.85);
+        }
+      }
+    }
   }
 }
 </style>

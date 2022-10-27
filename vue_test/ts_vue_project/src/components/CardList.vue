@@ -6,11 +6,15 @@ export default {
     dataFilm: Object,
   },
   components: { CardFilm },
+
+  mounted() {
+    this.$emit("ref_mounted", this.$refs.list);
+  },
 };
 </script>
 
 <template>
-  <div class="card_list">
+  <div ref="list" class="card_list">
     <CardFilm v-for="film in dataFilm.results" :dataFilm="film" />
   </div>
 </template>
@@ -19,8 +23,8 @@ export default {
 .card_list {
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+  overflow-x: scroll;
 }
 </style>

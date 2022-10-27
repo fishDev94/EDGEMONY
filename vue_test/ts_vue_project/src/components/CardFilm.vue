@@ -20,9 +20,9 @@ export default {
 
 <style scoped lang="scss">
 .card_film {
+  flex: 0 0 auto;
   width: 20%;
   height: 300px;
-  background-color: blue;
   overflow: hidden;
 
   img {
