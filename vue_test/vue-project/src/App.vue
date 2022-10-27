@@ -5,12 +5,12 @@ import Modal from "./components/Modal.vue";
 
 export default {
   data() {
-    watchEffect(async () => {
-      this.value = await fetch("https://edgemony-backend.herokuapp.com/series")
-        .then((res) => res.json())
-        .then((data) => data);
-      console.log(this.value);
-    });
+    // watchEffect(async () => {
+    //   this.value = await fetch("https://edgemony-backend.herokuapp.com/series")
+    //     .then((res) => res.json())
+    //     .then((data) => data);
+    //   console.log(this.value);
+    // });
     return {
       title: "Hello world",
       value: [],
@@ -19,6 +19,12 @@ export default {
     };
   },
   methods: {
+    async getSeriesData() {
+      const res = await fetch("https://edgemony-backend.herokuapp.com/series");
+      const data = res.json();
+      this.value = await data;
+    },
+
     onClickChild(data) {
       const { value, boolean } = data;
       this.serieInfo = value;
@@ -34,6 +40,10 @@ export default {
     },
   },
   components: { SerieCard, Modal },
+
+  mounted() {
+    this.getSeriesData();
+  },
 };
 </script>
 
