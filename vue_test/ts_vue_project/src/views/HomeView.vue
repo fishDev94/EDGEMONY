@@ -8,6 +8,8 @@ export default {
       API_KEY: "4e20f22505a0317004237194ab48d928",
       topRatedList: [],
       topRated_ref: "",
+      popularList: [],
+      popularRef: "",
     };
   },
 
@@ -31,24 +33,28 @@ export default {
       return await data;
     },
 
-    onBackClick() {
-      this.topRated_ref.scrollTo({
+    onBackClick(ref) {
+      ref.scrollTo({
         top: 0,
-        left: this.topRated_ref.scrollLeft - 600,
+        left: ref.scrollLeft - 600,
         behavior: "smooth",
       });
     },
 
-    onForwardClick() {
-      this.topRated_ref.scrollTo({
+    onForwardClick(ref) {
+      ref.scrollTo({
         top: 0,
-        left: this.topRated_ref.scrollLeft + 600,
+        left: ref.scrollLeft + 600,
         behavior: "smooth",
       });
     },
 
-    onMountedRef(val) {
+    onMountedTopRef(val) {
       this.topRated_ref = val;
+    },
+
+    onMountedPopRef(val) {
+      this.popularRef = val;
     },
   },
 
@@ -56,54 +62,77 @@ export default {
     this.getList("top_rated", this.API_KEY).then(
       (res) => (this.topRatedList = res)
     );
+
+    this.getList("popular", this.API_KEY).then(
+      (res) => (this.popularList = res)
+    );
   },
 };
 </script>
 
 <template>
   <main>
-    <div class="header_list">
-      <h2>Top Rated</h2>
-      <div class="scroll_btn">
-        <button @click="onBackClick">{{ "<" }}</button>
-        <button @click="onForwardClick">{{ ">" }}</button>
+    <section class="list">
+      <div class="header_list">
+        <h2>Top Rated</h2>
+        <div class="scroll_btn">
+          <button @click="() => onBackClick(topRated_ref)">{{ "<" }}</button>
+          <button @click="() => onForwardClick(topRated_ref)">{{ ">" }}</button>
+        </div>
       </div>
-    </div>
-    <CardList :dataFilm="topRatedList" @ref_mounted="onMountedRef" />
+      <CardList :dataFilm="topRatedList" @ref_mounted="onMountedTopRef" />
+    </section>
+
+    <section class="list">
+      <div class="header_list">
+        <h2>Popular</h2>
+        <div class="scroll_btn">
+          <button @click="() => onBackClick(popularRef)">{{ "<" }}</button>
+          <button @click="() => onForwardClick(popularRef)">{{ ">" }}</button>
+        </div>
+      </div>
+      <CardList :dataFilm="popularList" @ref_mounted="onMountedPopRef" />
+    </section>
   </main>
 </template>
 
 <style scoped lang="scss">
 main {
-  padding: 80px 40px;
-
-  .header_list {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-
-    h2 {
-      font-weight: bold;
-
-      &::after {
-        content: ":";
-        font-weight: bold;
-        margin-left: 4px;
-      }
-    }
-    .scroll_btn {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 60px 0px;
+  .list {
+    .header_list {
       display: flex;
-      gap: 5px;
+      justify-content: space-between;
+      margin-bottom: 10px;
 
-      button {
-        width: 30px;
-        height: 30px;
-        border-radius: 100%;
-        border: none;
-        cursor: pointer;
+      h2 {
+        margin-left: 40px;
+        font-weight: bold;
 
-        &:active {
-          transform: scale(0.85);
+        &::after {
+          content: ":";
+          font-weight: bold;
+          margin-left: 4px;
+        }
+      }
+      .scroll_btn {
+        display: flex;
+        gap: 5px;
+        margin-right: 40px;
+
+        button {
+          width: 30px;
+          height: 30px;
+          border-radius: 100%;
+          border: none;
+          cursor: pointer;
+
+          &:active {
+            transform: scale(0.85);
+          }
         }
       }
     }

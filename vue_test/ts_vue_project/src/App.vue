@@ -17,7 +17,9 @@ export default {
 </script>
 
 <template>
-  <NavBar />
+  <header>
+    <NavBar />
+  </header>
   <RouterView />
 </template>
 

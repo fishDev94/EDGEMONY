@@ -21,10 +21,14 @@ export default {
 
 <style scoped lang="scss">
 .card_list {
-  padding: 10px 0;
+  padding: 10px 40px;
   display: flex;
   gap: 10px;
   overflow-x: scroll;
   width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 </style>
