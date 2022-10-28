@@ -3,17 +3,11 @@ export default {
   props: {
     dataFilm: Object,
   },
-
-  methods: {
-    onClick(data) {
-      console.log(data);
-    },
-  },
 };
 </script>
 
 <template>
-  <div @click="() => onClick(dataFilm)" class="card_film">
+  <div class="card_film">
     <img :src="`https://image.tmdb.org/t/p/original/${dataFilm.poster_path}`" />
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script>
 import CardFilm from "../components/CardFilm.vue";
 import CardList from "../components/CardList.vue";
+import Modal from "../components/Modal.vue";
 
 export default {
   data() {
@@ -10,6 +11,7 @@ export default {
       topRated_ref: "",
       popularList: [],
       popularRef: "",
+      modalVisibility: false,
     };
   },
 
@@ -22,6 +24,7 @@ export default {
   components: {
     CardFilm,
     CardList,
+    Modal,
   },
 
   methods: {
@@ -31,6 +34,14 @@ export default {
       );
       const data = res.json();
       return await data;
+    },
+
+    onClickedFilm(modalOpened) {
+      this.modalVisibility = modalOpened;
+    },
+
+    setModalVisibility(setfalse) {
+      this.modalVisibility = setfalse;
     },
 
     onBackClick(ref) {
@@ -80,7 +91,11 @@ export default {
           <button @click="() => onForwardClick(topRated_ref)">{{ ">" }}</button>
         </div>
       </div>
-      <CardList :dataFilm="topRatedList" @ref_mounted="onMountedTopRef" />
+      <CardList
+        :dataFilm="topRatedList"
+        @ref_mounted="onMountedTopRef"
+        @film_clicked="onClickedFilm"
+      />
     </section>
 
     <section class="list">
@@ -91,8 +106,13 @@ export default {
           <button @click="() => onForwardClick(popularRef)">{{ ">" }}</button>
         </div>
       </div>
-      <CardList :dataFilm="popularList" @ref_mounted="onMountedPopRef" />
+      <CardList
+        :dataFilm="popularList"
+        @ref_mounted="onMountedPopRef"
+        @film_clicked="onClickedFilm"
+      />
     </section>
+    <Modal v-if="modalVisibility" @set_modal_visibility="setModalVisibility" />
   </main>
 </template>
 

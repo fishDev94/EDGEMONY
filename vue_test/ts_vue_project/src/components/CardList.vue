@@ -7,6 +7,13 @@ export default {
   },
   components: { CardFilm },
 
+  methods: {
+    handleClickedFilm(id) {
+      console.log(id);
+      this.$emit("film_clicked", true);
+    },
+  },
+
   mounted() {
     this.$emit("ref_mounted", this.$refs.list);
   },
@@ -15,7 +22,11 @@ export default {
 
 <template>
   <div ref="list" class="card_list">
-    <CardFilm v-for="film in dataFilm.results" :dataFilm="film" />
+    <CardFilm
+      v-for="film in dataFilm.results"
+      :dataFilm="film"
+      @click="() => handleClickedFilm(film.id)"
+    />
   </div>
 </template>
 
