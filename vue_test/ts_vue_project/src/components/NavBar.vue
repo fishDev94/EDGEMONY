@@ -26,6 +26,11 @@ export default {
         (data) => (this.searchResult = data)
       );
     },
+
+    onFilmClicked(id) {
+      this.$emit("search_clicked", { setModalOpen: true, id });
+      this.searchInput = "";
+    },
   },
 
   components: {
@@ -47,7 +52,10 @@ export default {
         />
         <div v-if="searchInput" class="search_container">
           <ul class="search_results">
-            <li v-for="results in searchResult.results">
+            <li
+              v-for="results in searchResult.results"
+              @click="onFilmClicked(results.id)"
+            >
               {{ results.title }}
             </li>
           </ul>
@@ -125,6 +133,8 @@ export default {
 
           li {
             padding: 8px;
+            cursor: pointer;
+
             &:hover {
               background-color: rgba(255, 255, 255, 0.521);
             }

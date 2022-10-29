@@ -16,12 +16,6 @@ export default {
     };
   },
 
-  props: {
-    list: {
-      type: Object,
-    },
-  },
-
   components: {
     CardFilm,
     CardList,
@@ -79,6 +73,19 @@ export default {
 
     onMountedPopRef(val) {
       this.popularRef = val;
+    },
+  },
+
+  props: {
+    list: {
+      type: Object,
+    },
+    id: Object,
+  },
+
+  watch: {
+    id: function (val, oldVal) {
+      this.onClickedFilm(val);
     },
   },
 

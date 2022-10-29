@@ -4,10 +4,17 @@ import NavBar from "./components/NavBar.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      id: {},
+    };
   },
 
-  methods: {},
+  methods: {
+    filmClicked(id) {
+      this.id = id;
+      console.log(id);
+    },
+  },
 
   components: {
     RouterView,
@@ -17,10 +24,8 @@ export default {
 </script>
 
 <template>
-  <header>
-    <NavBar />
-  </header>
-  <RouterView />
+  <NavBar @search_clicked="filmClicked" />
+  <RouterView :id="id" />
 </template>
 
 <style scoped lang="scss"></style>
