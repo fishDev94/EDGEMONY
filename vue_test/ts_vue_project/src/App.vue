@@ -12,7 +12,6 @@ export default {
   methods: {
     filmClicked(id) {
       this.id = id;
-      console.log(id);
     },
   },
 
