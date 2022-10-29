@@ -84,6 +84,7 @@ export default {
 
     h4 {
       font-weight: bold;
+      flex: 0 0 auto;
     }
 
     div {
