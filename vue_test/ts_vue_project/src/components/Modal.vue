@@ -275,7 +275,7 @@ export default {
         height: 80%;
         width: 100%;
         object-fit: cover;
-        opacity: 0.4;
+        opacity: 0.7;
       }
 
       .overlay_backdrop {
