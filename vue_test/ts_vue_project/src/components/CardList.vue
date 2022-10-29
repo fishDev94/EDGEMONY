@@ -7,10 +7,11 @@ export default {
   },
   components: { CardFilm },
 
+  emits: ["film_clicked", "ref_mounted"],
+
   methods: {
     handleClickedFilm(id) {
-      console.log(id);
-      this.$emit("film_clicked", true);
+      this.$emit("film_clicked", { setModalOpen: true, id });
     },
   },
 

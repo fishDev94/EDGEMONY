@@ -1,14 +1,20 @@
 <script>
 export default {
   props: {
-    dataFilm: Object,
+    dataFilm: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>
 
 <template>
   <div class="card_film">
-    <img :src="`https://image.tmdb.org/t/p/original/${dataFilm.poster_path}`" />
+    <img
+      :src="`https://image.tmdb.org/t/p/original/${dataFilm.poster_path}`"
+      alt="cardimg"
+    />
   </div>
 </template>
 

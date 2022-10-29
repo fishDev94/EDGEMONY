@@ -10,7 +10,7 @@ export default {
 
   methods: {
     closeModal() {
-      this.$emit("set_modal_visibility", false);
+      this.$emit("set_modal_visibility");
     },
 
     handleSetFullScreen() {
@@ -22,8 +22,12 @@ export default {
     },
   },
 
-  mounted() {
-    console.log("modale montata");
+  mounted() {},
+
+  props: {
+    movieDetails: {
+      type: Object,
+    },
   },
 
   components: {
@@ -34,16 +38,29 @@ export default {
 
 <template>
   <div class="modal">
-    <div class="overlay" @click="closeModal" />
+    <div class="overlay" @click="closeModal"></div>
     <div class="modal_container" :class="fullscreen ? 'active' : ''">
+      <img
+        class="backdrop_path"
+        :src="`https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path}`"
+      />
+      <div class="overlay_backdrop"></div>
       <div class="button_container">
-        <button @click="closeModal">X</button>
-        <button @click="handleSetFullScreen">□</button>
+        <button @click="closeModal"></button>
+        <button @click="handleSetFullScreen"></button>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt aut
-        harum, mollitia maxime quibusdam libero.
-      </p>
+      <main>
+        <h2>{{ movieDetails.title }}</h2>
+        <div class="genre_rating">
+          <ul>
+            <li v-for="genre in movieDetails.genres">{{ genre.name }}</li>
+          </ul>
+          <p>{{ movieDetails.vote_average.toFixed(1) }}/10 <span>★</span></p>
+        </div>
+        <p>
+          {{ movieDetails.overview }}
+        </p>
+      </main>
     </div>
   </div>
 </template>
@@ -78,11 +95,47 @@ export default {
     width: 75%;
     height: 75%;
     transition: all 0.25s;
+    overflow: hidden;
 
     &.active {
       width: 100%;
       height: 100%;
       border-radius: 0px;
+    }
+
+    .backdrop_path {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 80%;
+      width: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+    }
+
+    .overlay_backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(42, 42, 42);
+      background: -moz-linear-gradient(
+        0deg,
+        rgba(42, 42, 42, 1) 50%,
+        rgba(121, 9, 9, 0) 100%
+      );
+      background: -webkit-linear-gradient(
+        0deg,
+        rgba(42, 42, 42, 1) 50%,
+        rgba(121, 9, 9, 0) 100%
+      );
+      background: linear-gradient(
+        0deg,
+        rgba(42, 42, 42, 1) 50%,
+        rgba(121, 9, 9, 0) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2a2a2a",endColorstr="#790909",GradientType=1);
     }
 
     .button_container {
@@ -101,11 +154,11 @@ export default {
         cursor: pointer;
 
         &:nth-child(1) {
-          background-color: rgb(190, 98, 98);
+          background-color: rgb(209, 80, 80);
         }
 
         &:nth-child(2) {
-          background-color: rgb(99, 177, 99);
+          background-color: rgb(99, 192, 99);
           &:hover {
             color: black;
           }
@@ -113,7 +166,59 @@ export default {
 
         &:hover {
           color: rgba(0, 0, 0, 0.362);
+          transform: scale(0.7);
         }
+      }
+    }
+    main {
+      margin-top: 30%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      h2 {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .genre_rating {
+        display: flex;
+        justify-content: space-between;
+
+        ul {
+          display: flex;
+          gap: 10px;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            padding: 4px 15px;
+            border-radius: 8px;
+            color: rgb(48, 48, 48);
+            font-weight: bold;
+            background-color: rgb(212, 212, 212);
+          }
+        }
+
+        p {
+          font-weight: bold;
+
+          &:before {
+            content: "Rating: ";
+            font-weight: 100;
+            opacity: 0.6;
+          }
+
+          span {
+            color: gold;
+          }
+        }
+      }
+
+      p {
+        line-height: 28px;
+        letter-spacing: 1.5px;
       }
     }
   }

@@ -12,6 +12,7 @@ export default {
       popularList: [],
       popularRef: "",
       modalVisibility: false,
+      movieDetails: {},
     };
   },
 
@@ -36,12 +37,24 @@ export default {
       return await data;
     },
 
-    onClickedFilm(modalOpened) {
-      this.modalVisibility = modalOpened;
+    async getMovieDetails(movie_id, API_KEY) {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+      );
+      const data = await res.json();
+      return await data;
     },
 
-    setModalVisibility(setfalse) {
-      this.modalVisibility = setfalse;
+    onClickedFilm(filmClikedData) {
+      const { setModalOpen, id } = filmClikedData;
+      this.modalVisibility = setModalOpen;
+      this.getMovieDetails(id, this.API_KEY).then(
+        (movie) => (this.movieDetails = movie)
+      );
+    },
+
+    setModalVisibility() {
+      this.modalVisibility = false;
     },
 
     onBackClick(ref) {
@@ -112,7 +125,11 @@ export default {
         @film_clicked="onClickedFilm"
       />
     </section>
-    <Modal v-if="modalVisibility" @set_modal_visibility="setModalVisibility" />
+    <Modal
+      v-if="modalVisibility"
+      @set_modal_visibility="setModalVisibility"
+      :movieDetails="movieDetails"
+    />
   </main>
 </template>
 
