@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "oh-vue-icons": "^1.0.0-rc3",
+    "react-icons": "^4.6.0",
     "sass": "^1.55.0",
     "vue": "^3.2.41",
     "vue-router": "^4.1.5"
