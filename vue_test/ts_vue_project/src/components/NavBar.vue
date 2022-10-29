@@ -11,9 +11,9 @@ export default {
   },
 
   methods: {
-    async searchData(API_KEY, search) {
+    async searchData(API, search) {
       const res = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=${API}&language=en-US&query=${search}&page=1&include_adult=false`
       );
 
       const data = await res.json();
