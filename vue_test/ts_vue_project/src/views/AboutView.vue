@@ -36,21 +36,39 @@ export default {
     <section>
       <h3>Here some project I made:</h3>
       <div class="gallery">
-        <img
-          :src="Polarix"
-          alt="Polarix Next Project"
-          @click="onImgClick('https://project-north.vercel.app/')"
-        />
-        <img
-          :src="MovieNextApp"
-          alt="Movie Next App"
-          @click="onImgClick('https://movienextapp.vercel.app/')"
-        />
-        <img
-          :src="Portfolio"
-          alt="Portfolio"
-          @click="onImgClick('https://marcoguglielmino.com/')"
-        />
+        <div class="card">
+          <img
+            :src="Polarix"
+            alt="Polarix Next Project"
+            @click="onImgClick('https://project-north.vercel.app/')"
+          />
+          <div class="description">
+            <h4>Polarix App:</h4>
+            <p>Musement API Based, Made with Next.Js</p>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            :src="MovieNextApp"
+            alt="Movie Next App"
+            @click="onImgClick('https://movienextapp.vercel.app/')"
+          />
+          <div class="description">
+            <h4>Movie Next App:</h4>
+            <p>TMDB API Based, Made with Next.Js</p>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            :src="Portfolio"
+            alt="Portfolio"
+            @click="onImgClick('https://marcoguglielmino.com/')"
+          />
+          <div class="description">
+            <h4>Portfolio:</h4>
+            <p>Made with React.Js</p>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -89,21 +107,42 @@ export default {
       .gallery {
         display: flex;
         gap: 20px;
-        margin-top: 20px;
+        margin-top: 30px;
 
-        img {
+        .card {
           position: relative;
-          width: 300px;
-          height: 250px;
-          object-fit: cover;
-          object-position: top;
-          box-shadow: 0 0 8px rgba(255, 255, 255, 0.226);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          box-shadow: 0 0 8px rgba(255, 255, 255, 0.116);
           cursor: pointer;
           transition: all 0.25s;
+          background-color: rgb(29, 29, 29);
+          border-radius: 8px;
+          overflow: hidden;
+          border: 1px solid rgba(107, 107, 107, 0.349);
+
+          img {
+            width: 300px;
+            height: 250px;
+            object-fit: cover;
+            object-position: top;
+          }
 
           &:hover {
             z-index: 1;
-            transform: scale(1.2);
+            transform: scale(1.15);
+          }
+          .description {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+            padding: 20px 10px;
+
+            h4 {
+              font-weight: bold;
+            }
           }
         }
       }
