@@ -92,9 +92,14 @@ export default {
 
       h2 {
         font-weight: bold;
+        text-transform: uppercase;
+        padding: 10px 0;
+        letter-spacing: 2px;
       }
 
       p {
+        font-weight: 200;
+
         a {
           text-decoration: none;
           color: rgb(138, 228, 220);
@@ -107,7 +112,7 @@ export default {
       .gallery {
         display: flex;
         gap: 20px;
-        margin-top: 30px;
+        margin-top: 20px;
 
         .card {
           position: relative;
@@ -142,6 +147,10 @@ export default {
 
             h4 {
               font-weight: bold;
+            }
+
+            p {
+              font-weight: 100;
             }
           }
         }
