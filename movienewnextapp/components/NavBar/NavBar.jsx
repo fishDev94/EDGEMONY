@@ -37,8 +37,6 @@ export default memo(function NavBar({
 
   const { typeofGenres, movieID } = movieSetup;
 
-  console.log(userData);
-
   const [isActive, setIsActive] = useState(false);
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
