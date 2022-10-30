@@ -49,6 +49,7 @@ export default {
 
     setModalVisibility() {
       this.modalVisibility = false;
+      this.movieDetails = {};
     },
 
     onBackClick(ref) {
