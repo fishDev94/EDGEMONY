@@ -2,6 +2,7 @@
 import CardFilm from "../components/CardFilm.vue";
 import CardList from "../components/CardList.vue";
 import Modal from "../components/Modal.vue";
+import Hero from "../components/Hero.vue";
 
 export default {
   data() {
@@ -11,6 +12,7 @@ export default {
       topRated_ref: "",
       popularList: [],
       popularRef: "",
+      upcomingList: [],
       modalVisibility: false,
       movieDetails: {},
     };
@@ -20,6 +22,7 @@ export default {
     CardFilm,
     CardList,
     Modal,
+    Hero,
   },
 
   methods: {
@@ -98,12 +101,17 @@ export default {
     this.getList("popular", this.API_KEY).then(
       (res) => (this.popularList = res)
     );
+
+    this.getList("upcoming", this.API_KEY).then(
+      (res) => (this.upcomingList = res)
+    );
   },
 };
 </script>
 
 <template>
   <main>
+    <Hero :list="upcomingList" />
     <section class="list">
       <div class="header_list">
         <h2>Top Rated</h2>
@@ -145,8 +153,8 @@ export default {
 main {
   display: flex;
   flex-direction: column;
+  padding-bottom: 40px;
   gap: 40px;
-  padding: 60px 0px;
   .list {
     .header_list {
       display: flex;
