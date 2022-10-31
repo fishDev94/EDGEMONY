@@ -31,10 +31,12 @@ export default {
 
 <template>
   <div class="hero">
-    <h2>{{ list.results[rightValue / 100].title }}</h2>
+    <h2 v-if="list.results">
+      {{ list.results[rightValue / 100].title }}
+    </h2>
     <img
       :style="`right: ${rightValue}vw`"
-      v-for="item in list.results"
+      v-for="item in list?.results"
       :src="`https://image.tmdb.org/t/p/original/${item.backdrop_path}`"
     />
     <div class="btn_scroll">
@@ -58,7 +60,6 @@ export default {
 
 <style scoped lang="scss">
 .hero {
-  background-color: red;
   height: 42vh;
   width: 100vw;
   overflow: hidden;
