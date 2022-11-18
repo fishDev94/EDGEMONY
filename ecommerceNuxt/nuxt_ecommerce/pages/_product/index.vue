@@ -21,9 +21,15 @@ export default {
   },
 
   mounted() {
-    this.product = this.productList.filter(
-      (e) => Number(e.id) === Number(this.$route.path.split("_")[1])
-    );
+    const id = Number(this.$route.path.split("_")[1]);
+
+    if (typeof id !== NaN && id) {
+      this.product = this.productList.filter(
+        (e) => Number(e.id) === Number(this.$route.path.split("_")[1])
+      );
+    } else {
+      this.$router.push("/");
+    }
   },
 };
 </script>
