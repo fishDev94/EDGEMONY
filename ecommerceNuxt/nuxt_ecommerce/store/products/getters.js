@@ -1,5 +1,3 @@
 export default {
-  productList(state) {
-    return state.productList;
-  },
+  productList: (state) => state.productList,
 };
