@@ -1,8 +1,18 @@
 <template>
   <div>
     <h1>Prova</h1>
-    <button @click="prov()">click</button>
-    <h2 v-for="item in productList">{{ item.title }}</h2>
+    <ul>
+      <li
+        v-for="item in productList"
+        @click="handleProductClicked(item.title, item.id)"
+      >
+        <productCard
+          :title="item.title"
+          :image="item.image"
+          :price="item.price"
+        />
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -19,8 +29,9 @@ export default {
   },
 
   methods: {
-    prov() {
-      console.log(this.productList);
+    handleProductClicked(title, id) {
+      const routeAliased = title.replaceAll(" ", "-");
+      this.$router.push(`${routeAliased}_${id}`);
     },
   },
 };
@@ -30,6 +41,15 @@ export default {
 div {
   h1 {
     color: red;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    padding: 40px;
+    height: 80vh;
+    overflow-y: scroll;
   }
 }
 </style>

@@ -1,3 +1,6 @@
 export default async function ({ store }) {
-  await store.dispatch("products/setProductList");
+  if (store.getters["products/productList"].length === 0) {
+    await store.dispatch("products/setProductList");
+  } else {
+  }
 }
