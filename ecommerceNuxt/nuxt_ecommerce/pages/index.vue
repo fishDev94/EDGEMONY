@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Prova</h1>
     <ul>
       <li
         v-for="item in productList"
