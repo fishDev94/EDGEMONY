@@ -26,6 +26,10 @@ export default {
   },
   computed: {
     ...mapGetters("products", ["productList"]),
+
+    // routerAliasedName() {
+    //   return this.$route.path.split("_")[0];
+    // },
   },
 
   mounted() {
@@ -37,6 +41,19 @@ export default {
       );
     } else {
       this.$router.push("/");
+    }
+  },
+
+  //blablabla-blabla-blabla_9
+
+  updated() {
+    if (
+      this.$route.path.split("_")[0] !==
+      this.product[0].title.replaceAll(" ", "-")
+    ) {
+      this.$router.push(
+        `${this.product[0].title.replaceAll(" ", "-")}_${this.product[0].id}`
+      );
     }
   },
 };
